@@ -170,6 +170,14 @@ class LogisticsDomain:
         self.container_on_top_of_pile = Fluent("container_on_top_of_pile", BoolType(), container=self.Container, pile=self.Pile)
         self.container_under_in_pile = Fluent("container_under_in_pile", BoolType(), container=self.Container, other_container=self.Container, pile=self.Pile)
         
+        # Container weight system
+        self.container_is_light = Fluent("container_is_light", BoolType(), container=self.Container)
+        self.container_is_heavy = Fluent("container_is_heavy", BoolType(), container=self.Container)
+        
+        # Robot weight capacity system (simplified boolean approach)
+        self.robot_can_carry_heavy = Fluent("robot_can_carry_heavy", BoolType(), robot=self.Robot)
+        self.robot_has_heavy_load = Fluent("robot_has_heavy_load", BoolType(), robot=self.Robot)
+        
         # Pile state
         self.pile_at_dock = Fluent("pile_at_dock", BoolType(), pile=self.Pile, dock=self.Dock)
         
@@ -180,6 +188,8 @@ class LogisticsDomain:
             self.robot_has_container_1, self.robot_has_container_2, self.robot_has_container_3,
             self.container_in_robot_slot_1, self.container_in_robot_slot_2, self.container_in_robot_slot_3,
             self.container_in_pile, self.container_on_top_of_pile, self.container_under_in_pile,
+            self.container_is_light, self.container_is_heavy,
+            self.robot_can_carry_heavy, self.robot_has_heavy_load,
             self.pile_at_dock
         ]
     
@@ -245,6 +255,29 @@ class LogisticsDomain:
             self.robot_free(self.r1): True,
             self.robot_free(self.r2): True,
             self.robot_free(self.r3): True,
+            
+            # Robot weight capacities (simplified boolean system)
+            self.robot_can_carry_heavy(self.r1): True,   # r1 can carry heavy containers
+            self.robot_can_carry_heavy(self.r2): True,   # r2 can carry heavy containers
+            self.robot_can_carry_heavy(self.r3): False,  # r3 cannot carry heavy containers
+            
+            # Robot current weight status (all start without heavy load)
+            self.robot_has_heavy_load(self.r1): False,
+            self.robot_has_heavy_load(self.r2): False,
+            self.robot_has_heavy_load(self.r3): False,
+            
+            # Container weights (light=2t, heavy=4t)
+            self.container_is_light(self.c1): True,   # c1 is light (2t)
+            self.container_is_light(self.c2): True,   # c2 is light (2t)
+            self.container_is_light(self.c3): False,  # c3 is heavy (4t)
+            self.container_is_light(self.c4): False,  # c4 is heavy (4t)
+            self.container_is_light(self.c5): True,   # c5 is light (2t)
+            
+            self.container_is_heavy(self.c1): False,  # c1 is not heavy
+            self.container_is_heavy(self.c2): False,  # c2 is not heavy
+            self.container_is_heavy(self.c3): True,   # c3 is heavy (4t)
+            self.container_is_heavy(self.c4): True,   # c4 is heavy (4t)
+            self.container_is_heavy(self.c5): False,  # c5 is not heavy
             
             # Container piles with proper stacking
             # Pile p1: c1 at bottom, c2, c3, c4, c5 stacked on top

@@ -80,6 +80,21 @@ class LogisticsActions:
             )
         )
         
+        # Weight constraint: robot must have weight capacity for heavy containers
+        # Light containers can always be carried, heavy containers need special capacity
+        pickup_action.add_precondition(
+            Or(
+                # Light container - any robot can carry
+                self.domain.container_is_light(container),
+                # Heavy container - only robots with heavy capacity can carry
+                And(
+                    self.domain.container_is_heavy(container),
+                    self.domain.robot_can_carry_heavy(robot),
+                    Not(self.domain.robot_has_heavy_load(robot))  # Cannot carry heavy if already has heavy load
+                )
+            )
+        )
+        
         # Add effects
         pickup_action.add_effect(self.domain.robot_carrying(robot, container), True)
         pickup_action.add_effect(self.domain.container_in_pile(container, pile), False)
@@ -154,6 +169,13 @@ class LogisticsActions:
                 self.domain.robot_has_container_2(robot),
                 self.domain.robot_has_container_3(robot)
             )
+        )
+        
+        # Update robot weight status - mark as having heavy load if picking up heavy container
+        pickup_action.add_effect(
+            self.domain.robot_has_heavy_load(robot),
+            True,
+            condition=self.domain.container_is_heavy(container)
         )
         
         # Update pile stacking - remove container from top
@@ -262,6 +284,13 @@ class LogisticsActions:
                 Not(self.domain.robot_has_container_2(robot)),
                 Not(self.domain.robot_has_container_3(robot))
             )
+        )
+        
+        # Update robot weight status - clear heavy load if putting down heavy container
+        putdown_action.add_effect(
+            self.domain.robot_has_heavy_load(robot),
+            False,
+            condition=self.domain.container_is_heavy(container)
         )
         
         # Update pile stacking - this container becomes the new top
