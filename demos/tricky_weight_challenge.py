@@ -58,11 +58,11 @@ def create_tricky_weight_problem():
         domain.robot_can_carry_2(domain.r1): True,
         domain.robot_can_carry_3(domain.r1): False,  # r1 capacity 2 slots
         
-        # Robot weight capacities (boolean system)
-        domain.robot_can_carry_heavy(domain.r1): True,   # r1 can carry heavy containers
+        # Robot weight capacity (boolean weight levels)
+        domain.robot_capacity_6(domain.r1): True,   # r1 can carry up to 6t
         
-        # Robot current weight status (starts without heavy load)
-        domain.robot_has_heavy_load(domain.r1): False,
+        # Robot current weight level (starts with 0t)
+        domain.robot_weight_0(domain.r1): True,
         
         # Robot load tracking (starts empty)
         domain.robot_has_container_1(domain.r1): False,
@@ -84,28 +84,22 @@ def create_tricky_weight_problem():
         
         domain.robot_free(domain.r1): True,
         
-        # Container weights (light=2t, heavy=4t)
-        domain.container_is_light(domain.c1): True,   # c1 is light (2t)
-        domain.container_is_light(domain.c2): False,  # c2 is heavy (4t)
-        domain.container_is_light(domain.c3): False,  # c3 is heavy (4t)
-        domain.container_is_light(domain.c4): False,  # c4 is heavy (4t)
-        domain.container_is_light(domain.c5): False,  # c5 is heavy (4t)
-        
-        domain.container_is_heavy(domain.c1): False,  # c1 is not heavy
-        domain.container_is_heavy(domain.c2): True,   # c2 is heavy (4t)
-        domain.container_is_heavy(domain.c3): True,   # c3 is heavy (4t)
-        domain.container_is_heavy(domain.c4): True,   # c4 is heavy (4t)
-        domain.container_is_heavy(domain.c5): True,   # c5 is heavy (4t)
+        # Container weights (boolean weight levels)
+        domain.container_weight_2(domain.c1): True,   # c1 weighs 2t
+        domain.container_weight_4(domain.c2): True,   # c2 weighs 4t
+        domain.container_weight_4(domain.c3): True,   # c3 weighs 4t
+        domain.container_weight_4(domain.c4): True,   # c4 weighs 4t
+        domain.container_weight_4(domain.c5): True,   # c5 weighs 4t
         
         # Container piles with proper stacking
-        # Pile 1 (d1): c1(light) at bottom, c2(heavy) on top
+        # Pile 1 (d1): c1(2t) at bottom, c2(4t) on top
         domain.container_in_pile(domain.c1, domain.p1): True,
         domain.container_in_pile(domain.c2, domain.p1): True,
         domain.container_on_top_of_pile(domain.c2, domain.p1): True,
         domain.container_on_top_of_pile(domain.c1, domain.p1): False,
         domain.container_under_in_pile(domain.c1, domain.c2, domain.p1): True,
         
-        # Pile 2 (d2): c3(heavy) at bottom, c4(heavy) in middle, c5(heavy) on top
+        # Pile 2 (d2): c3(4t) at bottom, c4(4t) in middle, c5(4t) on top
         domain.container_in_pile(domain.c3, domain.p2): True,
         domain.container_in_pile(domain.c4, domain.p2): True,
         domain.container_in_pile(domain.c5, domain.p2): True,
@@ -205,12 +199,14 @@ def solve_tricky_weight_scenario():
     console.print("\n[bold cyan]📋 Challenge Features:[/bold cyan]")
     console.print("• 1 robot with strict constraints:")
     console.print("  - r1: 6t weight capacity, 2 slots")
-    console.print("• 5 containers: 1 light (2t), 4 heavy (4t each)")
+    console.print("• 5 containers with numerical weights:")
+    console.print("  - c1: 2t, c2: 4t, c3: 4t, c4: 4t, c5: 4t")
     console.print("• Initial: p1=c1(2t)→c2(4t), p2=c3(4t)→c4(4t)→c5(4t), p3=empty")
     console.print("• Goal: c4-c5-c1-c2 on p3, c3 on p2 (as original)")
     console.print("• Challenge: Robot cannot carry 2 heavy containers (8t > 6t)!")
     console.print("• Solution: Must use intelligent multi-trip planning")
     console.print("• Architecture: Uses generalized src/ domain structure")
+    console.print("• Weight System: Boolean weight levels (2t, 4t, 6t) for planner compatibility")
     
     # Create problem and domain
     problem, domain, domain_objects = create_tricky_weight_problem()
@@ -265,17 +261,17 @@ def solve_tricky_weight_scenario():
                             details = f"{robot} picks {container} from {pile} at {dock}"
                             # Determine weight based on container
                             if container == "c1":
-                                weight_impact = "Light container (2t)"
+                                weight_impact = "+2t"
                             else:  # c2, c3, c4, c5
-                                weight_impact = "Heavy container (4t)"
+                                weight_impact = "+4t"
                         elif action_name == "putdown":
                             robot, container, pile, dock = params
                             details = f"{robot} puts {container} on {pile} at {dock}"
                             # Determine weight based on container
                             if container == "c1":
-                                weight_impact = "Light container (2t)"
+                                weight_impact = "-2t"
                             else:  # c2, c3, c4, c5
-                                weight_impact = "Heavy container (4t)"
+                                weight_impact = "-4t"
                         else:
                             details = f"{action_name}({', '.join(params)})"
                             weight_impact = "Unknown"

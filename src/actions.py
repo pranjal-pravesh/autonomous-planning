@@ -80,18 +80,22 @@ class LogisticsActions:
             )
         )
         
-        # Weight constraint: robot must have weight capacity for heavy containers
-        # Light containers can always be carried, heavy containers need special capacity
+        # Weight constraint: robot must have weight capacity for the container
+        # Define all valid weight combinations explicitly
         pickup_action.add_precondition(
             Or(
-                # Light container - any robot can carry
-                self.domain.container_is_light(container),
-                # Heavy container - only robots with heavy capacity can carry
-                And(
-                    self.domain.container_is_heavy(container),
-                    self.domain.robot_can_carry_heavy(robot),
-                    Not(self.domain.robot_has_heavy_load(robot))  # Cannot carry heavy if already has heavy load
-                )
+                # Pick up 2t container when robot has 0t (total 2t <= capacity)
+                And(self.domain.container_weight_2(container), self.domain.robot_weight_0(robot)),
+                # Pick up 2t container when robot has 2t (total 4t <= capacity)
+                And(self.domain.container_weight_2(container), self.domain.robot_weight_2(robot)),
+                # Pick up 2t container when robot has 4t (total 6t <= capacity)
+                And(self.domain.container_weight_2(container), self.domain.robot_weight_4(robot)),
+                # Pick up 4t container when robot has 0t (total 4t <= capacity)
+                And(self.domain.container_weight_4(container), self.domain.robot_weight_0(robot)),
+                # Pick up 4t container when robot has 2t (total 6t <= capacity)
+                And(self.domain.container_weight_4(container), self.domain.robot_weight_2(robot)),
+                # Pick up 6t container when robot has 0t (total 6t <= capacity)
+                And(self.domain.container_weight_6(container), self.domain.robot_weight_0(robot)),
             )
         )
         
@@ -171,23 +175,51 @@ class LogisticsActions:
             )
         )
         
-        # Update robot weight status - mark as having heavy load if picking up heavy container
-        pickup_action.add_effect(
-            self.domain.robot_has_heavy_load(robot),
-            True,
-            condition=self.domain.container_is_heavy(container)
-        )
+        # Update robot weight levels - define all weight combinations explicitly
+        # Pick up 2t container when robot has 0t -> robot now has 2t
+        pickup_action.add_effect(self.domain.robot_weight_0(robot), False, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_0(robot)))
+        pickup_action.add_effect(self.domain.robot_weight_2(robot), True, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_0(robot)))
+        
+        # Pick up 2t container when robot has 2t -> robot now has 4t
+        pickup_action.add_effect(self.domain.robot_weight_2(robot), False, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_2(robot)))
+        pickup_action.add_effect(self.domain.robot_weight_4(robot), True, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_2(robot)))
+        
+        # Pick up 2t container when robot has 4t -> robot now has 6t
+        pickup_action.add_effect(self.domain.robot_weight_4(robot), False, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_4(robot)))
+        pickup_action.add_effect(self.domain.robot_weight_6(robot), True, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_4(robot)))
+        
+        # Pick up 4t container when robot has 0t -> robot now has 4t
+        pickup_action.add_effect(self.domain.robot_weight_0(robot), False, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_0(robot)))
+        pickup_action.add_effect(self.domain.robot_weight_4(robot), True, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_0(robot)))
+        
+        # Pick up 4t container when robot has 2t -> robot now has 6t
+        pickup_action.add_effect(self.domain.robot_weight_2(robot), False, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_2(robot)))
+        pickup_action.add_effect(self.domain.robot_weight_6(robot), True, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_2(robot)))
+        
+        # Pick up 6t container when robot has 0t -> robot now has 6t
+        pickup_action.add_effect(self.domain.robot_weight_0(robot), False, 
+                                condition=And(self.domain.container_weight_6(container), self.domain.robot_weight_0(robot)))
+        pickup_action.add_effect(self.domain.robot_weight_6(robot), True, 
+                                condition=And(self.domain.container_weight_6(container), self.domain.robot_weight_0(robot)))
         
         # Update pile stacking - remove container from top
         pickup_action.add_effect(self.domain.container_on_top_of_pile(container, pile), False)
         
         # Update stacking relationships when picking up
         # If this container was on top of another, update the new top
-        for other_container in [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5]:
-            if hasattr(self.domain, 'c6'):
-                containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5, self.domain.c6]
-            else:
-                containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5]
+        # Get all containers dynamically from domain objects
+        domain_objects = self.domain.get_domain_objects()
+        containers = domain_objects["containers"]
         
         for other_container in containers:
             if other_container != container:
@@ -286,22 +318,51 @@ class LogisticsActions:
             )
         )
         
-        # Update robot weight status - clear heavy load if putting down heavy container
-        putdown_action.add_effect(
-            self.domain.robot_has_heavy_load(robot),
-            False,
-            condition=self.domain.container_is_heavy(container)
-        )
+        # Update robot weight levels - define all weight combinations explicitly
+        # Put down 2t container when robot has 2t -> robot now has 0t
+        putdown_action.add_effect(self.domain.robot_weight_2(robot), False, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_2(robot)))
+        putdown_action.add_effect(self.domain.robot_weight_0(robot), True, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_2(robot)))
+        
+        # Put down 2t container when robot has 4t -> robot now has 2t
+        putdown_action.add_effect(self.domain.robot_weight_4(robot), False, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_4(robot)))
+        putdown_action.add_effect(self.domain.robot_weight_2(robot), True, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_4(robot)))
+        
+        # Put down 2t container when robot has 6t -> robot now has 4t
+        putdown_action.add_effect(self.domain.robot_weight_6(robot), False, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_6(robot)))
+        putdown_action.add_effect(self.domain.robot_weight_4(robot), True, 
+                                condition=And(self.domain.container_weight_2(container), self.domain.robot_weight_6(robot)))
+        
+        # Put down 4t container when robot has 4t -> robot now has 0t
+        putdown_action.add_effect(self.domain.robot_weight_4(robot), False, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_4(robot)))
+        putdown_action.add_effect(self.domain.robot_weight_0(robot), True, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_4(robot)))
+        
+        # Put down 4t container when robot has 6t -> robot now has 2t
+        putdown_action.add_effect(self.domain.robot_weight_6(robot), False, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_6(robot)))
+        putdown_action.add_effect(self.domain.robot_weight_2(robot), True, 
+                                condition=And(self.domain.container_weight_4(container), self.domain.robot_weight_6(robot)))
+        
+        # Put down 6t container when robot has 6t -> robot now has 0t
+        putdown_action.add_effect(self.domain.robot_weight_6(robot), False, 
+                                condition=And(self.domain.container_weight_6(container), self.domain.robot_weight_6(robot)))
+        putdown_action.add_effect(self.domain.robot_weight_0(robot), True, 
+                                condition=And(self.domain.container_weight_6(container), self.domain.robot_weight_6(robot)))
         
         # Update pile stacking - this container becomes the new top
         putdown_action.add_effect(self.domain.container_on_top_of_pile(container, pile), True)
         
         # Update stacking relationships when putting down
         # Find what was previously on top and put this container on top of it
-        if hasattr(self.domain, 'c6'):
-            containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5, self.domain.c6]
-        else:
-            containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5]
+        # Get all containers dynamically from domain objects
+        domain_objects = self.domain.get_domain_objects()
+        containers = domain_objects["containers"]
         
         for other_container in containers:
             if other_container != container:

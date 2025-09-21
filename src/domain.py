@@ -94,7 +94,7 @@ class LogisticsDomain:
         self.d7 = Object("d7", self.Dock)
         self.d8 = Object("d8", self.Dock)
         
-        # 15 containers
+        # 13 containers (c14, c15 removed for consistency)
         self.c1 = Object("c1", self.Container)
         self.c2 = Object("c2", self.Container)
         self.c3 = Object("c3", self.Container)
@@ -108,10 +108,8 @@ class LogisticsDomain:
         self.c11 = Object("c11", self.Container)
         self.c12 = Object("c12", self.Container)
         self.c13 = Object("c13", self.Container)
-        self.c14 = Object("c14", self.Container)
-        self.c15 = Object("c15", self.Container)
         
-        # 12 piles (unequal distribution per dock)
+        # 15 piles (unequal distribution per dock)
         self.p1 = Object("p1", self.Pile)   # d1
         self.p2 = Object("p2", self.Pile)   # d1
         self.p3 = Object("p3", self.Pile)   # d2
@@ -170,13 +168,24 @@ class LogisticsDomain:
         self.container_on_top_of_pile = Fluent("container_on_top_of_pile", BoolType(), container=self.Container, pile=self.Pile)
         self.container_under_in_pile = Fluent("container_under_in_pile", BoolType(), container=self.Container, other_container=self.Container, pile=self.Pile)
         
-        # Container weight system
-        self.container_is_light = Fluent("container_is_light", BoolType(), container=self.Container)
-        self.container_is_heavy = Fluent("container_is_heavy", BoolType(), container=self.Container)
+        # Container weight system (boolean weight levels approach)
+        self.container_weight_2 = Fluent("container_weight_2", BoolType(), container=self.Container)
+        self.container_weight_4 = Fluent("container_weight_4", BoolType(), container=self.Container)
+        self.container_weight_6 = Fluent("container_weight_6", BoolType(), container=self.Container)
         
-        # Robot weight capacity system (simplified boolean approach)
-        self.robot_can_carry_heavy = Fluent("robot_can_carry_heavy", BoolType(), robot=self.Robot)
-        self.robot_has_heavy_load = Fluent("robot_has_heavy_load", BoolType(), robot=self.Robot)
+        # Robot weight level system (boolean approach for numerical weights)
+        self.robot_weight_0 = Fluent("robot_weight_0", BoolType(), robot=self.Robot)
+        self.robot_weight_2 = Fluent("robot_weight_2", BoolType(), robot=self.Robot)
+        self.robot_weight_4 = Fluent("robot_weight_4", BoolType(), robot=self.Robot)
+        self.robot_weight_6 = Fluent("robot_weight_6", BoolType(), robot=self.Robot)
+        self.robot_weight_8 = Fluent("robot_weight_8", BoolType(), robot=self.Robot)
+        self.robot_weight_10 = Fluent("robot_weight_10", BoolType(), robot=self.Robot)
+        
+        # Robot capacity levels
+        self.robot_capacity_5 = Fluent("robot_capacity_5", BoolType(), robot=self.Robot)
+        self.robot_capacity_6 = Fluent("robot_capacity_6", BoolType(), robot=self.Robot)
+        self.robot_capacity_8 = Fluent("robot_capacity_8", BoolType(), robot=self.Robot)
+        self.robot_capacity_10 = Fluent("robot_capacity_10", BoolType(), robot=self.Robot)
         
         # Pile state
         self.pile_at_dock = Fluent("pile_at_dock", BoolType(), pile=self.Pile, dock=self.Dock)
@@ -188,8 +197,9 @@ class LogisticsDomain:
             self.robot_has_container_1, self.robot_has_container_2, self.robot_has_container_3,
             self.container_in_robot_slot_1, self.container_in_robot_slot_2, self.container_in_robot_slot_3,
             self.container_in_pile, self.container_on_top_of_pile, self.container_under_in_pile,
-            self.container_is_light, self.container_is_heavy,
-            self.robot_can_carry_heavy, self.robot_has_heavy_load,
+            self.container_weight_2, self.container_weight_4, self.container_weight_6,
+            self.robot_weight_0, self.robot_weight_2, self.robot_weight_4, self.robot_weight_6, self.robot_weight_8, self.robot_weight_10,
+            self.robot_capacity_5, self.robot_capacity_6, self.robot_capacity_8, self.robot_capacity_10,
             self.pile_at_dock
         ]
     
@@ -256,28 +266,22 @@ class LogisticsDomain:
             self.robot_free(self.r2): True,
             self.robot_free(self.r3): True,
             
-            # Robot weight capacities (simplified boolean system)
-            self.robot_can_carry_heavy(self.r1): True,   # r1 can carry heavy containers
-            self.robot_can_carry_heavy(self.r2): True,   # r2 can carry heavy containers
-            self.robot_can_carry_heavy(self.r3): False,  # r3 cannot carry heavy containers
+            # Robot weight capacities (boolean weight levels)
+            self.robot_capacity_8(self.r1): True,   # r1 can carry up to 8t
+            self.robot_capacity_6(self.r2): True,   # r2 can carry up to 6t
+            self.robot_capacity_5(self.r3): True,   # r3 can carry up to 5t
             
-            # Robot current weight status (all start without heavy load)
-            self.robot_has_heavy_load(self.r1): False,
-            self.robot_has_heavy_load(self.r2): False,
-            self.robot_has_heavy_load(self.r3): False,
+            # Robot current weight levels (all start with 0t)
+            self.robot_weight_0(self.r1): True,
+            self.robot_weight_0(self.r2): True,
+            self.robot_weight_0(self.r3): True,
             
-            # Container weights (light=2t, heavy=4t)
-            self.container_is_light(self.c1): True,   # c1 is light (2t)
-            self.container_is_light(self.c2): True,   # c2 is light (2t)
-            self.container_is_light(self.c3): False,  # c3 is heavy (4t)
-            self.container_is_light(self.c4): False,  # c4 is heavy (4t)
-            self.container_is_light(self.c5): True,   # c5 is light (2t)
-            
-            self.container_is_heavy(self.c1): False,  # c1 is not heavy
-            self.container_is_heavy(self.c2): False,  # c2 is not heavy
-            self.container_is_heavy(self.c3): True,   # c3 is heavy (4t)
-            self.container_is_heavy(self.c4): True,   # c4 is heavy (4t)
-            self.container_is_heavy(self.c5): False,  # c5 is not heavy
+            # Container weights (boolean weight levels)
+            self.container_weight_2(self.c1): True,   # c1 weighs 2t
+            self.container_weight_2(self.c2): True,   # c2 weighs 2t
+            self.container_weight_4(self.c3): True,   # c3 weighs 4t
+            self.container_weight_4(self.c4): True,   # c4 weighs 4t
+            self.container_weight_2(self.c5): True,   # c5 weighs 2t
             
             # Container piles with proper stacking
             # Pile p1: c1 at bottom, c2, c3, c4, c5 stacked on top
@@ -349,6 +353,49 @@ class LogisticsDomain:
             self.robot_free(self.r1): True,
             self.robot_free(self.r2): True,
             self.robot_free(self.r3): True,
+            
+            # Robot weight capacities (simplified boolean system)
+            self.robot_can_carry_heavy(self.r1): True,   # r1 can carry heavy containers
+            self.robot_can_carry_heavy(self.r2): True,   # r2 can carry heavy containers
+            self.robot_can_carry_heavy(self.r3): False,  # r3 cannot carry heavy containers
+            
+            # Robot current weight status (all start without heavy load)
+            self.robot_has_heavy_load(self.r1): False,
+            self.robot_has_heavy_load(self.r2): False,
+            self.robot_has_heavy_load(self.r3): False,
+            
+            # Container weights (light=2t, heavy=4t) - Large scale distribution
+            # Light containers (2t each)
+            self.container_is_light(self.c1): True,   # c1 is light (2t)
+            self.container_is_light(self.c2): True,   # c2 is light (2t)
+            self.container_is_light(self.c3): True,   # c3 is light (2t)
+            self.container_is_light(self.c4): True,   # c4 is light (2t)
+            self.container_is_light(self.c5): True,   # c5 is light (2t)
+            self.container_is_light(self.c6): True,   # c6 is light (2t)
+            self.container_is_light(self.c7): True,   # c7 is light (2t)
+            
+            # Heavy containers (4t each)
+            self.container_is_light(self.c8): False,  # c8 is heavy (4t)
+            self.container_is_light(self.c9): False,  # c9 is heavy (4t)
+            self.container_is_light(self.c10): False, # c10 is heavy (4t)
+            self.container_is_light(self.c11): False, # c11 is heavy (4t)
+            self.container_is_light(self.c12): False, # c12 is heavy (4t)
+            self.container_is_light(self.c13): False, # c13 is heavy (4t)
+            
+            # Heavy container flags
+            self.container_is_heavy(self.c1): False,  # c1 is not heavy
+            self.container_is_heavy(self.c2): False,  # c2 is not heavy
+            self.container_is_heavy(self.c3): False,  # c3 is not heavy
+            self.container_is_heavy(self.c4): False,  # c4 is not heavy
+            self.container_is_heavy(self.c5): False,  # c5 is not heavy
+            self.container_is_heavy(self.c6): False,  # c6 is not heavy
+            self.container_is_heavy(self.c7): False,  # c7 is not heavy
+            self.container_is_heavy(self.c8): True,   # c8 is heavy (4t)
+            self.container_is_heavy(self.c9): True,   # c9 is heavy (4t)
+            self.container_is_heavy(self.c10): True,  # c10 is heavy (4t)
+            self.container_is_heavy(self.c11): True,  # c11 is heavy (4t)
+            self.container_is_heavy(self.c12): True,  # c12 is heavy (4t)
+            self.container_is_heavy(self.c13): True,  # c13 is heavy (4t)
             
             # Initialize robot slot tracking for all robots and all containers (all empty initially)
             # Robot r1 slots
