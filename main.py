@@ -175,8 +175,8 @@ def demos():
     
     demos_info = {
         "multi_robot": "Multi-robot coordination scenarios",
-        "container_redistribution": "Container redistribution with piles and target counts",
-        "large_scale": "Large-scale redistribution with 8 docks, 12 piles, 15 containers, 3 robots"
+        "container_redistribution": "Simple container redistribution using src/ structure",
+        "large_scale": "Large-scale redistribution using src/ structure (8 docks, 12 piles, 15 containers, 3 robots)"
     }
     
     console.print("\n[bold cyan]Available Demos:[/bold cyan]")
