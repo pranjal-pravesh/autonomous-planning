@@ -41,19 +41,32 @@ pip install -r requirements.txt
 
 ### Basic Simulation
 ```bash
-python main.py
+python main.py run
 ```
 
-### Custom Goals
+### List Available Problems
 ```bash
-python main.py --goal "loc(r1)=d3"
-python main.py --goal "pile(c1)=p2"
+python main.py run --list
 ```
 
-### Different Planners
+### Run Specific Problem
 ```bash
-python main.py --planner pyperplan
-python main.py --planner fast-downward
+python main.py run --problem move_robot --planner fast-downward
+```
+
+### Interactive Mode
+```bash
+python main.py interactive
+```
+
+### Advanced Demos
+```bash
+python main.py demos
+```
+
+### Run All Examples
+```bash
+python main.py demo
 ```
 
 ## Project Structure
@@ -62,7 +75,7 @@ python main.py --planner fast-downward
 automated-planning/
 ├── README.md                 # This file
 ├── requirements.txt          # Python dependencies
-├── main.py                  # Main simulation script
+├── main.py                  # Main CLI interface
 ├── src/
 │   ├── __init__.py
 │   ├── domain.py            # Domain definition (types, objects, fluents)
@@ -72,6 +85,10 @@ automated-planning/
 ├── examples/
 │   ├── basic_goals.py       # Example goal definitions
 │   └── complex_scenarios.py # More complex planning scenarios
+├── demos/
+│   ├── multi_robot_coordination.py    # Multi-robot coordination scenarios
+│   ├── container_redistribution.py    # Container redistribution with piles and target counts
+│   └── large_scale_redistribution.py  # Large-scale redistribution with 8 docks, 12 piles, 15 containers, 3 robots
 └── docs/
     ├── ch2_summary.md       # Chapter 2 theory summary
     ├── guide_up.md          # Unified Planning implementation guide

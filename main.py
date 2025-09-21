@@ -161,5 +161,50 @@ def demo():
             input("\nPress Enter to continue to next problem...")
 
 
+@app.command()
+def demos():
+    """Run advanced planning demonstrations."""
+    console.print(Panel.fit(
+        "[bold blue]🎬 Advanced Planning Demos[/bold blue]\n"
+        "[white]Run advanced logistics scenarios[/white]",
+        border_style="blue"
+    ))
+    
+    import subprocess
+    import sys
+    
+    demos_info = {
+        "multi_robot": "Multi-robot coordination scenarios",
+        "container_redistribution": "Container redistribution with piles and target counts",
+        "large_scale": "Large-scale redistribution with 8 docks, 12 piles, 15 containers, 3 robots"
+    }
+    
+    console.print("\n[bold cyan]Available Demos:[/bold cyan]")
+    for i, (name, description) in enumerate(demos_info.items(), 1):
+        console.print(f"  {i}. [cyan]{name}[/cyan]: {description}")
+    console.print("  0. Exit")
+    
+    try:
+        choice = typer.prompt("Select a demo (number)", type=int)
+        
+        if choice == 0:
+            console.print("[yellow]👋 Goodbye![/yellow]")
+            return
+        elif choice == 1:
+            console.print("\n[bold green]Running multi-robot coordination demo...[/bold green]")
+            subprocess.run([sys.executable, "demos/multi_robot_coordination.py"])
+        elif choice == 2:
+            console.print("\n[bold green]Running container redistribution demo...[/bold green]")
+            subprocess.run([sys.executable, "demos/container_redistribution.py"])
+        elif choice == 3:
+            console.print("\n[bold green]Running large-scale redistribution demo...[/bold green]")
+            subprocess.run([sys.executable, "demos/large_scale_redistribution.py"])
+        else:
+            console.print("[red]❌ Invalid choice![/red]")
+            
+    except (ValueError, KeyboardInterrupt):
+        console.print("\n[yellow]👋 Goodbye![/yellow]")
+
+
 if __name__ == "__main__":
     app()
