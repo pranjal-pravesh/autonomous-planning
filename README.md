@@ -5,31 +5,53 @@ A B.Tech project implementing the logistics domain from **Example 2.3** in *Auto
 ## Overview
 
 This project simulates a logistics domain with:
-- **3 Loading Docks** (d1, d2, d3) connected in a triangular network
-- **2 Robots** (r1, r2) that can move between docks and carry containers
-- **3 Containers** (c1, c2, c3) that can be stacked in piles or carried by robots
-- **3 Piles** (p1, p2, p3) located at specific docks for container storage
+- **Multiple Loading Docks** connected in various network topologies
+- **Robots with Different Capacities** (1, 2, or 3 containers) that can move between docks
+- **Containers** that can be stacked in piles or carried by robots
+- **Piles** located at specific docks for container storage
+- **LIFO Stacking System** for realistic container handling
 
 ## Domain Description
 
 ### Objects
-- **Robots**: r1, r2 (can hold at most one container each)
-- **Docks**: d1, d2, d3 (at most one robot per dock)
-- **Containers**: c1, c2, c3
-- **Piles**: p1 (at d1), p2 (at d2), p3 (at d2)
+- **Robots**: r1 (capacity 1), r2 (capacity 2), r3 (capacity 3)
+- **Docks**: Multiple docks with various connectivity patterns
+- **Containers**: Multiple containers for redistribution scenarios
+- **Piles**: Located at specific docks for container storage
 
 ### State Variables
-- `cargo(r)`: Container that robot r is carrying (or nil)
-- `loc(r)`: Dock where robot r is located
-- `occupied(d)`: Whether dock d is occupied by a robot
-- `pos(c)`: Where container c is located (robot, pile, or nil)
-- `pile(c)`: Which pile container c is in (or nil)
-- `top(p)`: Top container of pile p (or nil)
+- `robot_at(r, d)`: Whether robot r is at dock d
+- `robot_carrying(r, c)`: Whether robot r is carrying container c
+- `robot_free(r)`: Whether robot r is free to pick up containers
+- `robot_can_carry_X(r)`: Whether robot r can carry X containers (1, 2, or 3)
+- `robot_has_container_X(r)`: Whether robot r has container in slot X
+- `container_in_pile(c, p)`: Whether container c is in pile p
+- `pile_at_dock(p, d)`: Whether pile p is at dock d
+- `adjacent(d1, d2)`: Whether dock d1 is adjacent to dock d2
 
 ### Actions
-- **load(r, c, c', p, d)**: Robot r loads container c from pile p at dock d
-- **unload(r, c, c', p, d)**: Robot r unloads container c onto pile p at dock d
-- **move(r, d, d')**: Robot r moves from dock d to adjacent dock d'
+- **pickup(r, c, p, d)**: Robot r picks up container c from pile p at dock d (capacity-aware)
+- **putdown(r, c, p, d)**: Robot r puts down container c onto pile p at dock d (LIFO)
+- **move(r, d1, d2)**: Robot r moves from dock d1 to adjacent dock d2
+
+## Robot Capacity System
+
+The project implements a realistic robot capacity system:
+
+### Capacity Types
+- **r1**: Capacity 1 - Can carry 1 container
+- **r2**: Capacity 2 - Can carry up to 2 containers  
+- **r3**: Capacity 3 - Can carry up to 3 containers
+
+### LIFO Stacking
+- **Last In, First Out**: New containers are stacked on top
+- **Unloading Constraint**: Only the top container can be unloaded
+- **Realistic Operations**: Mimics real-world container handling
+
+### Capacity Constraints
+- Robots can only pick up containers if they have available capacity
+- Load tracking prevents overloading
+- Efficient multi-container transport for high-capacity robots
 
 ## Installation
 
@@ -88,7 +110,8 @@ automated-planning/
 ├── demos/
 │   ├── multi_robot_coordination.py    # Multi-robot coordination scenarios
 │   ├── container_redistribution.py    # Container redistribution with piles and target counts
-│   └── large_scale_redistribution.py  # Large-scale redistribution with 8 docks, 12 piles, 15 containers, 3 robots
+│   ├── large_scale_redistribution.py  # Large-scale redistribution with 8 docks, 12 piles, 15 containers, 3 robots
+│   └── robot_capacity_demo.py         # Robot capacity demonstration (capacities 1, 2, 3 with LIFO stacking)
 └── docs/
     ├── ch2_summary.md       # Chapter 2 theory summary
     ├── guide_up.md          # Unified Planning implementation guide

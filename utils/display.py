@@ -237,16 +237,18 @@ class LogisticsDisplay:
         for dist in initial_distributions:
             dock = dist["dock"]
             if dock not in dock_summary:
-                dock_summary[dock] = {"total": 0, "piles": [], "pile_info": []}
+                dock_summary[dock] = {"total": 0, "piles": [], "pile_info": [], "occupied_piles": 0}
             dock_summary[dock]["total"] += dist["count"]
             dock_summary[dock]["piles"].append(dist["pile"])
             dock_summary[dock]["pile_info"].append(f"{dist['pile']}({dist['count']})")
+            if dist["count"] > 0:  # Only count piles with containers
+                dock_summary[dock]["occupied_piles"] += 1
         
         for dock, info in dock_summary.items():
             summary_table.add_row(
                 dock,
                 str(info["total"]),
-                f"{len(info['piles'])}/{len(info['piles'])}",
+                f"{info['occupied_piles']}/{len(info['piles'])}",
                 ", ".join(info["pile_info"])
             )
         

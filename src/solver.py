@@ -22,39 +22,79 @@ class LogisticsSolver:
         self.console = Console()
         self.available_planners = ["pyperplan", "fast-downward"]
     
-    def solve_problem(self, problem: Problem, planner_name: str = "pyperplan") -> Optional[PlanGenerationResult]:
+    def solve_problem(self, problem: Problem, planner_name: str = "pyperplan", heuristic: str = "default") -> Optional[PlanGenerationResult]:
         """
-        Solve a planning problem using the specified planner.
+        Solve a planning problem using the specified planner and heuristic.
         
         Args:
             problem: The planning problem to solve
             planner_name: Name of the planner to use
+            heuristic: Heuristic to use for Fast Downward
             
         Returns:
             PlanGenerationResult if successful, None otherwise
         """
         self.console.print(f"\n[bold blue]🤖 Solving with {planner_name} planner...[/bold blue]")
+        if heuristic != "default":
+            self.console.print(f"[bold blue]🎯 Using heuristic: {heuristic}[/bold blue]")
         
         try:
             # Use fast-downward instead of pyperplan for equality support
             planner_name = 'fast-downward' if planner_name == 'pyperplan' else planner_name
+            
+            # Configure Fast Downward with specific heuristics for logistics
+            if planner_name == 'fast-downward' and heuristic != "default":
+                # Try different heuristics that work well for logistics problems
+                heuristics_config = {
+                    "h_ff": "--search 'astar(ff())'",
+                    "h_add": "--search 'astar(add())'", 
+                    "h_max": "--search 'astar(max())'",
+                    "h_lmcut": "--search 'astar(lmcut())'",
+                    "h_cea": "--search 'astar(cea())'",
+                    "h_cg": "--search 'astar(cg())'",
+                    "h_goalcount": "--search 'astar(goalcount())'",
+                    "gbfs_ff": "--search 'eager_greedy([ff()])'",
+                    "gbfs_add": "--search 'eager_greedy([add()])'",
+                    "gbfs_cea": "--search 'eager_greedy([cea()])'"
+                }
+                
+                if heuristic in heuristics_config:
+                    # Use the specific heuristic configuration
+                    with OneshotPlanner(name=planner_name, params=heuristics_config[heuristic]) as planner:
+                        start_time = time.time()
+                        result = planner.solve(problem)
+                        solve_time = time.time() - start_time
+                        return self._handle_result(result, solve_time, heuristic)
+                else:
+                    self.console.print(f"[yellow]⚠️ Unknown heuristic '{heuristic}', using default[/yellow]")
+            
+            # Default planner configuration
             with OneshotPlanner(name=planner_name) as planner:
                 start_time = time.time()
                 result = planner.solve(problem)
                 solve_time = time.time() - start_time
-                
-                if result.status == PlanGenerationResultStatus.SOLVED_SATISFICING:
-                    self.console.print(f"[green]✅ Plan found in {solve_time:.2f} seconds![/green]")
-                    return result
-                elif result.status == PlanGenerationResultStatus.SOLVED_OPTIMALLY:
-                    self.console.print(f"[green]✅ Optimal plan found in {solve_time:.2f} seconds![/green]")
-                    return result
-                else:
-                    self.console.print(f"[red]❌ Planning failed: {result.status}[/red]")
-                    return None
+                return self._handle_result(result, solve_time, "default")
                     
         except Exception as e:
             self.console.print(f"[red]❌ Error with {planner_name}: {str(e)}[/red]")
+            return None
+    
+    def _handle_result(self, result: PlanGenerationResult, solve_time: float, heuristic: str) -> Optional[PlanGenerationResult]:
+        """Handle the planning result and display appropriate messages."""
+        if result.status == PlanGenerationResultStatus.SOLVED_SATISFICING:
+            self.console.print(f"[green]✅ Plan found in {solve_time:.2f} seconds![/green]")
+            if heuristic != "default":
+                self.console.print(f"[green]🎯 Heuristic '{heuristic}' succeeded![/green]")
+            return result
+        elif result.status == PlanGenerationResultStatus.SOLVED_OPTIMALLY:
+            self.console.print(f"[green]✅ Optimal plan found in {solve_time:.2f} seconds![/green]")
+            if heuristic != "default":
+                self.console.print(f"[green]🎯 Heuristic '{heuristic}' found optimal solution![/green]")
+            return result
+        else:
+            self.console.print(f"[red]❌ Planning failed: {result.status}[/red]")
+            if heuristic != "default":
+                self.console.print(f"[red]🎯 Heuristic '{heuristic}' failed[/red]")
             return None
     
     def display_problem_info(self, problem: Problem) -> None:

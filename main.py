@@ -176,7 +176,8 @@ def demos():
     demos_info = {
         "multi_robot": "Multi-robot coordination scenarios",
         "container_redistribution": "Simple container redistribution using src/ structure",
-        "large_scale": "Large-scale redistribution using src/ structure (8 docks, 12 piles, 15 containers, 3 robots)"
+        "large_scale": "Large-scale redistribution using src/ structure (8 docks, 12 piles, 13 containers, 3 robots: 2 cap 3, 1 cap 2)",
+        "robot_capacity": "Robot capacity demonstration (capacities 1, 2, 3 with LIFO stacking)"
     }
     
     console.print("\n[bold cyan]Available Demos:[/bold cyan]")
@@ -199,6 +200,9 @@ def demos():
         elif choice == 3:
             console.print("\n[bold green]Running large-scale redistribution demo...[/bold green]")
             subprocess.run([sys.executable, "demos/large_scale_redistribution.py"])
+        elif choice == 4:
+            console.print("\n[bold green]Running robot capacity demo...[/bold green]")
+            subprocess.run([sys.executable, "demos/robot_capacity_demo.py"])
         else:
             console.print("[red]❌ Invalid choice![/red]")
             

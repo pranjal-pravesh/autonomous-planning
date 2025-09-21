@@ -52,6 +52,7 @@ class LogisticsActions:
         Define the pickup action: pickup(r, c, p, d)
         
         Robot r picks up container c from pile p at dock d.
+        Simplified capacity system with boolean fluents.
         """
         pickup_action = InstantaneousAction("pickup", robot=self.domain.Robot, container=self.domain.Container, pile=self.domain.Pile, dock=self.domain.Dock)
         
@@ -65,12 +66,121 @@ class LogisticsActions:
         pickup_action.add_precondition(self.domain.robot_at(robot, dock))
         pickup_action.add_precondition(self.domain.pile_at_dock(pile, dock))
         pickup_action.add_precondition(self.domain.container_in_pile(container, pile))
-        pickup_action.add_precondition(self.domain.robot_free(robot))
+        
+        # LIFO constraint for piles - robot can only pick up the top container
+        pickup_action.add_precondition(self.domain.container_on_top_of_pile(container, pile))
+        
+        # Capacity constraint: robot must have available capacity
+        # Robot can pick up if it has any free slot (not all slots occupied)
+        pickup_action.add_precondition(
+            Or(
+                And(self.domain.robot_can_carry_1(robot), Not(self.domain.robot_has_container_1(robot))),
+                And(self.domain.robot_can_carry_2(robot), Not(self.domain.robot_has_container_2(robot))),
+                And(self.domain.robot_can_carry_3(robot), Not(self.domain.robot_has_container_3(robot)))
+            )
+        )
         
         # Add effects
         pickup_action.add_effect(self.domain.robot_carrying(robot, container), True)
-        pickup_action.add_effect(self.domain.robot_free(robot), False)
         pickup_action.add_effect(self.domain.container_in_pile(container, pile), False)
+        
+        # Update robot load tracking - assign container to first available slot (LIFO loading)
+        # Slot 1 first (if available)
+        pickup_action.add_effect(
+            self.domain.container_in_robot_slot_1(robot, container),
+            True,
+            condition=And(
+                self.domain.robot_can_carry_1(robot), 
+                Not(self.domain.robot_has_container_1(robot))
+            )
+        )
+        pickup_action.add_effect(
+            self.domain.robot_has_container_1(robot), 
+            True,
+            condition=And(
+                self.domain.robot_can_carry_1(robot), 
+                Not(self.domain.robot_has_container_1(robot))
+            )
+        )
+        
+        # Slot 2 second (if slot 1 occupied and slot 2 available)
+        pickup_action.add_effect(
+            self.domain.container_in_robot_slot_2(robot, container),
+            True,
+            condition=And(
+                self.domain.robot_can_carry_2(robot), 
+                Not(self.domain.robot_has_container_2(robot)),
+                self.domain.robot_has_container_1(robot)
+            )
+        )
+        pickup_action.add_effect(
+            self.domain.robot_has_container_2(robot), 
+            True,
+            condition=And(
+                self.domain.robot_can_carry_2(robot), 
+                Not(self.domain.robot_has_container_2(robot)),
+                self.domain.robot_has_container_1(robot)
+            )
+        )
+        
+        # Slot 3 third (if slots 1&2 occupied and slot 3 available)
+        pickup_action.add_effect(
+            self.domain.container_in_robot_slot_3(robot, container),
+            True,
+            condition=And(
+                self.domain.robot_can_carry_3(robot), 
+                Not(self.domain.robot_has_container_3(robot)),
+                self.domain.robot_has_container_1(robot),
+                self.domain.robot_has_container_2(robot)
+            )
+        )
+        pickup_action.add_effect(
+            self.domain.robot_has_container_3(robot), 
+            True,
+            condition=And(
+                self.domain.robot_can_carry_3(robot), 
+                Not(self.domain.robot_has_container_3(robot)),
+                self.domain.robot_has_container_1(robot),
+                self.domain.robot_has_container_2(robot)
+            )
+        )
+        
+        # Update robot_free status - robot is free only if no containers
+        pickup_action.add_effect(
+            self.domain.robot_free(robot), 
+            False,
+            condition=Or(
+                self.domain.robot_has_container_1(robot),
+                self.domain.robot_has_container_2(robot),
+                self.domain.robot_has_container_3(robot)
+            )
+        )
+        
+        # Update pile stacking - remove container from top
+        pickup_action.add_effect(self.domain.container_on_top_of_pile(container, pile), False)
+        
+        # Update stacking relationships when picking up
+        # If this container was on top of another, update the new top
+        for other_container in [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5]:
+            if hasattr(self.domain, 'c6'):
+                containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5, self.domain.c6]
+            else:
+                containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5]
+        
+        for other_container in containers:
+            if other_container != container:
+                # If other_container was under this container, it becomes the new top
+                pickup_action.add_effect(
+                    self.domain.container_on_top_of_pile(other_container, pile),
+                    True,
+                    condition=self.domain.container_under_in_pile(other_container, container, pile)
+                )
+                # Remove the under relationship
+                pickup_action.add_effect(
+                    self.domain.container_under_in_pile(other_container, container, pile),
+                    False,
+                    condition=self.domain.container_under_in_pile(other_container, container, pile)
+                )
         
         self.actions.append(pickup_action)
     
@@ -79,6 +189,7 @@ class LogisticsActions:
         Define the putdown action: putdown(r, c, p, d)
         
         Robot r puts down container c onto pile p at dock d.
+        Simplified capacity system.
         """
         putdown_action = InstantaneousAction("putdown", robot=self.domain.Robot, container=self.domain.Container, pile=self.domain.Pile, dock=self.domain.Dock)
         
@@ -93,10 +204,90 @@ class LogisticsActions:
         putdown_action.add_precondition(self.domain.pile_at_dock(pile, dock))
         putdown_action.add_precondition(self.domain.robot_carrying(robot, container))
         
+        # LIFO constraint: Robot can only put down container from the top slot
+        # Can only putdown if this specific container is in the topmost occupied slot
+        putdown_action.add_precondition(
+            Or(
+                # Container is in slot 3 (top slot - always can putdown)
+                self.domain.container_in_robot_slot_3(robot, container),
+                # Container is in slot 2 AND slot 3 is empty (slot 2 is now top)
+                And(
+                    self.domain.container_in_robot_slot_2(robot, container),
+                    Not(self.domain.robot_has_container_3(robot))
+                ),
+                # Container is in slot 1 AND slots 2&3 are empty (slot 1 is now top)
+                And(
+                    self.domain.container_in_robot_slot_1(robot, container),
+                    Not(self.domain.robot_has_container_2(robot)),
+                    Not(self.domain.robot_has_container_3(robot))
+                )
+            )
+        )
+        
         # Add effects
         putdown_action.add_effect(self.domain.robot_carrying(robot, container), False)
-        putdown_action.add_effect(self.domain.robot_free(robot), True)
         putdown_action.add_effect(self.domain.container_in_pile(container, pile), True)
+        
+        # Update robot load tracking - clear the specific container from its slot
+        # Clear the specific container-slot relationship
+        putdown_action.add_effect(self.domain.container_in_robot_slot_1(robot, container), False)
+        putdown_action.add_effect(self.domain.container_in_robot_slot_2(robot, container), False)
+        putdown_action.add_effect(self.domain.container_in_robot_slot_3(robot, container), False)
+        
+        # Update slot occupancy flags
+        putdown_action.add_effect(
+            self.domain.robot_has_container_3(robot), 
+            False,
+            condition=self.domain.container_in_robot_slot_3(robot, container)
+        )
+        
+        putdown_action.add_effect(
+            self.domain.robot_has_container_2(robot), 
+            False,
+            condition=self.domain.container_in_robot_slot_2(robot, container)
+        )
+        
+        putdown_action.add_effect(
+            self.domain.robot_has_container_1(robot), 
+            False,
+            condition=self.domain.container_in_robot_slot_1(robot, container)
+        )
+        
+        # Update robot_free status - robot is free if no containers
+        putdown_action.add_effect(
+            self.domain.robot_free(robot), 
+            True,
+            condition=And(
+                Not(self.domain.robot_has_container_1(robot)),
+                Not(self.domain.robot_has_container_2(robot)),
+                Not(self.domain.robot_has_container_3(robot))
+            )
+        )
+        
+        # Update pile stacking - this container becomes the new top
+        putdown_action.add_effect(self.domain.container_on_top_of_pile(container, pile), True)
+        
+        # Update stacking relationships when putting down
+        # Find what was previously on top and put this container on top of it
+        if hasattr(self.domain, 'c6'):
+            containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5, self.domain.c6]
+        else:
+            containers = [self.domain.c1, self.domain.c2, self.domain.c3, self.domain.c4, self.domain.c5]
+        
+        for other_container in containers:
+            if other_container != container:
+                # If other_container was on top, it's no longer on top
+                putdown_action.add_effect(
+                    self.domain.container_on_top_of_pile(other_container, pile),
+                    False,
+                    condition=self.domain.container_on_top_of_pile(other_container, pile)
+                )
+                # This container is now on top of the other container
+                putdown_action.add_effect(
+                    self.domain.container_under_in_pile(other_container, container, pile),
+                    True,
+                    condition=self.domain.container_on_top_of_pile(other_container, pile)
+                )
         
         self.actions.append(putdown_action)
     
