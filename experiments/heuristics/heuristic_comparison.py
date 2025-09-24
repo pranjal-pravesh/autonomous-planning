@@ -28,18 +28,25 @@ class HeuristicExperiment:
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
         
-        # Fast Downward heuristic/search configurations to compare
+        # Fast Downward heuristic/search configurations to compare - including more diverse heuristics
         self.fd_searches = [
             {"name": "gbfs_ff", "search": "gbfs(ff())"},
             {"name": "gbfs_hadd", "search": "gbfs(hadd())"},
             {"name": "gbfs_hmax", "search": "gbfs(hmax())"},
+            {"name": "gbfs_cg", "search": "gbfs(cg())"},
+            {"name": "gbfs_cea", "search": "gbfs(cea())"},
+            {"name": "gbfs_lmcut", "search": "gbfs(lmcut())"},
+            {"name": "gbfs_blind", "search": "gbfs(blind())"},
         ]
         
         # Test problems of varying difficulty with challenging goals
         self.test_problems = [
-            {"name": "easy", "robots": 1, "docks": 3, "containers": 4, "piles": 3, "goal_type": "simple_swap"},
-            {"name": "medium", "robots": 2, "docks": 4, "containers": 6, "piles": 4, "goal_type": "complex_redistribution"},
-            {"name": "hard", "robots": 2, "docks": 5, "containers": 8, "piles": 5, "goal_type": "weight_constrained"},
+            {"name": "easy_4", "robots": 1, "docks": 3, "containers": 4, "piles": 3, "goal_type": "simple_swap"},
+            {"name": "easy_6", "robots": 1, "docks": 4, "containers": 6, "piles": 4, "goal_type": "simple_swap"},
+            {"name": "medium_8", "robots": 2, "docks": 4, "containers": 8, "piles": 4, "goal_type": "complex_redistribution"},
+            {"name": "medium_10", "robots": 2, "docks": 5, "containers": 10, "piles": 5, "goal_type": "complex_redistribution"},
+            {"name": "medium_12", "robots": 2, "docks": 6, "containers": 12, "piles": 6, "goal_type": "complex_redistribution"},
+            {"name": "hard_14", "robots": 3, "docks": 6, "containers": 14, "piles": 6, "goal_type": "weight_constrained"},
         ]
         
         self.results = []
@@ -90,25 +97,25 @@ class HeuristicExperiment:
             initial_state[domain.robot_free(robot)] = True
             
             # Set capacity based on problem difficulty
-            if config["name"] == "easy":
+            if config["name"].startswith("easy"):
                 initial_state[domain.robot_capacity_6(robot)] = True  # 6t capacity
-            elif config["name"] == "medium":
+            elif config["name"].startswith("medium"):
                 if i == 0:
                     initial_state[domain.robot_capacity_6(robot)] = True  # r1: 6t
                 else:
                     initial_state[domain.robot_capacity_5(robot)] = True  # r2: 5t
-            else:  # hard
+            else:  # hard or extreme
                 initial_state[domain.robot_capacity_5(robot)] = True  # Tight 5t capacity
         
         # Container weights based on problem difficulty
-        if config["name"] == "easy":
+        if config["name"].startswith("easy"):
             # Easy: mostly 2t containers
             for i, container in enumerate(containers):
-                if i < 3:
+                if i < len(containers) * 0.75:  # 75% light containers
                     initial_state[domain.container_weight_2(container)] = True
                 else:
                     initial_state[domain.container_weight_4(container)] = True
-        elif config["name"] == "medium":
+        elif config["name"].startswith("medium"):
             # Medium: mixed weights
             for i, container in enumerate(containers):
                 if i % 3 == 0:
@@ -117,14 +124,14 @@ class HeuristicExperiment:
                     initial_state[domain.container_weight_4(container)] = True
                 else:
                     initial_state[domain.container_weight_6(container)] = True
-        else:  # hard
-            # Hard: mostly heavy containers
+        else:  # hard or extreme
+            # Hard/Extreme: mostly heavy containers
             for i, container in enumerate(containers):
-                if i < 2:
+                if i < len(containers) * 0.2:  # 20% light containers
                     initial_state[domain.container_weight_2(container)] = True
-                elif i < 5:
+                elif i < len(containers) * 0.5:  # 30% medium containers
                     initial_state[domain.container_weight_4(container)] = True
-                else:
+                else:  # 50% heavy containers
                     initial_state[domain.container_weight_6(container)] = True
         
         # Distribute containers in piles

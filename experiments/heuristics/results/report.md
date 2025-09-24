@@ -1,23 +1,56 @@
 # Heuristic Comparison Results
 
 ## Experiment Overview
-- **Heuristics tested**: 3
-- **Test problems**: 3
-- **Total experiments**: 9
+- **Heuristics tested**: 7
+- **Test problems**: 6
+- **Total experiments**: 42
 
 ## Results Summary
 
 | Problem | Heuristic | Success Rate | Avg Time (s) | Avg Plan Length |
 |---------|-----------|--------------|--------------|-----------------|
-| easy | gbfs_ff | 1.00 | 0.218 | 7.0 |
-| easy | gbfs_hadd | 1.00 | 0.210 | 7.0 |
-| easy | gbfs_hmax | 1.00 | 0.213 | 7.0 |
-| medium | gbfs_ff | 1.00 | 0.346 | 17.0 |
-| medium | gbfs_hadd | 1.00 | 0.376 | 17.0 |
-| medium | gbfs_hmax | 1.00 | 0.352 | 17.0 |
-| hard | gbfs_ff | 1.00 | 0.541 | 43.0 |
-| hard | gbfs_hadd | 1.00 | 0.562 | 43.0 |
-| hard | gbfs_hmax | 1.00 | 0.573 | 43.0 |
+| easy_4 | gbfs_ff | 1.00 | 0.221 | 7.0 |
+| easy_4 | gbfs_hadd | 1.00 | 0.212 | 7.0 |
+| easy_4 | gbfs_hmax | 1.00 | 0.216 | 7.0 |
+| easy_4 | gbfs_cg | 1.00 | 0.215 | 7.0 |
+| easy_4 | gbfs_cea | 1.00 | 0.212 | 7.0 |
+| easy_4 | gbfs_lmcut | 1.00 | 0.213 | 7.0 |
+| easy_4 | gbfs_blind | 1.00 | 0.213 | 7.0 |
+| easy_6 | gbfs_ff | 1.00 | 0.315 | 7.0 |
+| easy_6 | gbfs_hadd | 1.00 | 0.293 | 7.0 |
+| easy_6 | gbfs_hmax | 1.00 | 0.294 | 7.0 |
+| easy_6 | gbfs_cg | 1.00 | 0.297 | 7.0 |
+| easy_6 | gbfs_cea | 1.00 | 0.299 | 7.0 |
+| easy_6 | gbfs_lmcut | 1.00 | 0.311 | 7.0 |
+| easy_6 | gbfs_blind | 1.00 | 0.302 | 7.0 |
+| medium_8 | gbfs_ff | 1.00 | 0.479 | 6.0 |
+| medium_8 | gbfs_hadd | 1.00 | 0.480 | 6.0 |
+| medium_8 | gbfs_hmax | 1.00 | 0.474 | 6.0 |
+| medium_8 | gbfs_cg | 1.00 | 0.480 | 6.0 |
+| medium_8 | gbfs_cea | 1.00 | 0.462 | 6.0 |
+| medium_8 | gbfs_lmcut | 1.00 | 0.461 | 6.0 |
+| medium_8 | gbfs_blind | 1.00 | 0.469 | 6.0 |
+| medium_10 | gbfs_ff | 1.00 | 0.700 | 6.0 |
+| medium_10 | gbfs_hadd | 1.00 | 0.698 | 6.0 |
+| medium_10 | gbfs_hmax | 1.00 | 0.698 | 6.0 |
+| medium_10 | gbfs_cg | 1.00 | 0.700 | 6.0 |
+| medium_10 | gbfs_cea | 1.00 | 0.711 | 6.0 |
+| medium_10 | gbfs_lmcut | 1.00 | 0.699 | 6.0 |
+| medium_10 | gbfs_blind | 1.00 | 0.698 | 6.0 |
+| medium_12 | gbfs_ff | 1.00 | 1.065 | 6.0 |
+| medium_12 | gbfs_hadd | 1.00 | 1.056 | 6.0 |
+| medium_12 | gbfs_hmax | 1.00 | 1.054 | 6.0 |
+| medium_12 | gbfs_cg | 1.00 | 1.053 | 6.0 |
+| medium_12 | gbfs_cea | 1.00 | 1.062 | 6.0 |
+| medium_12 | gbfs_lmcut | 1.00 | 1.150 | 6.0 |
+| medium_12 | gbfs_blind | 1.00 | 1.091 | 6.0 |
+| hard_14 | gbfs_ff | 1.00 | 1.814 | 16.0 |
+| hard_14 | gbfs_hadd | 1.00 | 1.801 | 16.0 |
+| hard_14 | gbfs_hmax | 1.00 | 1.775 | 16.0 |
+| hard_14 | gbfs_cg | 1.00 | 1.825 | 16.0 |
+| hard_14 | gbfs_cea | 1.00 | 1.842 | 16.0 |
+| hard_14 | gbfs_lmcut | 1.00 | 1.759 | 16.0 |
+| hard_14 | gbfs_blind | 1.00 | 1.795 | 16.0 |
 
 ## Key Findings
 
