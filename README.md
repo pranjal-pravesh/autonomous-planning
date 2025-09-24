@@ -1,144 +1,122 @@
-# Automated Planning - Example 2.3 Simulation
+# Automated Planning – Logistics Domain (Refactored)
 
-A B.Tech project implementing the logistics domain from **Example 2.3** in *Automated Planning and Acting* by Ghallab, Nau, and Traverso.
+This project models a logistics domain (robots, docks, piles, containers) using the Unified Planning (UP) library. The codebase is refactored to strictly separate the general domain from demo-specific problem instances.
 
-## Overview
+## What’s New (Refactor Highlights)
+- `src/domain.py` only defines general Types and Fluents. No hardcoded objects or initial states.
+- `src/actions.py` defines general actions (`move`, `pickup`, `putdown`) that work for any problem instance.
+- Demos are fully responsible for creating objects, setting initial state, goals, and calling `domain.assign_objects(...)`.
+- All fluents are boolean for PDDL/UP compatibility; weights/capacities are represented via boolean levels.
 
-This project simulates a logistics domain with:
-- **Multiple Loading Docks** connected in various network topologies
-- **Robots with Different Capacities** (1, 2, or 3 containers) that can move between docks
-- **Containers** that can be stacked in piles or carried by robots
-- **Piles** located at specific docks for container storage
-- **LIFO Stacking System** for realistic container handling
-
-## Domain Description
-
-### Objects
-- **Robots**: r1 (capacity 1), r2 (capacity 2), r3 (capacity 3)
-- **Docks**: Multiple docks with various connectivity patterns
-- **Containers**: Multiple containers for redistribution scenarios
-- **Piles**: Located at specific docks for container storage
-
-### State Variables
-- `robot_at(r, d)`: Whether robot r is at dock d
-- `robot_carrying(r, c)`: Whether robot r is carrying container c
-- `robot_free(r)`: Whether robot r is free to pick up containers
-- `robot_can_carry_X(r)`: Whether robot r can carry X containers (1, 2, or 3)
-- `robot_has_container_X(r)`: Whether robot r has container in slot X
-- `container_in_pile(c, p)`: Whether container c is in pile p
-- `pile_at_dock(p, d)`: Whether pile p is at dock d
-- `adjacent(d1, d2)`: Whether dock d1 is adjacent to dock d2
-
-### Actions
-- **pickup(r, c, p, d)**: Robot r picks up container c from pile p at dock d (capacity-aware)
-- **putdown(r, c, p, d)**: Robot r puts down container c onto pile p at dock d (LIFO)
-- **move(r, d1, d2)**: Robot r moves from dock d1 to adjacent dock d2
-
-## Robot Capacity System
-
-The project implements a realistic robot capacity system:
-
-### Capacity Types
-- **r1**: Capacity 1 - Can carry 1 container
-- **r2**: Capacity 2 - Can carry up to 2 containers  
-- **r3**: Capacity 3 - Can carry up to 3 containers
-
-### LIFO Stacking
-- **Last In, First Out**: New containers are stacked on top
-- **Unloading Constraint**: Only the top container can be unloaded
-- **Realistic Operations**: Mimics real-world container handling
-
-### Capacity Constraints
-- Robots can only pick up containers if they have available capacity
-- Load tracking prevents overloading
-- Efficient multi-container transport for high-capacity robots
-
-## Installation
+## Quick Start
 
 ```bash
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
+## Run Demos
 
-### Basic Simulation
+Run any demo directly with Python (after activating the venv):
+
 ```bash
-python main.py run
-```
+# Classic tricky weight rearrangement (19 steps)
+python demos/tricky_weight_rearrangement.py
 
-### List Available Problems
-```bash
-python main.py run --list
-```
+# Tricky swapping scenario (2 robots, all containers 2t)
+python demos/tricky_swapping.py
 
-### Run Specific Problem
-```bash
-python main.py run --problem move_robot --planner fast-downward
-```
 
-### Interactive Mode
-```bash
-python main.py interactive
-```
+## Architecture
 
-### Advanced Demos
-```bash
-python main.py demos
-```
+- `src/domain.py`
+  - Declares Types: `Robot`, `Dock`, `Container`, `Pile`.
+  - Declares Fluents (all boolean), e.g. `robot_at`, `container_in_pile`, `robot_weight_4`, `robot_capacity_6`, etc.
+  - Provides `assign_objects(objects_dict)` for demos to inject objects.
+  - Provides `get_domain_objects()` for actions to query assigned objects.
+  - No objects or initial states are created here.
 
-### Run All Examples
-```bash
-python main.py demo
-```
+- `src/actions.py`
+  - Defines `move`, `pickup`, and `putdown` as `InstantaneousAction`s.
+  - Enforces constraints: LIFO for piles and robot slots; weight and capacity limits; location and adjacency checks.
+  - Uses `domain.get_domain_objects()` to iterate relevant objects (e.g., containers) without hardcoding names.
 
-## Project Structure
+- Demos (`demos/*.py`)
+  - Create objects locally: `Object("r1", domain.Robot)`, etc.
+  - Call `domain.assign_objects({...})`.
+  - Add fluents to the problem with `default_initial_value=False` (unspecified facts default to False).
+  - Set initial values and goals, then solve with a UP planner (e.g., Fast Downward).
+
+## Key Modeling Choices
+
+### Fluents (All Boolean)
+Examples:
+- Location and carrying: `robot_at(r, d)`, `robot_carrying(r, c)`, `robot_free(r)`
+- Capacity slots: `robot_can_carry_1/2/3`, `robot_has_container_1/2/3`, `container_in_robot_slot_1/2/3`
+- Pile relations: `container_in_pile(c, p)`, `container_on_top_of_pile(c, p)`, `container_under_in_pile(c, c2, p)`
+- Weights (levels): `container_weight_2/4/6(c)`, `robot_weight_0/2/4/6/8/10(r)`
+- Capacity (levels): `robot_capacity_5/6/8/10(r)`
+- Static relation: `adjacent(d1, d2)`
+
+Why boolean? It keeps the model compatible with standard PDDL-style planning and widely supported heuristics.
+
+### default_initial_value=False
+When adding fluents to a problem, we use `default_initial_value=False`. Any fact not explicitly set in the initial state is assumed False, which keeps demos concise.
+
+## State Space (Conceptual)
+- A state is a complete assignment of all fluents (True/False).
+- The theoretical state space size is `2^N` where `N` is the number of boolean fluent instances (after grounding by objects).
+- Constraints (mutual exclusivity, LIFO, capacities, weights, adjacency) make most of those states unreachable. Planners use heuristics to explore only a tiny fraction.
+
+## Adding a New Demo (Template)
+1. Import domain/actions and create a domain instance:
+   ```python
+   domain = LogisticsDomain(auto_objects=False)
+   problem = Problem("my_scenario")
+   ```
+2. Create objects and register them with the problem.
+3. Call `domain.assign_objects({...})` with your created objects.
+4. Add all domain fluents and static fluents:
+   ```python
+   for f in domain.fluents + domain.static_fluents:
+       problem.add_fluent(f, default_initial_value=False)
+   ```
+5. Instantiate and add actions:
+   ```python
+   actions = LogisticsActions(domain)
+   for a in actions.get_actions():
+       problem.add_action(a)
+   ```
+6. Set initial state values and goals. Solve with a UP planner.
+
+## Project Structure (Key Files)
 
 ```
 automated-planning/
-├── README.md                 # This file
-├── requirements.txt          # Python dependencies
-├── main.py                  # Main CLI interface
-├── src/
-│   ├── __init__.py
-│   ├── domain.py            # Domain definition (types, objects, fluents)
-│   ├── actions.py           # Action definitions
-│   ├── problem.py           # Problem setup and initial state
-│   └── solver.py            # Planning solver with rich output
-├── examples/
-│   ├── basic_goals.py       # Example goal definitions
-│   └── complex_scenarios.py # More complex planning scenarios
 ├── demos/
-│   ├── multi_robot_coordination.py    # Multi-robot coordination scenarios
-│   ├── container_redistribution.py    # Container redistribution with piles and target counts
-│   ├── large_scale_redistribution.py  # Large-scale redistribution with 8 docks, 12 piles, 15 containers, 3 robots
-│   └── robot_capacity_demo.py         # Robot capacity demonstration (capacities 1, 2, 3 with LIFO stacking)
-└── docs/
-    ├── ch2_summary.md       # Chapter 2 theory summary
-    ├── guide_up.md          # Unified Planning implementation guide
-    └── project_context.md   # Project context and aims
+│   ├── tricky_weight_challenge.py
+│   ├── tricky_swapping.py
+│   ├── tricky_weight_arrangement.py
+│   ├── container_redistribution.py
+│   ├── large_scale_redistribution.py
+│   ├── multi_robot_coordination.py
+│   ├── boolean_weight_demo.py
+│   └── robot_capacity_test.py
+├── src/
+│   ├── domain.py
+│   ├── actions.py
+│   ├── problem.py
+│   └── solver.py
+├── utils/
+│   └── display.py
+├── requirements.txt
+└── README.md
 ```
 
-## Example Output
+## Planner
+We typically use Fast Downward via UP’s `OneshotPlanner`. You can swap planners if installed.
 
-The simulation provides rich console output showing:
-- Initial state visualization
-- Goal specification
-- Planning process
-- Found plan with step-by-step actions
-- Final state verification
+---
 
-## Theory Background
-
-This implementation is based on:
-- **Chapter 2** of *Automated Planning and Acting*
-- **Example 2.3** logistics domain
-- **State-variable modeling** approach
-- **Forward state-space search** algorithms
-
-## Extensions
-
-Future enhancements include:
-- Multiple planning algorithms (UCS, A*, GBFS)
-- Different heuristics (h_add, h_max, h_ff, landmarks)
-- Scaling to more robots, docks, and containers
-- Performance analysis and comparison
+If something doesn’t run or you want a new scenario added, open an issue or ask for a demo stub following the template above.
