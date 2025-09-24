@@ -1,0 +1,110 @@
+{
+  "search_efficiency_ranking": {
+    "astar_hadd": 0.014407178303025677,
+    "gbfs_hmax": 0.014347941319604698,
+    "astar_ff": 0.014249957794397925,
+    "gbfs_hadd": 0.014249838388424304,
+    "gbfs_ff": 0.014213720645415063,
+    "bfs": 0.014092466796340988
+  },
+  "branching_factor_analysis": {
+    "mean": {
+      "astar_ff": 1.5432,
+      "astar_hadd": 1.5414,
+      "bfs": 1.5427,
+      "gbfs_ff": 1.5423,
+      "gbfs_hadd": 1.5421,
+      "gbfs_hmax": 1.5416
+    },
+    "std": {
+      "astar_ff": 0.1868,
+      "astar_hadd": 0.1852,
+      "bfs": 0.1845,
+      "gbfs_ff": 0.185,
+      "gbfs_hadd": 0.1845,
+      "gbfs_hmax": 0.185
+    },
+    "min": {
+      "astar_ff": 1.2659,
+      "astar_hadd": 1.2655,
+      "bfs": 1.2657,
+      "gbfs_ff": 1.2657,
+      "gbfs_hadd": 1.2662,
+      "gbfs_hmax": 1.2657
+    },
+    "max": {
+      "astar_ff": 1.735,
+      "astar_hadd": 1.7371,
+      "bfs": 1.7358,
+      "gbfs_ff": 1.7381,
+      "gbfs_hadd": 1.7369,
+      "gbfs_hmax": 1.7386
+    }
+  },
+  "state_space_exploration": {
+    "bfs": 0.015604217701954113,
+    "gbfs_ff": 0.015090386599820349,
+    "gbfs_hmax": 0.014832612734590397,
+    "gbfs_hadd": 0.014731830168374396,
+    "astar_ff": 0.014728778556073236,
+    "astar_hadd": 0.014677910303396713
+  },
+  "problem_difficulty": {
+    "hard_14": 1885.5,
+    "medium_10": 754.0,
+    "medium_8": 526.3333333333334,
+    "easy_6": 364.1666666666667,
+    "easy_4": 289.1666666666667
+  },
+  "scaling_analysis": {
+    "astar_ff": {
+      "easy_4": 285.0,
+      "easy_6": 358.0,
+      "hard_14": 1889.0,
+      "medium_10": 744.0,
+      "medium_8": 566.0
+    },
+    "astar_hadd": {
+      "easy_4": 284.0,
+      "easy_6": 361.0,
+      "hard_14": 1870.0,
+      "medium_10": 755.0,
+      "medium_8": 522.0
+    },
+    "bfs": {
+      "easy_4": 302.0,
+      "easy_6": 363.0,
+      "hard_14": 1881.0,
+      "medium_10": 748.0,
+      "medium_8": 523.0
+    },
+    "gbfs_ff": {
+      "easy_4": 292.0,
+      "easy_6": 366.0,
+      "hard_14": 1884.0,
+      "medium_10": 760.0,
+      "medium_8": 518.0
+    },
+    "gbfs_hadd": {
+      "easy_4": 285.0,
+      "easy_6": 374.0,
+      "hard_14": 1908.0,
+      "medium_10": 754.0,
+      "medium_8": 516.0
+    },
+    "gbfs_hmax": {
+      "easy_4": 287.0,
+      "easy_6": 363.0,
+      "hard_14": 1881.0,
+      "medium_10": 763.0,
+      "medium_8": 513.0
+    }
+  },
+  "state_space_characteristics": {
+    "easy_4": 3888,
+    "easy_6": 1048576,
+    "hard_14": 74444235515566734698348544,
+    "medium_10": 256000000000000,
+    "medium_8": 68719476736
+  }
+}

@@ -16,33 +16,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.23549509048461914,
+        "solve_time": 0.2349250316619873,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.2149491310119629,
+        "solve_time": 0.21172189712524414,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.21372389793395996,
+        "solve_time": 0.21120476722717285,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.221389373143514,
-      "std_solve_time": 0.012231260985860122,
+      "avg_solve_time": 0.2192838986714681,
+      "std_solve_time": 0.013548086091887703,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.21372389793395996,
-      "max_solve_time": 0.23549509048461914
+      "min_solve_time": 0.21120476722717285,
+      "max_solve_time": 0.2349250316619873
     }
   },
   {
@@ -62,33 +62,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.21300196647644043,
+        "solve_time": 0.21416091918945312,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.21220183372497559,
+        "solve_time": 0.21039891242980957,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.2114088535308838,
+        "solve_time": 0.21078705787658691,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.2122042179107666,
-      "std_solve_time": 0.0007965591488279157,
+      "avg_solve_time": 0.21178229649861655,
+      "std_solve_time": 0.0020690695133285192,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.2114088535308838,
-      "max_solve_time": 0.21300196647644043
+      "min_solve_time": 0.21039891242980957,
+      "max_solve_time": 0.21416091918945312
     }
   },
   {
@@ -108,33 +108,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.21737074851989746,
+        "solve_time": 0.2131350040435791,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.21537995338439941,
+        "solve_time": 0.2108297348022461,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.21452593803405762,
+        "solve_time": 0.21210598945617676,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.2157588799794515,
-      "std_solve_time": 0.0014597690565340828,
+      "avg_solve_time": 0.21202357610066733,
+      "std_solve_time": 0.0011548422141720311,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.21452593803405762,
-      "max_solve_time": 0.21737074851989746
+      "min_solve_time": 0.2108297348022461,
+      "max_solve_time": 0.2131350040435791
     }
   },
   {
@@ -154,33 +154,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.21596002578735352,
+        "solve_time": 0.211806058883667,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.2143418788909912,
+        "solve_time": 0.21120929718017578,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.2140500545501709,
+        "solve_time": 0.21134114265441895,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.21478398640950522,
-      "std_solve_time": 0.0010288789166666686,
+      "avg_solve_time": 0.21145216623942056,
+      "std_solve_time": 0.0003134897287127494,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.2140500545501709,
-      "max_solve_time": 0.21596002578735352
+      "min_solve_time": 0.21120929718017578,
+      "max_solve_time": 0.211806058883667
     }
   },
   {
@@ -200,33 +200,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.21226906776428223,
+        "solve_time": 0.21172475814819336,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.2120380401611328,
+        "solve_time": 0.21165990829467773,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.21295809745788574,
+        "solve_time": 0.2113649845123291,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.21242173512776694,
-      "std_solve_time": 0.00047865107357249745,
+      "avg_solve_time": 0.21158321698506674,
+      "std_solve_time": 0.00019175618632298383,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.2120380401611328,
-      "max_solve_time": 0.21295809745788574
+      "min_solve_time": 0.2113649845123291,
+      "max_solve_time": 0.21172475814819336
     }
   },
   {
@@ -246,33 +246,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.2120189666748047,
+        "solve_time": 0.21367931365966797,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.21436786651611328,
+        "solve_time": 0.21065115928649902,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.21274328231811523,
+        "solve_time": 0.23524093627929688,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.2130433718363444,
-      "std_solve_time": 0.001202860301671871,
+      "avg_solve_time": 0.21985713640848795,
+      "std_solve_time": 0.013408519813005495,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.2120189666748047,
-      "max_solve_time": 0.21436786651611328
+      "min_solve_time": 0.21065115928649902,
+      "max_solve_time": 0.23524093627929688
     }
   },
   {
@@ -292,33 +292,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.2125239372253418,
+        "solve_time": 0.2116990089416504,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.21139907836914062,
+        "solve_time": 0.21344614028930664,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.21372103691101074,
+        "solve_time": 0.21295905113220215,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.21254801750183105,
-      "std_solve_time": 0.0011611665523635056,
+      "avg_solve_time": 0.21270140012105307,
+      "std_solve_time": 0.0009016124550772338,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.21139907836914062,
-      "max_solve_time": 0.21372103691101074
+      "min_solve_time": 0.2116990089416504,
+      "max_solve_time": 0.21344614028930664
     }
   },
   {
@@ -338,33 +338,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.3159470558166504,
+        "solve_time": 0.2913517951965332,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.29117488861083984,
+        "solve_time": 0.29162001609802246,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.3375051021575928,
+        "solve_time": 0.2939949035644531,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.31487568219502765,
-      "std_solve_time": 0.02318368074529504,
+      "avg_solve_time": 0.29232223828633624,
+      "std_solve_time": 0.001454765432110018,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.29117488861083984,
-      "max_solve_time": 0.3375051021575928
+      "min_solve_time": 0.2913517951965332,
+      "max_solve_time": 0.2939949035644531
     }
   },
   {
@@ -384,33 +384,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.29314136505126953,
+        "solve_time": 0.2918987274169922,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.29351806640625,
+        "solve_time": 0.29361796379089355,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.29134178161621094,
+        "solve_time": 0.29222869873046875,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.29266707102457684,
-      "std_solve_time": 0.0011630864067884764,
+      "avg_solve_time": 0.29258179664611816,
+      "std_solve_time": 0.0009123880922410983,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.29134178161621094,
-      "max_solve_time": 0.29351806640625
+      "min_solve_time": 0.2918987274169922,
+      "max_solve_time": 0.29361796379089355
     }
   },
   {
@@ -430,33 +430,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.2951500415802002,
+        "solve_time": 0.2914438247680664,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.29425692558288574,
+        "solve_time": 0.29047393798828125,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.29256296157836914,
+        "solve_time": 0.324908971786499,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.2939899762471517,
-      "std_solve_time": 0.0013140366033163537,
+      "avg_solve_time": 0.3022755781809489,
+      "std_solve_time": 0.019607091820798377,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.29256296157836914,
-      "max_solve_time": 0.2951500415802002
+      "min_solve_time": 0.29047393798828125,
+      "max_solve_time": 0.324908971786499
     }
   },
   {
@@ -476,33 +476,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.293133020401001,
+        "solve_time": 0.2914888858795166,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.2950263023376465,
+        "solve_time": 0.2923390865325928,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.3031198978424072,
+        "solve_time": 0.292417049407959,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.29709307352701825,
-      "std_solve_time": 0.005304534627969742,
+      "avg_solve_time": 0.29208167394002277,
+      "std_solve_time": 0.000514847371550885,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.293133020401001,
-      "max_solve_time": 0.3031198978424072
+      "min_solve_time": 0.2914888858795166,
+      "max_solve_time": 0.292417049407959
     }
   },
   {
@@ -522,33 +522,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.31003904342651367,
+        "solve_time": 0.29385805130004883,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.2923262119293213,
+        "solve_time": 0.29268884658813477,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.29358577728271484,
+        "solve_time": 0.29117918014526367,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.2986503442128499,
-      "std_solve_time": 0.009882989353143416,
+      "avg_solve_time": 0.2925753593444824,
+      "std_solve_time": 0.001343036552681588,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.2923262119293213,
-      "max_solve_time": 0.31003904342651367
+      "min_solve_time": 0.29117918014526367,
+      "max_solve_time": 0.29385805130004883
     }
   },
   {
@@ -568,33 +568,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.29316282272338867,
+        "solve_time": 0.29277491569519043,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.3111910820007324,
+        "solve_time": 0.31656599044799805,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.3280630111694336,
+        "solve_time": 0.2910299301147461,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.3108056386311849,
-      "std_solve_time": 0.017453286605556787,
+      "avg_solve_time": 0.3001236120859782,
+      "std_solve_time": 0.014266222286185426,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.29316282272338867,
-      "max_solve_time": 0.3280630111694336
+      "min_solve_time": 0.2910299301147461,
+      "max_solve_time": 0.31656599044799805
     }
   },
   {
@@ -614,33 +614,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.3078739643096924,
+        "solve_time": 0.2970287799835205,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.30341410636901855,
+        "solve_time": 0.2989339828491211,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.2932119369506836,
+        "solve_time": 0.29474616050720215,
         "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.30150000254313153,
-      "std_solve_time": 0.007516089851863609,
+      "avg_solve_time": 0.29690297444661456,
+      "std_solve_time": 0.0020967437293827806,
       "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.2932119369506836,
-      "max_solve_time": 0.3078739643096924
+      "min_solve_time": 0.29474616050720215,
+      "max_solve_time": 0.2989339828491211
     }
   },
   {
@@ -660,33 +660,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.4685850143432617,
+        "solve_time": 0.46617913246154785,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.47870421409606934,
+        "solve_time": 0.47215819358825684,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.48891210556030273,
+        "solve_time": 0.4665250778198242,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.47873377799987793,
-      "std_solve_time": 0.010163577856974521,
+      "avg_solve_time": 0.46828746795654297,
+      "std_solve_time": 0.003356606505793206,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.4685850143432617,
-      "max_solve_time": 0.48891210556030273
+      "min_solve_time": 0.46617913246154785,
+      "max_solve_time": 0.47215819358825684
     }
   },
   {
@@ -706,33 +706,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.48312997817993164,
+        "solve_time": 0.4683239459991455,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.4855809211730957,
+        "solve_time": 0.46237993240356445,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.4711780548095703,
+        "solve_time": 0.4690208435058594,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.4799629847208659,
-      "std_solve_time": 0.007706038252482058,
+      "avg_solve_time": 0.46657490730285645,
+      "std_solve_time": 0.003649627013543082,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.4711780548095703,
-      "max_solve_time": 0.4855809211730957
+      "min_solve_time": 0.46237993240356445,
+      "max_solve_time": 0.4690208435058594
     }
   },
   {
@@ -752,33 +752,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.46001625061035156,
+        "solve_time": 0.46255016326904297,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.4831547737121582,
+        "solve_time": 0.4604940414428711,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.48001885414123535,
+        "solve_time": 0.4947183132171631,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.4743966261545817,
-      "std_solve_time": 0.012552087415392052,
+      "avg_solve_time": 0.47258750597635907,
+      "std_solve_time": 0.019193394204471324,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.46001625061035156,
-      "max_solve_time": 0.4831547737121582
+      "min_solve_time": 0.4604940414428711,
+      "max_solve_time": 0.4947183132171631
     }
   },
   {
@@ -798,33 +798,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.46903181076049805,
+        "solve_time": 0.4629800319671631,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.4664788246154785,
+        "solve_time": 0.4602797031402588,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.5040171146392822,
+        "solve_time": 0.4683678150177002,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.4798425833384196,
-      "std_solve_time": 0.02097463723825649,
+      "avg_solve_time": 0.46387585004170734,
+      "std_solve_time": 0.004117797463755635,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.4664788246154785,
-      "max_solve_time": 0.5040171146392822
+      "min_solve_time": 0.4602797031402588,
+      "max_solve_time": 0.4683678150177002
     }
   },
   {
@@ -844,33 +844,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.4635438919067383,
+        "solve_time": 0.4675920009613037,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.4599030017852783,
+        "solve_time": 0.4643731117248535,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.4610869884490967,
+        "solve_time": 0.4641299247741699,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.4615112940470378,
-      "std_solve_time": 0.0018571609110330978,
+      "avg_solve_time": 0.4653650124867757,
+      "std_solve_time": 0.0019324578190755134,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.4599030017852783,
-      "max_solve_time": 0.4635438919067383
+      "min_solve_time": 0.4641299247741699,
+      "max_solve_time": 0.4675920009613037
     }
   },
   {
@@ -890,33 +890,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.46234130859375,
+        "solve_time": 0.4654700756072998,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.4595179557800293,
+        "solve_time": 0.47036075592041016,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.46100497245788574,
+        "solve_time": 0.4684610366821289,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.460954745610555,
-      "std_solve_time": 0.0014123463915876803,
+      "avg_solve_time": 0.4680972894032796,
+      "std_solve_time": 0.002465547108333967,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.4595179557800293,
-      "max_solve_time": 0.46234130859375
+      "min_solve_time": 0.4654700756072998,
+      "max_solve_time": 0.47036075592041016
     }
   },
   {
@@ -936,33 +936,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.46185803413391113,
+        "solve_time": 0.4658060073852539,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.4830770492553711,
+        "solve_time": 0.4880387783050537,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.46167922019958496,
+        "solve_time": 0.4638850688934326,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.4688714345296224,
-      "std_solve_time": 0.012302748103902781,
+      "avg_solve_time": 0.4725766181945801,
+      "std_solve_time": 0.013425025051514118,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.46167922019958496,
-      "max_solve_time": 0.4830770492553711
+      "min_solve_time": 0.4638850688934326,
+      "max_solve_time": 0.4880387783050537
     }
   },
   {
@@ -982,33 +982,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.7011122703552246,
+        "solve_time": 0.7060599327087402,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.7003259658813477,
+        "solve_time": 0.7615318298339844,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.6983599662780762,
+        "solve_time": 0.7175860404968262,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.6999327341715494,
-      "std_solve_time": 0.0014176628006917146,
+      "avg_solve_time": 0.7283926010131836,
+      "std_solve_time": 0.029272327466631155,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.6983599662780762,
-      "max_solve_time": 0.7011122703552246
+      "min_solve_time": 0.7060599327087402,
+      "max_solve_time": 0.7615318298339844
     }
   },
   {
@@ -1028,33 +1028,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.6988348960876465,
+        "solve_time": 0.7474541664123535,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.6973912715911865,
+        "solve_time": 0.7142560482025146,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.699221134185791,
+        "solve_time": 0.7274308204650879,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.6984824339548746,
-      "std_solve_time": 0.0009645058035396732,
+      "avg_solve_time": 0.7297136783599854,
+      "std_solve_time": 0.016716379491230466,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.6973912715911865,
-      "max_solve_time": 0.699221134185791
+      "min_solve_time": 0.7142560482025146,
+      "max_solve_time": 0.7474541664123535
     }
   },
   {
@@ -1074,33 +1074,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.6980328559875488,
+        "solve_time": 0.7178030014038086,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.6972830295562744,
+        "solve_time": 0.7234470844268799,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.699146032333374,
+        "solve_time": 0.7176628112792969,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.6981539726257324,
-      "std_solve_time": 0.00093738826902404,
+      "avg_solve_time": 0.7196376323699951,
+      "std_solve_time": 0.003299826820915051,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.6972830295562744,
-      "max_solve_time": 0.699146032333374
+      "min_solve_time": 0.7176628112792969,
+      "max_solve_time": 0.7234470844268799
     }
   },
   {
@@ -1119,34 +1119,34 @@
     "runs": [
       {
         "run": 0,
-        "success": true,
-        "solve_time": 0.7008967399597168,
-        "plan_length": 6,
-        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+        "success": false,
+        "solve_time": Infinity,
+        "plan_length": 0,
+        "status": "ERROR: [Errno 32] Broken pipe"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.7002570629119873,
+        "solve_time": 0.735058069229126,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.6979153156280518,
+        "solve_time": 0.6801152229309082,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
-      "success_rate": 1.0,
-      "avg_solve_time": 0.6996897061665853,
-      "std_solve_time": 0.0015695996364601895,
+      "success_rate": 0.6666666666666666,
+      "avg_solve_time": 0.7075866460800171,
+      "std_solve_time": 0.03885045919515999,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.6979153156280518,
-      "max_solve_time": 0.7008967399597168
+      "min_solve_time": 0.6801152229309082,
+      "max_solve_time": 0.735058069229126
     }
   },
   {
@@ -1166,33 +1166,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.697472095489502,
+        "solve_time": 0.6874690055847168,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.7370941638946533,
+        "solve_time": 0.7050628662109375,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.697617769241333,
+        "solve_time": 0.7080709934234619,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.7107280095418295,
-      "std_solve_time": 0.022833875639676107,
+      "avg_solve_time": 0.7002009550730387,
+      "std_solve_time": 0.01112830223626086,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.697472095489502,
-      "max_solve_time": 0.7370941638946533
+      "min_solve_time": 0.6874690055847168,
+      "max_solve_time": 0.7080709934234619
     }
   },
   {
@@ -1212,33 +1212,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.6989099979400635,
+        "solve_time": 0.6987471580505371,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.6973848342895508,
+        "solve_time": 0.7512402534484863,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.7011430263519287,
+        "solve_time": 0.6957602500915527,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.6991459528605143,
-      "std_solve_time": 0.0018901740496033276,
+      "avg_solve_time": 0.715249220530192,
+      "std_solve_time": 0.031204907349376435,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.6973848342895508,
-      "max_solve_time": 0.7011430263519287
+      "min_solve_time": 0.6957602500915527,
+      "max_solve_time": 0.7512402534484863
     }
   },
   {
@@ -1258,33 +1258,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.6974618434906006,
+        "solve_time": 0.6797897815704346,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.6974997520446777,
+        "solve_time": 0.6858730316162109,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.6978261470794678,
+        "solve_time": 0.6740918159484863,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.6975959142049154,
-      "std_solve_time": 0.000200286412448658,
+      "avg_solve_time": 0.6799182097117106,
+      "std_solve_time": 0.005891657745742167,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.6974618434906006,
-      "max_solve_time": 0.6978261470794678
+      "min_solve_time": 0.6740918159484863,
+      "max_solve_time": 0.6858730316162109
     }
   },
   {
@@ -1304,33 +1304,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.0541729927062988,
+        "solve_time": 1.0238780975341797,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.0505321025848389,
+        "solve_time": 1.0181989669799805,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.0914497375488281,
+        "solve_time": 1.0472300052642822,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.0653849442799885,
-      "std_solve_time": 0.022646061607476974,
+      "avg_solve_time": 1.0297690232594807,
+      "std_solve_time": 0.015385953021893358,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.0505321025848389,
-      "max_solve_time": 1.0914497375488281
+      "min_solve_time": 1.0181989669799805,
+      "max_solve_time": 1.0472300052642822
     }
   },
   {
@@ -1349,34 +1349,34 @@
     "runs": [
       {
         "run": 0,
-        "success": true,
-        "solve_time": 1.0576000213623047,
-        "plan_length": 6,
-        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+        "success": false,
+        "solve_time": Infinity,
+        "plan_length": 0,
+        "status": "ERROR: [Errno 32] Broken pipe"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.0536539554595947,
+        "solve_time": 1.0230920314788818,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.0562939643859863,
+        "solve_time": 1.0192148685455322,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
-      "success_rate": 1.0,
-      "avg_solve_time": 1.055849313735962,
-      "std_solve_time": 0.002010259853242335,
+      "success_rate": 0.6666666666666666,
+      "avg_solve_time": 1.021153450012207,
+      "std_solve_time": 0.002741568201936635,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.0536539554595947,
-      "max_solve_time": 1.0576000213623047
+      "min_solve_time": 1.0192148685455322,
+      "max_solve_time": 1.0230920314788818
     }
   },
   {
@@ -1396,33 +1396,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.0518860816955566,
+        "solve_time": 1.0262610912322998,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.0535311698913574,
+        "solve_time": 1.021846055984497,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.0553028583526611,
+        "solve_time": 1.0202481746673584,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.0535733699798584,
-      "std_solve_time": 0.0017087791889930234,
+      "avg_solve_time": 1.0227851072947185,
+      "std_solve_time": 0.0031145070920866468,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.0518860816955566,
-      "max_solve_time": 1.0553028583526611
+      "min_solve_time": 1.0202481746673584,
+      "max_solve_time": 1.0262610912322998
     }
   },
   {
@@ -1442,33 +1442,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.0519309043884277,
+        "solve_time": 1.0169668197631836,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.0525047779083252,
+        "solve_time": 1.0192110538482666,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.0531830787658691,
+        "solve_time": 1.014934778213501,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.052539587020874,
-      "std_solve_time": 0.0006268125107378769,
+      "avg_solve_time": 1.0170375506083171,
+      "std_solve_time": 0.00213901506901249,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.0519309043884277,
-      "max_solve_time": 1.0531830787658691
+      "min_solve_time": 1.014934778213501,
+      "max_solve_time": 1.0192110538482666
     }
   },
   {
@@ -1488,33 +1488,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.0520970821380615,
+        "solve_time": 1.0200550556182861,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.0783891677856445,
+        "solve_time": 1.0209779739379883,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.055262804031372,
+        "solve_time": 1.045395851135254,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.0619163513183594,
-      "std_solve_time": 0.014353421562473953,
+      "avg_solve_time": 1.028809626897176,
+      "std_solve_time": 0.014371502023555508,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.0520970821380615,
-      "max_solve_time": 1.0783891677856445
+      "min_solve_time": 1.0200550556182861,
+      "max_solve_time": 1.045395851135254
     }
   },
   {
@@ -1534,33 +1534,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.1549670696258545,
+        "solve_time": 1.018033742904663,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.168720006942749,
+        "solve_time": 1.0171351432800293,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.1267199516296387,
+        "solve_time": 1.0244789123535156,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.1501356760660808,
-      "std_solve_time": 0.021412798377912913,
+      "avg_solve_time": 1.019882599512736,
+      "std_solve_time": 0.004005800683893886,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.1267199516296387,
-      "max_solve_time": 1.168720006942749
+      "min_solve_time": 1.0171351432800293,
+      "max_solve_time": 1.0244789123535156
     }
   },
   {
@@ -1579,34 +1579,34 @@
     "runs": [
       {
         "run": 0,
-        "success": true,
-        "solve_time": 1.0878450870513916,
-        "plan_length": 6,
-        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+        "success": false,
+        "solve_time": Infinity,
+        "plan_length": 0,
+        "status": "ERROR: [Errno 32] Broken pipe"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.0898799896240234,
+        "solve_time": 1.0189170837402344,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.0950982570648193,
+        "solve_time": 1.0181632041931152,
         "plan_length": 6,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
-      "success_rate": 1.0,
-      "avg_solve_time": 1.0909411112467449,
-      "std_solve_time": 0.0037412034340004716,
+      "success_rate": 0.6666666666666666,
+      "avg_solve_time": 1.0185401439666748,
+      "std_solve_time": 0.0005330733399657877,
       "avg_plan_length": 6,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.0878450870513916,
-      "max_solve_time": 1.0950982570648193
+      "min_solve_time": 1.0181632041931152,
+      "max_solve_time": 1.0189170837402344
     }
   },
   {
@@ -1626,33 +1626,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.8015501499176025,
+        "solve_time": 1.693763017654419,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.814795970916748,
+        "solve_time": 1.7026517391204834,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.8265700340270996,
+        "solve_time": 1.6931397914886475,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.8143053849538167,
-      "std_solve_time": 0.012517154475096763,
+      "avg_solve_time": 1.6965181827545166,
+      "std_solve_time": 0.00532094803435388,
       "avg_plan_length": 16,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.8015501499176025,
-      "max_solve_time": 1.8265700340270996
+      "min_solve_time": 1.6931397914886475,
+      "max_solve_time": 1.7026517391204834
     }
   },
   {
@@ -1672,33 +1672,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.803175926208496,
+        "solve_time": 1.7719788551330566,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.8192551136016846,
+        "solve_time": 1.7411320209503174,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.7808713912963867,
+        "solve_time": 1.6940548419952393,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.8011008103688557,
-      "std_solve_time": 0.019275816813134002,
+      "avg_solve_time": 1.7357219060262044,
+      "std_solve_time": 0.03924270586357121,
       "avg_plan_length": 16,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.7808713912963867,
-      "max_solve_time": 1.8192551136016846
+      "min_solve_time": 1.6940548419952393,
+      "max_solve_time": 1.7719788551330566
     }
   },
   {
@@ -1718,33 +1718,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.7726149559020996,
+        "solve_time": 1.6890270709991455,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.7994279861450195,
+        "solve_time": 1.6857690811157227,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.752389907836914,
+        "solve_time": 1.6904070377349854,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.7748109499613445,
-      "std_solve_time": 0.023595804609316554,
+      "avg_solve_time": 1.6884010632832844,
+      "std_solve_time": 0.002381506801539478,
       "avg_plan_length": 16,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.752389907836914,
-      "max_solve_time": 1.7994279861450195
+      "min_solve_time": 1.6857690811157227,
+      "max_solve_time": 1.6904070377349854
     }
   },
   {
@@ -1764,33 +1764,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.7561087608337402,
+        "solve_time": 1.7084801197052002,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.8725707530975342,
+        "solve_time": 1.7246389389038086,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.8471992015838623,
+        "solve_time": 1.71958589553833,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.8252929051717122,
-      "std_solve_time": 0.06124347538624612,
+      "avg_solve_time": 1.717568318049113,
+      "std_solve_time": 0.008266185557261317,
       "avg_plan_length": 16,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.7561087608337402,
-      "max_solve_time": 1.8725707530975342
+      "min_solve_time": 1.7084801197052002,
+      "max_solve_time": 1.7246389389038086
     }
   },
   {
@@ -1809,34 +1809,34 @@
     "runs": [
       {
         "run": 0,
-        "success": true,
-        "solve_time": 1.859900951385498,
-        "plan_length": 16,
-        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+        "success": false,
+        "solve_time": Infinity,
+        "plan_length": 0,
+        "status": "ERROR: [Errno 32] Broken pipe"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.8952512741088867,
+        "solve_time": 1.8048198223114014,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.769960880279541,
+        "solve_time": 1.7828128337860107,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
-      "success_rate": 1.0,
-      "avg_solve_time": 1.8417043685913086,
-      "std_solve_time": 0.06459688394587994,
+      "success_rate": 0.6666666666666666,
+      "avg_solve_time": 1.793816328048706,
+      "std_solve_time": 0.01556129081979825,
       "avg_plan_length": 16,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.769960880279541,
-      "max_solve_time": 1.8952512741088867
+      "min_solve_time": 1.7828128337860107,
+      "max_solve_time": 1.8048198223114014
     }
   },
   {
@@ -1856,33 +1856,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.7599270343780518,
+        "solve_time": 1.781322956085205,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.7572038173675537,
+        "solve_time": 1.805164098739624,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.7599878311157227,
+        "solve_time": 1.6969308853149414,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.7590395609537761,
-      "std_solve_time": 0.0015900911755604374,
+      "avg_solve_time": 1.7611393133799236,
+      "std_solve_time": 0.05686951465151671,
       "avg_plan_length": 16,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.7572038173675537,
-      "max_solve_time": 1.7599878311157227
+      "min_solve_time": 1.6969308853149414,
+      "max_solve_time": 1.805164098739624
     }
   },
   {
@@ -1902,33 +1902,33 @@
       {
         "run": 0,
         "success": true,
-        "solve_time": 1.806028127670288,
+        "solve_time": 1.6894731521606445,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 1.820472002029419,
+        "solve_time": 1.6912510395050049,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 1.757723093032837,
+        "solve_time": 1.688317060470581,
         "plan_length": 16,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 1.7947410742441814,
-      "std_solve_time": 0.03286190159361103,
+      "avg_solve_time": 1.6896804173787434,
+      "std_solve_time": 0.001477930105446415,
       "avg_plan_length": 16,
       "std_plan_length": 0.0,
-      "min_solve_time": 1.757723093032837,
-      "max_solve_time": 1.820472002029419
+      "min_solve_time": 1.688317060470581,
+      "max_solve_time": 1.6912510395050049
     }
   }
 ]

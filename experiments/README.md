@@ -2,7 +2,45 @@
 
 This folder contains systematic experiments to evaluate planning performance, scalability, and constraint impacts in our logistics domain.
 
-## Experiment Categories
+## 🎯 Priority Research Experiments
+
+### **Heuristic Analysis & Characterization** (`heuristic_analysis/`)
+**Status**: ✅ **Completed** - Research-ready
+
+**Goal**: Deep analysis of heuristic quality, admissibility, consistency, and search efficiency.
+
+**Research Focus**:
+- **Heuristics**: `ff`, `hadd`, `hmax` (reduced from 7 to 3 key heuristics)
+- **Problems**: Proven solvable problems from existing experiments
+- **Analysis**: Admissibility ratios, consistency metrics, search efficiency rankings
+- **Output**: `research_heuristic_analysis.py` with comprehensive research analysis
+
+**Key Insights**:
+- All heuristics perform similarly on logistics domain
+- Search efficiency varies by problem complexity
+- Admissibility and consistency metrics provide deeper understanding
+
+---
+
+### **Search Space Analysis** (`search_analysis/`)
+**Status**: ✅ **Completed** - Research-ready
+
+**Goal**: Comprehensive analysis of search space characteristics and algorithm performance.
+
+**Research Focus**:
+- **Algorithms**: GBFS, A*, BFS with various heuristics
+- **Metrics**: State space size estimation, branching factors, search efficiency
+- **Analysis**: Search space density, exploration patterns, algorithm comparison
+- **Output**: `research_search_analysis.py` with detailed search characteristics
+
+**Key Insights**:
+- State space grows exponentially with problem size
+- Search efficiency varies significantly between algorithms
+- Branching factors provide insight into problem difficulty
+
+---
+
+## Standard Experiment Categories
 
 ### 1. **Scaling Analysis** (`scaling/`)
 
@@ -108,11 +146,19 @@ This folder contains systematic experiments to evaluate planning performance, sc
 
 ## Running Experiments
 
+### Priority Research Experiments
 ```bash
-# Run all experiments
+# Run priority research experiments
+python experiments/heuristic_analysis/research_heuristic_analysis.py
+python experiments/search_analysis/research_search_analysis.py
+```
+
+### Standard Experiments
+```bash
+# Run all standard experiments
 python experiments/run_all_experiments.py
 
-# Run specific experiment
+# Run specific standard experiment
 python experiments/scaling/scaling_analysis.py
 python experiments/heuristics/heuristic_comparison.py
 python experiments/constraints/constraint_impact.py
@@ -122,7 +168,23 @@ python experiments/weights/weight_distribution.py
 
 ## Expected Results & Insights
 
-### Scaling Analysis
+### Priority Research Experiments
+
+#### Heuristic Analysis & Characterization
+- **Expected**: All heuristics perform similarly on logistics domain
+- **Key insight**: Logistics domain may not expose significant heuristic differences
+- **Research output**: Detailed admissibility, consistency, and efficiency analysis
+- **Files**: `research_heuristic_analysis.json`, `research_heuristic_data.csv`, `research_heuristic_analysis.png`
+
+#### Search Space Analysis  
+- **Expected**: State space grows exponentially with problem size
+- **Key insight**: Search efficiency varies significantly between algorithms
+- **Research output**: State space estimation, branching factor analysis, algorithm comparison
+- **Files**: `research_search_analysis.json`, `research_search_data.csv`, `research_search_analysis.png`
+
+### Standard Experiments
+
+#### Scaling Analysis
 - **Expected**: Solve time increases non-linearly with problem size
 - **Key insight**: Robot capacity constraints become bottlenecks at larger scales
 - **Typical results**: 7-20 actions, 0.2-5.3s solve time across problem sizes
@@ -174,11 +236,17 @@ All experiments generate:
 
 ## Key Research Questions Addressed
 
-1. **Scalability**: How does planning performance scale with problem size?
-2. **Heuristic effectiveness**: Which heuristics work best for logistics planning?
-3. **Constraint impact**: How do different constraints affect planning efficiency?
-4. **Topology effects**: How does network structure influence planning?
-5. **Weight distribution**: How do container weight patterns affect complexity?
+### Priority Research Questions (✅ Completed)
+1. **Heuristic characterization**: What are the quality, admissibility, and consistency properties of different heuristics?
+2. **Search space analysis**: How do different search algorithms explore the state space?
+3. **Search efficiency**: Which algorithms and heuristics provide the most efficient search?
+
+### Standard Research Questions
+4. **Scalability**: How does planning performance scale with problem size?
+5. **Heuristic effectiveness**: Which heuristics work best for logistics planning?
+6. **Constraint impact**: How do different constraints affect planning efficiency?
+7. **Topology effects**: How does network structure influence planning?
+8. **Weight distribution**: How do container weight patterns affect complexity?
 
 ## Future Extensions
 

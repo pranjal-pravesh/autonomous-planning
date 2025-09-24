@@ -1,0 +1,1382 @@
+[
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Greedy Best-First (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.23435640335083008,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.21115708351135254,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.2131519317626953,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.21955513954162598,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737923.073859
+  },
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Greedy Best-First (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2133927345275879,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.21173501014709473,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.2125990390777588,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.21257559458414713,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737923.7150028
+  },
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Greedy Best-First (hMax)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2109827995300293,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.21292710304260254,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.2128150463104248,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.21224164962768555,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737924.3551528
+  },
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "astar_ff",
+      "search": "astar(ff())",
+      "description": "A* (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.212982177734375,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.2117910385131836,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.21184301376342773,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2122054100036621,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737924.9951859
+  },
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "astar_hadd",
+      "search": "astar(hadd())",
+      "description": "A* (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.21368026733398438,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.21149802207946777,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.21246099472045898,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.21254642804463705,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737925.636209
+  },
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "bfs",
+      "search": "bfs()",
+      "description": "Breadth-First Search"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.21275091171264648,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.21528410911560059,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.21301603317260742,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2136836846669515,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737926.2807229
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Greedy Best-First (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.29305410385131836,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.29455995559692383,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.31688404083251953,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.3014993667602539,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737927.1892009
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Greedy Best-First (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2915310859680176,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.29534411430358887,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.29491209983825684,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2939291000366211,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737928.074767
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Greedy Best-First (hMax)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2939329147338867,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.2964820861816406,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.29179883003234863,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2940712769826253,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737928.9607701
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "astar_ff",
+      "search": "astar(ff())",
+      "description": "A* (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.29749202728271484,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.29122209548950195,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.2937920093536377,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.29416871070861816,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737929.847072
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "astar_hadd",
+      "search": "astar(hadd())",
+      "description": "A* (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2919349670410156,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.2964441776275635,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.29067540168762207,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2930181821187337,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737930.730058
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "search": {
+      "name": "bfs",
+      "search": "bfs()",
+      "description": "Breadth-First Search"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2942831516265869,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.29013609886169434,
+        "plan_length": 7,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.29339003562927246,
+        "plan_length": 7,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2926030953725179,
+      "avg_plan_length": 7.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737931.611865
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Greedy Best-First (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.46561193466186523,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.46036601066589355,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.45798683166503906,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.4613215923309326,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737933.000212
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Greedy Best-First (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.46128082275390625,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.46280384063720703,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.46065711975097656,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.4615805943806966,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737934.3892438
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Greedy Best-First (hMax)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.47525691986083984,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.4679732322692871,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.5149400234222412,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.48605672518412274,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737935.851706
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "astar_ff",
+      "search": "astar(ff())",
+      "description": "A* (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.4832189083099365,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5165481567382812,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.5226631164550781,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5074767271677653,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737937.378484
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "astar_hadd",
+      "search": "astar(hadd())",
+      "description": "A* (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5326402187347412,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5069429874420166,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.5390737056732178,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5262189706166586,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737938.962291
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "bfs",
+      "search": "bfs()",
+      "description": "Breadth-First Search"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5061240196228027,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5168159008026123,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.5125250816345215,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5118216673533121,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737940.502037
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Greedy Best-First (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.7784509658813477,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.7179367542266846,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.7022972106933594,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.7328949769337972,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737942.70558
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Greedy Best-First (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.6990199089050293,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.6967358589172363,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.7011010646820068,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.6989522775014242,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737944.8070989
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Greedy Best-First (hMax)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.7008688449859619,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.6973288059234619,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.6979761123657227,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.6987245877583822,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737946.907976
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "astar_ff",
+      "search": "astar(ff())",
+      "description": "A* (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.6980581283569336,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.700692892074585,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.6969442367553711,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.6985650857289633,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737949.00832
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "astar_hadd",
+      "search": "astar(hadd())",
+      "description": "A* (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.7572541236877441,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.6977360248565674,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.7003319263458252,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.7184406916300455,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737951.168427
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "search": {
+      "name": "bfs",
+      "search": "bfs()",
+      "description": "Breadth-First Search"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.6970338821411133,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.6981358528137207,
+        "plan_length": 6,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.696631908416748,
+        "plan_length": 6,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.697267214457194,
+      "avg_plan_length": 6.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737953.2649338
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "search": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Greedy Best-First (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.781318187713623,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.7541570663452148,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.7541630268096924,
+        "plan_length": 16,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.76321276028951,
+      "avg_plan_length": 16.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737958.561453
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "search": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Greedy Best-First (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.7581751346588135,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.7543261051177979,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.7572739124298096,
+        "plan_length": 16,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.7565917174021404,
+      "avg_plan_length": 16.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737963.837316
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "search": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Greedy Best-First (hMax)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.755958080291748,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.746001958847046,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.747257947921753,
+        "plan_length": 16,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.7497393290201824,
+      "avg_plan_length": 16.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737969.092556
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "search": {
+      "name": "astar_ff",
+      "search": "astar(ff())",
+      "description": "A* (FF)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.7982170581817627,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.7468900680541992,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.7451539039611816,
+        "plan_length": 16,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.7634203433990479,
+      "avg_plan_length": 16.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737974.388896
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "search": {
+      "name": "astar_hadd",
+      "search": "astar(hadd())",
+      "description": "A* (hAdd)"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.7508502006530762,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.749798059463501,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.7455627918243408,
+        "plan_length": 16,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.7487370173136394,
+      "avg_plan_length": 16.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737979.641104
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "search": {
+      "name": "bfs",
+      "search": "bfs()",
+      "description": "Breadth-First Search"
+    },
+    "runs": [
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.748497724533081,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.745884895324707,
+        "plan_length": 16,
+        "error": null
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.751101016998291,
+        "plan_length": 16,
+        "error": null
+      }
+    ],
+    "exact_statistics": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.748494545618693,
+      "avg_plan_length": 16.0,
+      "total_runs": 3,
+      "successful_runs": 3
+    },
+    "timestamp": 1758737984.892718
+  }
+]

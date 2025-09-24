@@ -1,0 +1,707 @@
+[
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "heuristic": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Fast Forward"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.25399088859558105,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.21437716484069824,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.2156085968017578,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.22799221674601236,
+      "std_solve_time": 0.02252392749111145,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.21437716484069824,
+      "max_solve_time": 0.25399088859558105
+    }
+  },
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "heuristic": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Additive Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.21353483200073242,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2186279296875,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.22461199760437012,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.21892491976420084,
+      "std_solve_time": 0.005544551540192191,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.21353483200073242,
+      "max_solve_time": 0.22461199760437012
+    }
+  },
+  {
+    "problem": {
+      "name": "easy_4",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Max Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.21667790412902832,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.21242427825927734,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.2138199806213379,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2143073876698812,
+      "std_solve_time": 0.0021682959860639304,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.21242427825927734,
+      "max_solve_time": 0.21667790412902832
+    }
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "heuristic": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Fast Forward"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.30097198486328125,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2984769344329834,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.2969400882720947,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2987963358561198,
+      "std_solve_time": 0.002034836721295235,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.2969400882720947,
+      "max_solve_time": 0.30097198486328125
+    }
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "heuristic": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Additive Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.29403090476989746,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.29891204833984375,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.33682894706726074,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.3099239667256673,
+      "std_solve_time": 0.023427865161464317,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.29403090476989746,
+      "max_solve_time": 0.33682894706726074
+    }
+  },
+  {
+    "problem": {
+      "name": "easy_6",
+      "robots": 1,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "simple_swap"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Max Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.292572021484375,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.29382967948913574,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.2985820770263672,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.294994592666626,
+      "std_solve_time": 0.0031698515639972083,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.292572021484375,
+      "max_solve_time": 0.2985820770263672
+    }
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "heuristic": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Fast Forward"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.48601484298706055,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.4694530963897705,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.4687681198120117,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.4747453530629476,
+      "std_solve_time": 0.009765672050109102,
+      "avg_plan_length": 6,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.4687681198120117,
+      "max_solve_time": 0.48601484298706055
+    }
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "heuristic": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Additive Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.45605993270874023,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.46381306648254395,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.4660012722015381,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.4619580904642741,
+      "std_solve_time": 0.005223816588379877,
+      "avg_plan_length": 6,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.45605993270874023,
+      "max_solve_time": 0.4660012722015381
+    }
+  },
+  {
+    "problem": {
+      "name": "medium_8",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Max Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.46280622482299805,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.4656240940093994,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.4617888927459717,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.46340640385945636,
+      "std_solve_time": 0.0019867947401788796,
+      "avg_plan_length": 6,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.4617888927459717,
+      "max_solve_time": 0.4656240940093994
+    }
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "heuristic": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Fast Forward"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.7044558525085449,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.7017979621887207,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.7870399951934814,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.731097936630249,
+      "std_solve_time": 0.04846546742224971,
+      "avg_plan_length": 6,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.7017979621887207,
+      "max_solve_time": 0.7870399951934814
+    }
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "heuristic": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Additive Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.6996030807495117,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.7005939483642578,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.7040917873382568,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.7014296054840088,
+      "std_solve_time": 0.0023581483893732875,
+      "avg_plan_length": 6,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.6996030807495117,
+      "max_solve_time": 0.7040917873382568
+    }
+  },
+  {
+    "problem": {
+      "name": "medium_10",
+      "robots": 2,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "goal_type": "complex_redistribution"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Max Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.6976430416107178,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.7188677787780762,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.6977508068084717,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.7047538757324219,
+      "std_solve_time": 0.012223117348739598,
+      "avg_plan_length": 6,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.6976430416107178,
+      "max_solve_time": 0.7188677787780762
+    }
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "heuristic": {
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())",
+      "description": "Fast Forward"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.8547990322113037,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.768852949142456,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.7841930389404297,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.8026150067647297,
+      "std_solve_time": 0.04583894602419407,
+      "avg_plan_length": 16,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.768852949142456,
+      "max_solve_time": 1.8547990322113037
+    }
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "heuristic": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())",
+      "description": "Additive Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.8452579975128174,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.8290350437164307,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.738943099975586,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.804412047068278,
+      "std_solve_time": 0.05727506728533113,
+      "avg_plan_length": 16,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.738943099975586,
+      "max_solve_time": 1.8452579975128174
+    }
+  },
+  {
+    "problem": {
+      "name": "hard_14",
+      "robots": 3,
+      "docks": 6,
+      "containers": 14,
+      "piles": 6,
+      "goal_type": "weight_constrained"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())",
+      "description": "Max Heuristic"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.749718189239502,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.7385849952697754,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.7535769939422607,
+        "plan_length": 16,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.7472933928171794,
+      "std_solve_time": 0.007784583117690501,
+      "avg_plan_length": 16,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.7385849952697754,
+      "max_solve_time": 1.7535769939422607
+    }
+  }
+]

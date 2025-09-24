@@ -128,3 +128,7 @@ class LogisticsDomain:
         if hasattr(self, "_assigned_objects") and self._assigned_objects:
             return self._assigned_objects
         raise ValueError("No domain objects available. Call assign_objects() in your demo to provide objects.")
+    
+    def get_fluents(self) -> list:
+        """Return all fluents defined in the domain."""
+        return self.fluents + self.static_fluents
