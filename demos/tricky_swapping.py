@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
-Tricky Container Swapping - Test LIFO behavior with multi-capacity robots.
-This demo tests if the planner can figure out the optimal strategy for swapping
-containers while preserving/reversing stacking order based on robot capacity usage.
+Tricky Container Swapping (Refactored)
+- Domain remains general in src/
+- This demo constructs all objects and initial state locally
+- All containers: 2t weight
+- All robots: 4t capacity, 2 slots
+- Tests LIFO behavior with multi-capacity robots
 """
 
 import sys
@@ -13,195 +16,205 @@ from unified_planning.shortcuts import *
 from unified_planning.engines.results import PlanGenerationResultStatus
 from rich.console import Console
 from rich.panel import Panel
+from rich.table import Table
 import time
 
-# Import from src/
 from src.domain import LogisticsDomain
 from src.actions import LogisticsActions
-from src.problem import LogisticsProblem
 from utils.display import LogisticsDisplay
 
 console = Console()
 
 
-def create_tricky_swapping_problem():
-    """Create the tricky swapping problem with 2 docks, 2 piles, 2 robots."""
+def build_tricky_swapping_problem():
+    """Create the tricky swapping problem with refactored domain."""
     
-    # Create small-scale domain (we'll customize it)
-    domain = LogisticsDomain(scale="small")
-    actions = LogisticsActions(domain)
+    # Create domain WITHOUT auto objects; we'll define state here
+    domain = LogisticsDomain(scale="small", auto_objects=False)
+    problem = Problem("tricky_container_swapping_refactored")
+
+    # Create objects locally
+    Robot = domain.Robot
+    Dock = domain.Dock
+    Container = domain.Container
+    Pile = domain.Pile
+
+    r1 = Object("r1", Robot)
+    r2 = Object("r2", Robot)
+
+    d1 = Object("d1", Dock)
+    d2 = Object("d2", Dock)
+
+    c1 = Object("c1", Container)
+    c2 = Object("c2", Container)
+    c3 = Object("c3", Container)
+    c4 = Object("c4", Container)
+
+    p1 = Object("p1", Pile)
+    p2 = Object("p2", Pile)
+
+    # Register all objects with the problem
+    all_objects = [r1, r2, d1, d2, c1, c2, c3, c4, p1, p2]
+    problem.add_objects(all_objects)
     
-    # Create problem
-    problem = Problem("tricky_container_swapping")
-    
-    # Add objects
-    domain_objects = domain.get_domain_objects()
-    problem.add_objects(domain_objects["all_objects"])
-    
-    # Add fluents
+    # Assign objects to domain so actions can access them
+    domain.assign_objects({
+        "robots": [r1, r2],
+        "docks": [d1, d2],
+        "containers": [c1, c2, c3, c4],
+        "piles": [p1, p2],
+        "all_objects": all_objects
+    })
+
+    # Add fluents (all domain fluents and static fluents)
     for fluent in domain.fluents + domain.static_fluents:
         problem.add_fluent(fluent, default_initial_value=False)
-    
-    # Add actions
+
+    # Now that domain has objects, build actions and add them
+    actions = LogisticsActions(domain)
     for action in actions.get_actions():
         problem.add_action(action)
-    
-    # Custom initial state for tricky swapping
-    custom_initial_state = {
+
+    # Initial state - all containers 2t, robots 4t capacity, 2 slots
+    I = {
         # Robot locations - r1 at d1, r2 at d2
-        domain.robot_at(domain.r1, domain.d1): True,
-        domain.robot_at(domain.r2, domain.d2): True,
+        domain.robot_at(r1, d1): True,
+        domain.robot_at(r2, d2): True,
         
-        # Robot capacities - both robots can carry 2 containers
-        domain.robot_can_carry_1(domain.r1): True,
-        domain.robot_can_carry_2(domain.r1): True,
-        domain.robot_can_carry_3(domain.r1): False,  # r1 capacity 2
+        # Robot capacities - both robots can carry 2 containers (2 slots)
+        domain.robot_can_carry_1(r1): True,
+        domain.robot_can_carry_2(r1): True,
+        domain.robot_can_carry_3(r1): False,  # r1 capacity 2 slots
         
-        domain.robot_can_carry_1(domain.r2): True,
-        domain.robot_can_carry_2(domain.r2): True,
-        domain.robot_can_carry_3(domain.r2): False,  # r2 capacity 2
+        domain.robot_can_carry_1(r2): True,
+        domain.robot_can_carry_2(r2): True,
+        domain.robot_can_carry_3(r2): False,  # r2 capacity 2 slots
+        
+        # Robot weight capacity - both robots can carry up to 6t total (4t requirement fits)
+        domain.robot_capacity_5(r1): False,
+        domain.robot_capacity_6(r1): True,
+        domain.robot_capacity_8(r1): False,
+        domain.robot_capacity_10(r1): False,
+        
+        domain.robot_capacity_5(r2): False,
+        domain.robot_capacity_6(r2): True,
+        domain.robot_capacity_8(r2): False,
+        domain.robot_capacity_10(r2): False,
+        
+        # Robot current weight - both start empty (0t)
+        domain.robot_weight_0(r1): True,
+        domain.robot_weight_2(r1): False,
+        domain.robot_weight_4(r1): False,
+        domain.robot_weight_6(r1): False,
+        domain.robot_weight_8(r1): False,
+        domain.robot_weight_10(r1): False,
+        
+        domain.robot_weight_0(r2): True,
+        domain.robot_weight_2(r2): False,
+        domain.robot_weight_4(r2): False,
+        domain.robot_weight_6(r2): False,
+        domain.robot_weight_8(r2): False,
+        domain.robot_weight_10(r2): False,
         
         # Robot load tracking (all start empty)
-        domain.robot_has_container_1(domain.r1): False,
-        domain.robot_has_container_2(domain.r1): False,
-        domain.robot_has_container_3(domain.r1): False,
+        domain.robot_has_container_1(r1): False,
+        domain.robot_has_container_2(r1): False,
+        domain.robot_has_container_3(r1): False,
         
-        domain.robot_has_container_1(domain.r2): False,
-        domain.robot_has_container_2(domain.r2): False,
-        domain.robot_has_container_3(domain.r2): False,
+        domain.robot_has_container_1(r2): False,
+        domain.robot_has_container_2(r2): False,
+        domain.robot_has_container_3(r2): False,
         
-        # Initialize robot slot tracking (all empty initially)
-        domain.container_in_robot_slot_1(domain.r1, domain.c1): False,
-        domain.container_in_robot_slot_1(domain.r1, domain.c2): False,
-        domain.container_in_robot_slot_1(domain.r1, domain.c3): False,
-        domain.container_in_robot_slot_1(domain.r1, domain.c4): False,
+        # Robot free status
+        domain.robot_free(r1): True,
+        domain.robot_free(r2): True,
         
-        domain.container_in_robot_slot_2(domain.r1, domain.c1): False,
-        domain.container_in_robot_slot_2(domain.r1, domain.c2): False,
-        domain.container_in_robot_slot_2(domain.r1, domain.c3): False,
-        domain.container_in_robot_slot_2(domain.r1, domain.c4): False,
-        
-        domain.container_in_robot_slot_1(domain.r2, domain.c1): False,
-        domain.container_in_robot_slot_1(domain.r2, domain.c2): False,
-        domain.container_in_robot_slot_1(domain.r2, domain.c3): False,
-        domain.container_in_robot_slot_1(domain.r2, domain.c4): False,
-        
-        domain.container_in_robot_slot_2(domain.r2, domain.c1): False,
-        domain.container_in_robot_slot_2(domain.r2, domain.c2): False,
-        domain.container_in_robot_slot_2(domain.r2, domain.c3): False,
-        domain.container_in_robot_slot_2(domain.r2, domain.c4): False,
-        
-        domain.robot_free(domain.r1): True,
-        domain.robot_free(domain.r2): True,
+        # Container weights - ALL containers are 2t
+        domain.container_weight_2(c1): True,
+        domain.container_weight_2(c2): True,
+        domain.container_weight_2(c3): True,
+        domain.container_weight_2(c4): True,
         
         # Container piles with proper stacking
         # Pile 1 (d1): c1(bottom) → c2(top)
-        domain.container_in_pile(domain.c1, domain.p1): True,
-        domain.container_in_pile(domain.c2, domain.p1): True,
-        domain.container_on_top_of_pile(domain.c2, domain.p1): True,
-        domain.container_on_top_of_pile(domain.c1, domain.p1): False,
-        domain.container_under_in_pile(domain.c1, domain.c2, domain.p1): True,
+        domain.container_in_pile(c1, p1): True,
+        domain.container_in_pile(c2, p1): True,
+        domain.container_on_top_of_pile(c2, p1): True,
+        domain.container_on_top_of_pile(c1, p1): False,
+        domain.container_under_in_pile(c1, c2, p1): True,
         
         # Pile 2 (d2): c3(bottom) → c4(top)
-        domain.container_in_pile(domain.c3, domain.p2): True,
-        domain.container_in_pile(domain.c4, domain.p2): True,
-        domain.container_on_top_of_pile(domain.c4, domain.p2): True,
-        domain.container_on_top_of_pile(domain.c3, domain.p2): False,
-        domain.container_under_in_pile(domain.c3, domain.c4, domain.p2): True,
+        domain.container_in_pile(c3, p2): True,
+        domain.container_in_pile(c4, p2): True,
+        domain.container_on_top_of_pile(c4, p2): True,
+        domain.container_on_top_of_pile(c3, p2): False,
+        domain.container_under_in_pile(c3, c4, p2): True,
         
         # Pile locations
-        domain.pile_at_dock(domain.p1, domain.d1): True,
-        domain.pile_at_dock(domain.p2, domain.d2): True,
+        domain.pile_at_dock(p1, d1): True,
+        domain.pile_at_dock(p2, d2): True,
         
         # Static relations - adjacent docks
-        domain.adjacent(domain.d1, domain.d2): True,
-        domain.adjacent(domain.d2, domain.d1): True,
+        domain.adjacent(d1, d2): True,
+        domain.adjacent(d2, d1): True,
     }
-    
-    # Set initial state
-    for fluent, value in custom_initial_state.items():
-        problem.set_initial_value(fluent, value)
-    
-    return problem, domain, domain_objects
 
+    for f, v in I.items():
+        problem.set_initial_value(f, v)
 
-def create_tricky_swapping_goal(problem, domain):
-    """Create the tricky swapping goal."""
-    
     # Goal: Swap the piles with specific stacking orders
     # Pile 1 (d1): should have c3(bottom) → c4(top) 
     # Pile 2 (d2): should have c2(bottom) → c1(top) (REVERSED from original c1→c2)
-    
-    goal_conditions = [
+    goal = And(
         # Pile 1 (d1) gets c3 and c4
-        domain.container_in_pile(domain.c3, domain.p1),
-        domain.container_in_pile(domain.c4, domain.p1),
-        domain.container_on_top_of_pile(domain.c4, domain.p1),  # c4 on top
-        domain.container_under_in_pile(domain.c3, domain.c4, domain.p1),  # c3 under c4
+        domain.container_in_pile(c3, p1),
+        domain.container_in_pile(c4, p1),
+        domain.container_on_top_of_pile(c4, p1),  # c4 on top
+        domain.container_under_in_pile(c3, c4, p1),  # c3 under c4
         
         # Pile 2 (d2) gets c2 and c1 (REVERSED order)
-        domain.container_in_pile(domain.c2, domain.p2),
-        domain.container_in_pile(domain.c1, domain.p2),
-        domain.container_on_top_of_pile(domain.c1, domain.p2),  # c1 on top (was bottom)
-        domain.container_under_in_pile(domain.c2, domain.c1, domain.p2),  # c2 under c1 (was top)
-    ]
+        domain.container_in_pile(c2, p2),
+        domain.container_in_pile(c1, p2),
+        domain.container_on_top_of_pile(c1, p2),  # c1 on top (was bottom)
+        domain.container_under_in_pile(c2, c1, p2),  # c2 under c1 (was top)
+    )
+    problem.add_goal(goal)
+
+    # For display utilities
+    domain_objects = {
+        "robots": [r1, r2],
+        "docks": [d1, d2],
+        "containers": [c1, c2, c3, c4],
+        "piles": [p1, p2],
+        "all_objects": all_objects
+    }
+
+    return problem, domain, domain_objects
+
+
+def solve_tricky_swapping_refactored():
+    """Solve the tricky swapping scenario with refactored domain."""
     
-    problem.add_goal(And(*goal_conditions))
-    return problem
-
-
-def get_tricky_swapping_initial_data():
-    """Get initial distribution data for tricky swapping."""
-    return [
-        {"dock": "d1", "pile": "p1", "stack_order": "c1 → c2", "count": 2, "top_container": "c2"},
-        {"dock": "d2", "pile": "p2", "stack_order": "c3 → c4", "count": 2, "top_container": "c4"}
-    ]
-
-
-def get_tricky_swapping_target_data():
-    """Get target distribution data for tricky swapping."""
-    return [
-        {"dock": "d1", "pile": "p1", "target_stack": "c3 → c4", "count": 2, "change": "c1,c2 → c3,c4", "top_container": "c4"},
-        {"dock": "d2", "pile": "p2", "target_stack": "c2 → c1", "count": 2, "change": "c3,c4 → c2,c1", "top_container": "c1"}
-    ]
-
-
-def solve_tricky_swapping_scenario():
-    """Solve the tricky swapping scenario."""
-    
-    console.print(Panel("🔄 Tricky Container Swapping\nTesting LIFO behavior with multi-capacity robots", 
-                        title="Tricky Container Swapping", 
+    console.print(Panel("🔄 Tricky Container Swapping (Refactored)\nDomain is independent; demo builds world and state locally", 
+                        title="Refactored Tricky Swapping", 
                         title_align="left", 
                         border_style="blue"))
     
     console.print("\n[bold cyan]📋 Test Features:[/bold cyan]")
-    console.print("• 2 robots: r1 (cap 2), r2 (cap 2)")
+    console.print("• 2 robots: r1, r2 (both 6t capacity, 2 slots)")
     console.print("• 2 docks connected directly")
-    console.print("• 4 containers: c1, c2, c3, c4")
+    console.print("• 4 containers: c1, c2, c3, c4 (all 2t weight)")
     console.print("• 2 piles: p1 (d1), p2 (d2)")
     console.print("• Initial: p1=c1→c2, p2=c3→c4")
     console.print("• Goal: p1=c3→c4, p2=c2→c1 (REVERSED)")
-    console.print("• Challenge: Test LIFO behavior differences")
-    console.print("• Architecture: Uses generalized src/ domain structure")
+    console.print("• Challenge: Test LIFO behavior with weight constraints")
+    console.print("• Architecture: Uses clean, independent domain structure")
     
-    # Create problem and domain
-    problem, domain, domain_objects = create_tricky_swapping_problem()
+    problem, domain, domain_objects = build_tricky_swapping_problem()
     
-    # Add goal
-    problem = create_tricky_swapping_goal(problem, domain)
-    
-    # Display problem information
     LogisticsDisplay.display_domain_info(domain_objects)
     
-    # Get distribution data
-    initial_distributions = get_tricky_swapping_initial_data()
-    target_distributions = get_tricky_swapping_target_data()
-    
-    # Display distributions
-    LogisticsDisplay.display_large_scale_distribution(initial_distributions, target_distributions)
-    
-    # Solve the problem
-    console.print(f"\n[bold blue]🤖 Solving tricky swapping...[/bold blue]")
+    console.print(f"\n[bold blue]🤖 Solving tricky swapping with refactored domain...[/bold blue]")
     
     try:
         with OneshotPlanner(name='fast-downward') as planner:
@@ -215,7 +228,6 @@ def solve_tricky_swapping_scenario():
                 # Display execution plan
                 if result.plan:
                     console.print("\n[bold cyan]📋 Tricky Swapping Execution Plan[/bold cyan]")
-                    from rich.table import Table
                     
                     table = Table(show_header=True, header_style="bold cyan")
                     table.add_column("Step", style="dim", width=6, justify="center")
@@ -256,18 +268,20 @@ def solve_tricky_swapping_scenario():
                     summary_table.add_row("Total Actions", str(len(result.plan.actions)))
                     summary_table.add_row("Solve Time", f"{solve_time:.3f} seconds")
                     summary_table.add_row("Status", "✅ SUCCESS")
+                    summary_table.add_row("Architecture", "Refactored (Clean Domain)")
                     
                     console.print(summary_table)
                     
-                    console.print("\n[bold green]🎉 Tricky swapping completed![/bold green]")
+                    console.print("\n[bold green]🎉 Tricky swapping completed with refactored domain![/bold green]")
                     console.print(f"[green]📊 Executed {len(result.plan.actions)} actions demonstrating LIFO behavior[/green]")
                     console.print("[green]✨ Features demonstrated:[/green]")
-                    console.print("[green]  • Multi-capacity robot coordination[/green]")
+                    console.print("[green]  • Multi-capacity robot coordination (6t capacity, 2 slots)[/green]")
+                    console.print("[green]  • Weight-aware planning (all containers 2t)[/green]")
                     console.print("[green]  • LIFO order preservation vs reversal[/green]")
                     console.print("[green]  • Intelligent stacking strategy[/green]")
                     console.print("[green]  • Complex container redistribution[/green]")
-                    console.print("[green]  • True LIFO robot behavior[/green]")
-                    console.print("\n[bold green]🚀 LIFO system working intelligently![/bold green]")
+                    console.print("[green]  • Clean, independent domain architecture[/green]")
+                    console.print("\n[bold green]🚀 Refactored LIFO system working intelligently![/bold green]")
                     
                     return True, len(result.plan.actions)
                     
@@ -281,8 +295,8 @@ def solve_tricky_swapping_scenario():
 
 
 def main():
-    """Main function to run the tricky swapping test."""
-    success, steps = solve_tricky_swapping_scenario()
+    """Main function to run the refactored tricky swapping test."""
+    success, steps = solve_tricky_swapping_refactored()
     
     if not success:
         console.print("\n[bold red]❌ Tricky swapping failed![/bold red]")
