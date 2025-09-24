@@ -1,0 +1,354 @@
+[
+  {
+    "config": {
+      "name": "linear_4",
+      "description": "Linear topology with 4 docks",
+      "topology": "linear",
+      "docks": 4,
+      "robots": 2,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.4881448745727539,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.451002836227417,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.45865607261657715,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.46593459447224933,
+      "std_solve_time": 0.01961161424804809,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.451002836227417,
+      "max_solve_time": 0.4881448745727539
+    }
+  },
+  {
+    "config": {
+      "name": "linear_6",
+      "description": "Linear topology with 6 docks",
+      "topology": "linear",
+      "docks": 6,
+      "robots": 2,
+      "containers": 12,
+      "piles": 6
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.0300447940826416,
+        "plan_length": 21,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.054426908493042,
+        "plan_length": 21,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.0496211051940918,
+        "plan_length": 21,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.044697602589925,
+      "std_solve_time": 0.01291520554232067,
+      "avg_plan_length": 21,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.0300447940826416,
+      "max_solve_time": 1.054426908493042
+    }
+  },
+  {
+    "config": {
+      "name": "star_5",
+      "description": "Star topology with 5 docks (1 center + 4 spokes)",
+      "topology": "star",
+      "docks": 5,
+      "robots": 2,
+      "containers": 10,
+      "piles": 5
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.6883392333984375,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.6862971782684326,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.6871049404144287,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.687247117360433,
+      "std_solve_time": 0.0010284250101374104,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.6862971782684326,
+      "max_solve_time": 0.6883392333984375
+    }
+  },
+  {
+    "config": {
+      "name": "star_7",
+      "description": "Star topology with 7 docks (1 center + 6 spokes)",
+      "topology": "star",
+      "docks": 7,
+      "robots": 3,
+      "containers": 14,
+      "piles": 7
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 2.180159091949463,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 2.165360927581787,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 2.1666479110717773,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 2.1707226435343423,
+      "std_solve_time": 0.008197499658084695,
+      "avg_plan_length": 15,
+      "std_plan_length": 0.0,
+      "min_solve_time": 2.165360927581787,
+      "max_solve_time": 2.180159091949463
+    }
+  },
+  {
+    "config": {
+      "name": "grid_2x2",
+      "description": "2x2 Grid topology",
+      "topology": "grid",
+      "docks": 4,
+      "grid_size": [
+        2,
+        2
+      ],
+      "robots": 2,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.45536375045776367,
+        "plan_length": 18,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.45844221115112305,
+        "plan_length": 18,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.45609593391418457,
+        "plan_length": 18,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.4566339651743571,
+      "std_solve_time": 0.0016082096529469651,
+      "avg_plan_length": 18,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.45536375045776367,
+      "max_solve_time": 0.45844221115112305
+    }
+  },
+  {
+    "config": {
+      "name": "grid_3x2",
+      "description": "3x2 Grid topology",
+      "topology": "grid",
+      "docks": 6,
+      "grid_size": [
+        3,
+        2
+      ],
+      "robots": 3,
+      "containers": 12,
+      "piles": 6
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.4810781478881836,
+        "plan_length": 19,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.4270579814910889,
+        "plan_length": 19,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.443774938583374,
+        "plan_length": 19,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.4506370226542156,
+      "std_solve_time": 0.027656115828852808,
+      "avg_plan_length": 19,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.4270579814910889,
+      "max_solve_time": 1.4810781478881836
+    }
+  },
+  {
+    "config": {
+      "name": "ring_4",
+      "description": "Ring topology with 4 docks",
+      "topology": "ring",
+      "docks": 4,
+      "robots": 2,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.47878575325012207,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.44730401039123535,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.4562506675720215,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.46078014373779297,
+      "std_solve_time": 0.01622227324114858,
+      "avg_plan_length": 15,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.44730401039123535,
+      "max_solve_time": 0.47878575325012207
+    }
+  },
+  {
+    "config": {
+      "name": "ring_6",
+      "description": "Ring topology with 6 docks",
+      "topology": "ring",
+      "docks": 6,
+      "robots": 2,
+      "containers": 12,
+      "piles": 6
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.113680124282837,
+        "plan_length": 39,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.0613040924072266,
+        "plan_length": 39,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.0589268207550049,
+        "plan_length": 39,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.0779703458150227,
+      "std_solve_time": 0.030948409713463233,
+      "avg_plan_length": 39,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.0589268207550049,
+      "max_solve_time": 1.113680124282837
+    }
+  }
+]

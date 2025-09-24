@@ -1,0 +1,348 @@
+[
+  {
+    "config": {
+      "name": "uniform_light",
+      "description": "All containers 2t (light)",
+      "weight_distribution": "uniform_light",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.5545871257781982,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5334980487823486,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5323939323425293,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5401597023010254,
+      "std_solve_time": 0.012506705378333201,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.5323939323425293,
+      "max_solve_time": 0.5545871257781982
+    }
+  },
+  {
+    "config": {
+      "name": "uniform_medium",
+      "description": "All containers 4t (medium)",
+      "weight_distribution": "uniform_medium",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.35071587562561035,
+        "plan_length": 26,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.35482287406921387,
+        "plan_length": 26,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.34702205657958984,
+        "plan_length": 26,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.3508536020914714,
+      "std_solve_time": 0.003902232029384585,
+      "avg_plan_length": 26,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.34702205657958984,
+      "max_solve_time": 0.35482287406921387
+    }
+  },
+  {
+    "config": {
+      "name": "uniform_heavy",
+      "description": "All containers 6t (heavy)",
+      "weight_distribution": "uniform_heavy",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.35041213035583496,
+        "plan_length": 26,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.350963830947876,
+        "plan_length": 26,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.3457300662994385,
+        "plan_length": 26,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.3490353425343831,
+      "std_solve_time": 0.0028757141074491513,
+      "avg_plan_length": 26,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.3457300662994385,
+      "max_solve_time": 0.350963830947876
+    }
+  },
+  {
+    "config": {
+      "name": "mixed_balanced",
+      "description": "Balanced mix (2t, 4t, 6t)",
+      "weight_distribution": "mixed_balanced",
+      "robots": 2,
+      "docks": 4,
+      "containers": 9,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.5072710514068604,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5036368370056152,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5024681091308594,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5044586658477783,
+      "std_solve_time": 0.002504718669034049,
+      "avg_plan_length": 13,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.5024681091308594,
+      "max_solve_time": 0.5072710514068604
+    }
+  },
+  {
+    "config": {
+      "name": "light_biased",
+      "description": "Mostly light containers (2t)",
+      "weight_distribution": "light_biased",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.509315013885498,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5081508159637451,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5159070491790771,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5111242930094401,
+      "std_solve_time": 0.004182691314680582,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.5081508159637451,
+      "max_solve_time": 0.5159070491790771
+    }
+  },
+  {
+    "config": {
+      "name": "heavy_biased",
+      "description": "Mostly heavy containers (6t)",
+      "weight_distribution": "heavy_biased",
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.4210951328277588,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.4187021255493164,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.42507028579711914,
+        "plan_length": 15,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.42162251472473145,
+      "std_solve_time": 0.0032166698593987858,
+      "avg_plan_length": 15,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.4187021255493164,
+      "max_solve_time": 0.42507028579711914
+    }
+  },
+  {
+    "config": {
+      "name": "extreme_heavy",
+      "description": "All containers 6t with tight robot capacity",
+      "weight_distribution": "extreme_heavy",
+      "tight_capacity": true,
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": false,
+        "solve_time": 0.11720919609069824,
+        "plan_length": 0,
+        "status": "PlanGenerationResultStatus.UNSOLVABLE_INCOMPLETELY"
+      },
+      {
+        "run": 1,
+        "success": false,
+        "solve_time": 0.11758804321289062,
+        "plan_length": 0,
+        "status": "PlanGenerationResultStatus.UNSOLVABLE_INCOMPLETELY"
+      },
+      {
+        "run": 2,
+        "success": false,
+        "solve_time": 0.11819601058959961,
+        "plan_length": 0,
+        "status": "PlanGenerationResultStatus.UNSOLVABLE_INCOMPLETELY"
+      }
+    ],
+    "summary": {
+      "success_rate": 0,
+      "avg_solve_time": Infinity,
+      "std_solve_time": 0,
+      "avg_plan_length": 0,
+      "std_plan_length": 0,
+      "min_solve_time": Infinity,
+      "max_solve_time": 0
+    }
+  },
+  {
+    "config": {
+      "name": "mixed_extreme",
+      "description": "Mixed weights with tight robot capacity",
+      "weight_distribution": "mixed_balanced",
+      "tight_capacity": true,
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.45291709899902344,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.4765491485595703,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.45362019538879395,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.4610288143157959,
+      "std_solve_time": 0.013445600299435671,
+      "avg_plan_length": 13,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.45291709899902344,
+      "max_solve_time": 0.4765491485595703
+    }
+  }
+]

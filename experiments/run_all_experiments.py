@@ -31,6 +31,27 @@ def main():
         if rc != 0:
             print("[warn] Heuristic comparison returned non-zero exit code")
 
+    # Constraint impact analysis
+    constraint = os.path.join(ROOT, 'constraints', 'constraint_impact.py')
+    if os.path.exists(constraint):
+        rc = run([python, constraint])
+        if rc != 0:
+            print("[warn] Constraint impact analysis returned non-zero exit code")
+
+    # Topology analysis
+    topology = os.path.join(ROOT, 'topology', 'topology_analysis.py')
+    if os.path.exists(topology):
+        rc = run([python, topology])
+        if rc != 0:
+            print("[warn] Topology analysis returned non-zero exit code")
+
+    # Weight distribution analysis
+    weight = os.path.join(ROOT, 'weights', 'weight_distribution.py')
+    if os.path.exists(weight):
+        rc = run([python, weight])
+        if rc != 0:
+            print("[warn] Weight distribution analysis returned non-zero exit code")
+
     print("\n✅ All experiments attempted. Check experiments/*/results for outputs.")
 
 if __name__ == '__main__':

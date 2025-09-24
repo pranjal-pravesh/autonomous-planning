@@ -25,22 +25,22 @@ class ScalingExperiment:
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
         
-        # Experiment configurations
+        # Experiment configurations with challenging goals
         self.configs = [
-            # Small problems
-            {"robots": 1, "docks": 2, "containers": 3, "piles": 2, "name": "small_1"},
-            {"robots": 1, "docks": 3, "containers": 4, "piles": 3, "name": "small_2"},
-            {"robots": 2, "docks": 3, "containers": 5, "piles": 3, "name": "small_3"},
+            # Small problems with simple goals
+            {"robots": 1, "docks": 3, "containers": 4, "piles": 3, "name": "small_1", "goal_type": "simple_swap"},
+            {"robots": 1, "docks": 4, "containers": 5, "piles": 4, "name": "small_2", "goal_type": "simple_swap"},
+            {"robots": 2, "docks": 4, "containers": 6, "piles": 4, "name": "small_3", "goal_type": "simple_swap"},
             
-            # Medium problems
-            {"robots": 2, "docks": 4, "containers": 6, "piles": 4, "name": "medium_1"},
-            {"robots": 3, "docks": 4, "containers": 8, "piles": 4, "name": "medium_2"},
-            {"robots": 3, "docks": 5, "containers": 10, "piles": 5, "name": "medium_3"},
+            # Medium problems with complex redistribution
+            {"robots": 2, "docks": 5, "containers": 8, "piles": 5, "name": "medium_1", "goal_type": "complex_redistribution"},
+            {"robots": 3, "docks": 5, "containers": 10, "piles": 5, "name": "medium_2", "goal_type": "complex_redistribution"},
+            {"robots": 3, "docks": 6, "containers": 12, "piles": 6, "name": "medium_3", "goal_type": "complex_redistribution"},
             
-            # Large problems
-            {"robots": 3, "docks": 6, "containers": 12, "piles": 6, "name": "large_1"},
-            {"robots": 4, "docks": 6, "containers": 15, "piles": 6, "name": "large_2"},
-            {"robots": 4, "docks": 8, "containers": 18, "piles": 8, "name": "large_3"},
+            # Large problems with weight constraints
+            {"robots": 3, "docks": 7, "containers": 14, "piles": 7, "name": "large_1", "goal_type": "weight_constrained"},
+            {"robots": 4, "docks": 7, "containers": 16, "piles": 7, "name": "large_2", "goal_type": "weight_constrained"},
+            {"robots": 4, "docks": 8, "containers": 18, "piles": 8, "name": "large_3", "goal_type": "weight_constrained"},
         ]
         
         self.results = []
@@ -85,21 +85,48 @@ class ScalingExperiment:
             dock = docks[i % len(docks)]
             initial_state[domain.robot_at(robot, dock)] = True
         
-        # Robot capacities (all can carry 2 containers)
+        # Robot capacities based on problem size
         for robot in robots:
             initial_state[domain.robot_can_carry_1(robot)] = True
             initial_state[domain.robot_can_carry_2(robot)] = True
             initial_state[domain.robot_can_carry_3(robot)] = False
-            initial_state[domain.robot_capacity_6(robot)] = True
             initial_state[domain.robot_weight_0(robot)] = True
             initial_state[domain.robot_free(robot)] = True
+            
+            # Set capacity based on problem size
+            if config["name"].startswith("small"):
+                initial_state[domain.robot_capacity_6(robot)] = True  # 6t capacity
+            elif config["name"].startswith("medium"):
+                initial_state[domain.robot_capacity_6(robot)] = True  # 6t capacity
+            else:  # large
+                initial_state[domain.robot_capacity_5(robot)] = True  # Tight 5t capacity
         
-        # Container weights (mix of 2t and 4t)
-        for i, container in enumerate(containers):
-            if i % 2 == 0:
-                initial_state[domain.container_weight_2(container)] = True
-            else:
-                initial_state[domain.container_weight_4(container)] = True
+        # Container weights based on problem size
+        if config["name"].startswith("small"):
+            # Small: mostly 2t containers
+            for i, container in enumerate(containers):
+                if i % 3 == 0:
+                    initial_state[domain.container_weight_2(container)] = True
+                else:
+                    initial_state[domain.container_weight_4(container)] = True
+        elif config["name"].startswith("medium"):
+            # Medium: mixed weights
+            for i, container in enumerate(containers):
+                if i % 3 == 0:
+                    initial_state[domain.container_weight_2(container)] = True
+                elif i % 3 == 1:
+                    initial_state[domain.container_weight_4(container)] = True
+                else:
+                    initial_state[domain.container_weight_6(container)] = True
+        else:  # large
+            # Large: mostly heavy containers
+            for i, container in enumerate(containers):
+                if i < len(containers) // 3:
+                    initial_state[domain.container_weight_2(container)] = True
+                elif i < 2 * len(containers) // 3:
+                    initial_state[domain.container_weight_4(container)] = True
+                else:
+                    initial_state[domain.container_weight_6(container)] = True
         
         # Distribute containers in piles
         containers_per_pile = config["containers"] // config["piles"]
@@ -130,12 +157,49 @@ class ScalingExperiment:
         for fluent, value in initial_state.items():
             problem.set_initial_value(fluent, value)
         
-        # Simple goal: move some containers to different piles
+        # Create challenging goals based on problem type
         goal_conditions = []
-        if len(containers) >= 2 and len(piles) >= 2:
-            # Move first container from first pile to last pile
-            goal_conditions.append(domain.container_in_pile(containers[0], piles[-1]))
-            goal_conditions.append(domain.container_on_top_of_pile(containers[0], piles[-1]))
+        goal_type = config.get("goal_type", "simple_swap")
+        
+        if goal_type == "simple_swap":
+            # Simple container swap between first two piles
+            if len(containers) >= 2 and len(piles) >= 2:
+                goal_conditions.extend([
+                    domain.container_in_pile(containers[0], piles[1]),
+                    domain.container_on_top_of_pile(containers[0], piles[1]),
+                    domain.container_in_pile(containers[1], piles[0]),
+                    domain.container_on_top_of_pile(containers[1], piles[0])
+                ])
+        
+        elif goal_type == "complex_redistribution":
+            # Complex redistribution requiring multiple moves
+            if len(containers) >= 4 and len(piles) >= 3:
+                goal_conditions.extend([
+                    domain.container_in_pile(containers[0], piles[0]),
+                    domain.container_on_top_of_pile(containers[0], piles[0]),
+                    domain.container_in_pile(containers[1], piles[1]),
+                    domain.container_on_top_of_pile(containers[1], piles[1]),
+                    domain.container_in_pile(containers[2], piles[1]),
+                    domain.container_under_in_pile(containers[2], containers[1], piles[1]),
+                    domain.container_in_pile(containers[3], piles[2]),
+                    domain.container_on_top_of_pile(containers[3], piles[2])
+                ])
+        
+        elif goal_type == "weight_constrained":
+            # Weight-constrained redistribution requiring careful planning
+            if len(containers) >= 6 and len(piles) >= 4:
+                goal_conditions.extend([
+                    domain.container_in_pile(containers[0], piles[0]),
+                    domain.container_on_top_of_pile(containers[0], piles[0]),
+                    domain.container_in_pile(containers[1], piles[1]),
+                    domain.container_on_top_of_pile(containers[1], piles[1]),
+                    domain.container_in_pile(containers[2], piles[1]),
+                    domain.container_under_in_pile(containers[2], containers[1], piles[1]),
+                    domain.container_in_pile(containers[3], piles[2]),
+                    domain.container_on_top_of_pile(containers[3], piles[2]),
+                    domain.container_in_pile(containers[4], piles[3]),
+                    domain.container_on_top_of_pile(containers[4], piles[3])
+                ])
         
         if goal_conditions:
             problem.add_goal(And(*goal_conditions))

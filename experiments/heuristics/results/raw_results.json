@@ -3,270 +3,414 @@
     "problem": {
       "name": "easy",
       "robots": 1,
-      "docks": 2,
-      "containers": 3,
-      "piles": 2
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
     },
     "heuristic": {
-      "name": "fast-downward",
-      "config": "fast-downward"
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())"
     },
     "runs": [
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.2114701271057129,
-        "plan_length": 3,
+        "solve_time": 0.2337038516998291,
+        "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.17613506317138672,
-        "plan_length": 3,
+        "solve_time": 0.20961403846740723,
+        "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.17705488204956055,
-        "plan_length": 3,
+        "solve_time": 0.2109081745147705,
+        "plan_length": 7,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.18822002410888672,
-      "std_solve_time": 0.02014043156723386,
-      "avg_plan_length": 3,
+      "avg_solve_time": 0.2180753548940023,
+      "std_solve_time": 0.013550133996923265,
+      "avg_plan_length": 7,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.17613506317138672,
-      "max_solve_time": 0.2114701271057129
+      "min_solve_time": 0.20961403846740723,
+      "max_solve_time": 0.2337038516998291
     }
   },
   {
     "problem": {
       "name": "easy",
       "robots": 1,
-      "docks": 2,
-      "containers": 3,
-      "piles": 2
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
     },
     "heuristic": {
-      "name": "pyperplan",
-      "config": "pyperplan"
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())"
     },
     "runs": [
       {
         "run": 0,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
+        "success": true,
+        "solve_time": 0.21050381660461426,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
+        "success": true,
+        "solve_time": 0.2097010612487793,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
+        "success": true,
+        "solve_time": 0.20921111106872559,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
-      "success_rate": 0,
-      "avg_solve_time": Infinity,
-      "std_solve_time": 0,
-      "avg_plan_length": 0,
-      "std_plan_length": 0,
-      "min_solve_time": Infinity,
-      "max_solve_time": 0
+      "success_rate": 1.0,
+      "avg_solve_time": 0.2098053296407064,
+      "std_solve_time": 0.0006526299286698392,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.20921111106872559,
+      "max_solve_time": 0.21050381660461426
+    }
+  },
+  {
+    "problem": {
+      "name": "easy",
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "goal_type": "simple_swap"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.20921897888183594,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2113642692565918,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.21717309951782227,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.21258544921875,
+      "std_solve_time": 0.004115272669937974,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.20921897888183594,
+      "max_solve_time": 0.21717309951782227
     }
   },
   {
     "problem": {
       "name": "medium",
       "robots": 2,
-      "docks": 3,
-      "containers": 5,
-      "piles": 3
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
     },
     "heuristic": {
-      "name": "fast-downward",
-      "config": "fast-downward"
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())"
     },
     "runs": [
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.26709914207458496,
-        "plan_length": 9,
+        "solve_time": 0.3510580062866211,
+        "plan_length": 17,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.2727470397949219,
-        "plan_length": 9,
+        "solve_time": 0.34393787384033203,
+        "plan_length": 17,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.26389026641845703,
-        "plan_length": 9,
+        "solve_time": 0.34315013885498047,
+        "plan_length": 17,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.2679121494293213,
-      "std_solve_time": 0.004484009854990914,
-      "avg_plan_length": 9,
+      "avg_solve_time": 0.34604867299397785,
+      "std_solve_time": 0.004356052872656001,
+      "avg_plan_length": 17,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.26389026641845703,
-      "max_solve_time": 0.2727470397949219
+      "min_solve_time": 0.34315013885498047,
+      "max_solve_time": 0.3510580062866211
     }
   },
   {
     "problem": {
       "name": "medium",
       "robots": 2,
-      "docks": 3,
-      "containers": 5,
-      "piles": 3
-    },
-    "heuristic": {
-      "name": "pyperplan",
-      "config": "pyperplan"
-    },
-    "runs": [
-      {
-        "run": 0,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n      if container_under_in_pile(c4, container, pile) then container_on_top_of_pile(c4, pile) := true\n      if container_under_in_pile(c4, container, pile) then container_under_in_pile(c4, container, pile) := false\n      if container_under_in_pile(c5, container, pile) then container_on_top_of_pile(c5, pile) := true\n      if container_under_in_pile(c5, container, pile) then container_under_in_pile(c5, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
-      },
-      {
-        "run": 1,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n      if container_under_in_pile(c4, container, pile) then container_on_top_of_pile(c4, pile) := true\n      if container_under_in_pile(c4, container, pile) then container_under_in_pile(c4, container, pile) := false\n      if container_under_in_pile(c5, container, pile) then container_on_top_of_pile(c5, pile) := true\n      if container_under_in_pile(c5, container, pile) then container_under_in_pile(c5, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
-      },
-      {
-        "run": 2,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n      if container_under_in_pile(c4, container, pile) then container_on_top_of_pile(c4, pile) := true\n      if container_under_in_pile(c4, container, pile) then container_under_in_pile(c4, container, pile) := false\n      if container_under_in_pile(c5, container, pile) then container_on_top_of_pile(c5, pile) := true\n      if container_under_in_pile(c5, container, pile) then container_under_in_pile(c5, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
-      }
-    ],
-    "summary": {
-      "success_rate": 0,
-      "avg_solve_time": Infinity,
-      "std_solve_time": 0,
-      "avg_plan_length": 0,
-      "std_plan_length": 0,
-      "min_solve_time": Infinity,
-      "max_solve_time": 0
-    }
-  },
-  {
-    "problem": {
-      "name": "hard",
-      "robots": 2,
       "docks": 4,
-      "containers": 8,
-      "piles": 4
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
     },
     "heuristic": {
-      "name": "fast-downward",
-      "config": "fast-downward"
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())"
     },
     "runs": [
       {
         "run": 0,
         "success": true,
-        "solve_time": 0.48669886589050293,
-        "plan_length": 8,
+        "solve_time": 0.373291015625,
+        "plan_length": 17,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
         "success": true,
-        "solve_time": 0.4496948719024658,
-        "plan_length": 8,
+        "solve_time": 0.41193413734436035,
+        "plan_length": 17,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
         "success": true,
-        "solve_time": 0.4446573257446289,
-        "plan_length": 8,
+        "solve_time": 0.3418912887573242,
+        "plan_length": 17,
         "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
       "success_rate": 1.0,
-      "avg_solve_time": 0.46035035451253253,
-      "std_solve_time": 0.022957074219058494,
-      "avg_plan_length": 8,
+      "avg_solve_time": 0.3757054805755615,
+      "std_solve_time": 0.0350837909909225,
+      "avg_plan_length": 17,
       "std_plan_length": 0.0,
-      "min_solve_time": 0.4446573257446289,
-      "max_solve_time": 0.48669886589050293
+      "min_solve_time": 0.3418912887573242,
+      "max_solve_time": 0.41193413734436035
+    }
+  },
+  {
+    "problem": {
+      "name": "medium",
+      "robots": 2,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "goal_type": "complex_redistribution"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.348064661026001,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.35811805725097656,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.348405122756958,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.3515292803446452,
+      "std_solve_time": 0.005708586899453826,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.348064661026001,
+      "max_solve_time": 0.35811805725097656
     }
   },
   {
     "problem": {
       "name": "hard",
       "robots": 2,
-      "docks": 4,
+      "docks": 5,
       "containers": 8,
-      "piles": 4
+      "piles": 5,
+      "goal_type": "weight_constrained"
     },
     "heuristic": {
-      "name": "pyperplan",
-      "config": "pyperplan"
+      "name": "gbfs_ff",
+      "search": "gbfs(ff())"
     },
     "runs": [
       {
         "run": 0,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n      if container_under_in_pile(c4, container, pile) then container_on_top_of_pile(c4, pile) := true\n      if container_under_in_pile(c4, container, pile) then container_under_in_pile(c4, container, pile) := false\n      if container_under_in_pile(c5, container, pile) then container_on_top_of_pile(c5, pile) := true\n      if container_under_in_pile(c5, container, pile) then container_under_in_pile(c5, container, pile) := false\n      if container_under_in_pile(c6, container, pile) then container_on_top_of_pile(c6, pile) := true\n      if container_under_in_pile(c6, container, pile) then container_under_in_pile(c6, container, pile) := false\n      if container_under_in_pile(c7, container, pile) then container_on_top_of_pile(c7, pile) := true\n      if container_under_in_pile(c7, container, pile) then container_under_in_pile(c7, container, pile) := false\n      if container_under_in_pile(c8, container, pile) then container_on_top_of_pile(c8, pile) := true\n      if container_under_in_pile(c8, container, pile) then container_under_in_pile(c8, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
+        "success": true,
+        "solve_time": 0.5390560626983643,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 1,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n      if container_under_in_pile(c4, container, pile) then container_on_top_of_pile(c4, pile) := true\n      if container_under_in_pile(c4, container, pile) then container_under_in_pile(c4, container, pile) := false\n      if container_under_in_pile(c5, container, pile) then container_on_top_of_pile(c5, pile) := true\n      if container_under_in_pile(c5, container, pile) then container_under_in_pile(c5, container, pile) := false\n      if container_under_in_pile(c6, container, pile) then container_on_top_of_pile(c6, pile) := true\n      if container_under_in_pile(c6, container, pile) then container_under_in_pile(c6, container, pile) := false\n      if container_under_in_pile(c7, container, pile) then container_on_top_of_pile(c7, pile) := true\n      if container_under_in_pile(c7, container, pile) then container_under_in_pile(c7, container, pile) := false\n      if container_under_in_pile(c8, container, pile) then container_on_top_of_pile(c8, pile) := true\n      if container_under_in_pile(c8, container, pile) then container_under_in_pile(c8, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
+        "success": true,
+        "solve_time": 0.5341110229492188,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       },
       {
         "run": 2,
-        "success": false,
-        "solve_time": Infinity,
-        "plan_length": 0,
-        "status": "ERROR: In precondition: ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot)))) of action: action pickup(Robot robot, Container container, Pile pile, Dock dock) {\n    preconditions = [\n      robot_at(robot, dock)\n      pile_at_dock(pile, dock)\n      container_in_pile(container, pile)\n      container_on_top_of_pile(container, pile)\n      ((robot_can_carry_1(robot) and (not robot_has_container_1(robot))) or (robot_can_carry_2(robot) and (not robot_has_container_2(robot))) or (robot_can_carry_3(robot) and (not robot_has_container_3(robot))))\n      ((container_weight_2(container) and robot_weight_0(robot)) or (container_weight_2(container) and robot_weight_2(robot)) or (container_weight_2(container) and robot_weight_4(robot)) or (container_weight_4(container) and robot_weight_0(robot)) or (container_weight_4(container) and robot_weight_2(robot)) or (container_weight_6(container) and robot_weight_0(robot)))\n    ]\n    effects = [\n      robot_carrying(robot, container) := true\n      container_in_pile(container, pile) := false\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then container_in_robot_slot_1(robot, container) := true\n      if (robot_can_carry_1(robot) and (not robot_has_container_1(robot))) then robot_has_container_1(robot) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then container_in_robot_slot_2(robot, container) := true\n      if (robot_can_carry_2(robot) and (not robot_has_container_2(robot)) and robot_has_container_1(robot)) then robot_has_container_2(robot) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then container_in_robot_slot_3(robot, container) := true\n      if (robot_can_carry_3(robot) and (not robot_has_container_3(robot)) and robot_has_container_1(robot) and robot_has_container_2(robot)) then robot_has_container_3(robot) := true\n      if (robot_has_container_1(robot) or robot_has_container_2(robot) or robot_has_container_3(robot)) then robot_free(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_2(container) and robot_weight_0(robot)) then robot_weight_2(robot) := true\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_2(container) and robot_weight_2(robot)) then robot_weight_4(robot) := true\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_4(robot) := false\n      if (container_weight_2(container) and robot_weight_4(robot)) then robot_weight_6(robot) := true\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_4(container) and robot_weight_0(robot)) then robot_weight_4(robot) := true\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_2(robot) := false\n      if (container_weight_4(container) and robot_weight_2(robot)) then robot_weight_6(robot) := true\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_0(robot) := false\n      if (container_weight_6(container) and robot_weight_0(robot)) then robot_weight_6(robot) := true\n      container_on_top_of_pile(container, pile) := false\n      if container_under_in_pile(c1, container, pile) then container_on_top_of_pile(c1, pile) := true\n      if container_under_in_pile(c1, container, pile) then container_under_in_pile(c1, container, pile) := false\n      if container_under_in_pile(c2, container, pile) then container_on_top_of_pile(c2, pile) := true\n      if container_under_in_pile(c2, container, pile) then container_under_in_pile(c2, container, pile) := false\n      if container_under_in_pile(c3, container, pile) then container_on_top_of_pile(c3, pile) := true\n      if container_under_in_pile(c3, container, pile) then container_under_in_pile(c3, container, pile) := false\n      if container_under_in_pile(c4, container, pile) then container_on_top_of_pile(c4, pile) := true\n      if container_under_in_pile(c4, container, pile) then container_under_in_pile(c4, container, pile) := false\n      if container_under_in_pile(c5, container, pile) then container_on_top_of_pile(c5, pile) := true\n      if container_under_in_pile(c5, container, pile) then container_under_in_pile(c5, container, pile) := false\n      if container_under_in_pile(c6, container, pile) then container_on_top_of_pile(c6, pile) := true\n      if container_under_in_pile(c6, container, pile) then container_under_in_pile(c6, container, pile) := false\n      if container_under_in_pile(c7, container, pile) then container_on_top_of_pile(c7, pile) := true\n      if container_under_in_pile(c7, container, pile) then container_under_in_pile(c7, container, pile) := false\n      if container_under_in_pile(c8, container, pile) then container_on_top_of_pile(c8, pile) := true\n      if container_under_in_pile(c8, container, pile) then container_under_in_pile(c8, container, pile) := false\n    ]\n  } is not an AND or a FLUENT"
+        "success": true,
+        "solve_time": 0.5493369102478027,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
       }
     ],
     "summary": {
-      "success_rate": 0,
-      "avg_solve_time": Infinity,
-      "std_solve_time": 0,
-      "avg_plan_length": 0,
-      "std_plan_length": 0,
-      "min_solve_time": Infinity,
-      "max_solve_time": 0
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5408346652984619,
+      "std_solve_time": 0.007767205508682057,
+      "avg_plan_length": 43,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.5341110229492188,
+      "max_solve_time": 0.5493369102478027
+    }
+  },
+  {
+    "problem": {
+      "name": "hard",
+      "robots": 2,
+      "docks": 5,
+      "containers": 8,
+      "piles": 5,
+      "goal_type": "weight_constrained"
+    },
+    "heuristic": {
+      "name": "gbfs_hadd",
+      "search": "gbfs(hadd())"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.5536661148071289,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5783231258392334,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5538558959960938,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5619483788808187,
+      "std_solve_time": 0.014181264319129135,
+      "avg_plan_length": 43,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.5536661148071289,
+      "max_solve_time": 0.5783231258392334
+    }
+  },
+  {
+    "problem": {
+      "name": "hard",
+      "robots": 2,
+      "docks": 5,
+      "containers": 8,
+      "piles": 5,
+      "goal_type": "weight_constrained"
+    },
+    "heuristic": {
+      "name": "gbfs_hmax",
+      "search": "gbfs(hmax())"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.6081788539886475,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5577480792999268,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5523200035095215,
+        "plan_length": 43,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5727489789326986,
+      "std_solve_time": 0.030802971229358836,
+      "avg_plan_length": 43,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.5523200035095215,
+      "max_solve_time": 0.6081788539886475
     }
   }
 ]

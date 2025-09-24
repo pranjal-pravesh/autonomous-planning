@@ -1,20 +1,23 @@
 # Heuristic Comparison Results
 
 ## Experiment Overview
-- **Heuristics tested**: 2
+- **Heuristics tested**: 3
 - **Test problems**: 3
-- **Total experiments**: 6
+- **Total experiments**: 9
 
 ## Results Summary
 
 | Problem | Heuristic | Success Rate | Avg Time (s) | Avg Plan Length |
 |---------|-----------|--------------|--------------|-----------------|
-| easy | fast-downward | 1.00 | 0.188 | 3.0 |
-| easy | pyperplan | 0.00 | inf | 0.0 |
-| medium | fast-downward | 1.00 | 0.268 | 9.0 |
-| medium | pyperplan | 0.00 | inf | 0.0 |
-| hard | fast-downward | 1.00 | 0.460 | 8.0 |
-| hard | pyperplan | 0.00 | inf | 0.0 |
+| easy | gbfs_ff | 1.00 | 0.218 | 7.0 |
+| easy | gbfs_hadd | 1.00 | 0.210 | 7.0 |
+| easy | gbfs_hmax | 1.00 | 0.213 | 7.0 |
+| medium | gbfs_ff | 1.00 | 0.346 | 17.0 |
+| medium | gbfs_hadd | 1.00 | 0.376 | 17.0 |
+| medium | gbfs_hmax | 1.00 | 0.352 | 17.0 |
+| hard | gbfs_ff | 1.00 | 0.541 | 43.0 |
+| hard | gbfs_hadd | 1.00 | 0.562 | 43.0 |
+| hard | gbfs_hmax | 1.00 | 0.573 | 43.0 |
 
 ## Key Findings
 

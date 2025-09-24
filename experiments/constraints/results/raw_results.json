@@ -1,0 +1,224 @@
+[
+  {
+    "config": {
+      "name": "no_constraints",
+      "description": "No LIFO, no weight constraints",
+      "lifo_enabled": false,
+      "weight_constraints": false,
+      "robots": 2,
+      "docks": 3,
+      "containers": 6,
+      "piles": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.3648338317871094,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.3431112766265869,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.34543681144714355,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.35112730662027997,
+      "std_solve_time": 0.011927013547493844,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.3431112766265869,
+      "max_solve_time": 0.3648338317871094
+    }
+  },
+  {
+    "config": {
+      "name": "lifo_only",
+      "description": "LIFO constraints only",
+      "lifo_enabled": true,
+      "weight_constraints": false,
+      "robots": 2,
+      "docks": 3,
+      "containers": 6,
+      "piles": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.3452286720275879,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.35007596015930176,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.3522522449493408,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.34918562571207684,
+      "std_solve_time": 0.0035954367909520734,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.3452286720275879,
+      "max_solve_time": 0.3522522449493408
+    }
+  },
+  {
+    "config": {
+      "name": "weight_only",
+      "description": "Weight constraints only",
+      "lifo_enabled": false,
+      "weight_constraints": true,
+      "robots": 2,
+      "docks": 3,
+      "containers": 6,
+      "piles": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.3061099052429199,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.2998347282409668,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.3035898208618164,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.3031781514485677,
+      "std_solve_time": 0.0031577785515792185,
+      "avg_plan_length": 13,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.2998347282409668,
+      "max_solve_time": 0.3061099052429199
+    }
+  },
+  {
+    "config": {
+      "name": "tight_capacity_only",
+      "description": "Tight capacity constraints only (no LIFO, no weight constraints)",
+      "lifo_enabled": false,
+      "weight_constraints": false,
+      "tight_capacity": true,
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.6174838542938232,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.5471198558807373,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.5419139862060547,
+        "plan_length": 17,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.5688392321268717,
+      "std_solve_time": 0.04220781585312781,
+      "avg_plan_length": 17,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.5419139862060547,
+      "max_solve_time": 0.6174838542938232
+    }
+  },
+  {
+    "config": {
+      "name": "all_constraints",
+      "description": "All constraints: LIFO + weight + tight capacity",
+      "lifo_enabled": true,
+      "weight_constraints": true,
+      "tight_capacity": true,
+      "robots": 2,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.46041297912597656,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.46135616302490234,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.4830601215362549,
+        "plan_length": 13,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.4682764212290446,
+      "std_solve_time": 0.012811742467239004,
+      "avg_plan_length": 13,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.46041297912597656,
+      "max_solve_time": 0.4830601215362549
+    }
+  }
+]

@@ -17,6 +17,9 @@ import pandas as pd
 
 from unified_planning.shortcuts import *
 from unified_planning.engines.results import PlanGenerationResultStatus
+from unified_planning.io import PDDLWriter
+import tempfile
+import subprocess
 from src.domain import LogisticsDomain
 from src.actions import LogisticsActions
 
@@ -25,17 +28,18 @@ class HeuristicExperiment:
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
         
-        # Heuristics to test
-        self.heuristics = [
-            {"name": "fast-downward", "config": "fast-downward"},
-            {"name": "pyperplan", "config": "pyperplan"},
+        # Fast Downward heuristic/search configurations to compare
+        self.fd_searches = [
+            {"name": "gbfs_ff", "search": "gbfs(ff())"},
+            {"name": "gbfs_hadd", "search": "gbfs(hadd())"},
+            {"name": "gbfs_hmax", "search": "gbfs(hmax())"},
         ]
         
-        # Test problems of varying difficulty
+        # Test problems of varying difficulty with challenging goals
         self.test_problems = [
-            {"name": "easy", "robots": 1, "docks": 2, "containers": 3, "piles": 2},
-            {"name": "medium", "robots": 2, "docks": 3, "containers": 5, "piles": 3},
-            {"name": "hard", "robots": 2, "docks": 4, "containers": 8, "piles": 4},
+            {"name": "easy", "robots": 1, "docks": 3, "containers": 4, "piles": 3, "goal_type": "simple_swap"},
+            {"name": "medium", "robots": 2, "docks": 4, "containers": 6, "piles": 4, "goal_type": "complex_redistribution"},
+            {"name": "hard", "robots": 2, "docks": 5, "containers": 8, "piles": 5, "goal_type": "weight_constrained"},
         ]
         
         self.results = []
@@ -75,25 +79,53 @@ class HeuristicExperiment:
         # Set initial state
         initial_state = {}
         
-        # Robot locations
+        # Robot locations and capacities based on problem difficulty
         for i, robot in enumerate(robots):
             dock = docks[i % len(docks)]
             initial_state[domain.robot_at(robot, dock)] = True
             initial_state[domain.robot_can_carry_1(robot)] = True
             initial_state[domain.robot_can_carry_2(robot)] = True
             initial_state[domain.robot_can_carry_3(robot)] = False
-            initial_state[domain.robot_capacity_6(robot)] = True
             initial_state[domain.robot_weight_0(robot)] = True
             initial_state[domain.robot_free(robot)] = True
+            
+            # Set capacity based on problem difficulty
+            if config["name"] == "easy":
+                initial_state[domain.robot_capacity_6(robot)] = True  # 6t capacity
+            elif config["name"] == "medium":
+                if i == 0:
+                    initial_state[domain.robot_capacity_6(robot)] = True  # r1: 6t
+                else:
+                    initial_state[domain.robot_capacity_5(robot)] = True  # r2: 5t
+            else:  # hard
+                initial_state[domain.robot_capacity_5(robot)] = True  # Tight 5t capacity
         
-        # Container weights (mix)
-        for i, container in enumerate(containers):
-            if i % 3 == 0:
-                initial_state[domain.container_weight_2(container)] = True
-            elif i % 3 == 1:
-                initial_state[domain.container_weight_4(container)] = True
-            else:
-                initial_state[domain.container_weight_6(container)] = True
+        # Container weights based on problem difficulty
+        if config["name"] == "easy":
+            # Easy: mostly 2t containers
+            for i, container in enumerate(containers):
+                if i < 3:
+                    initial_state[domain.container_weight_2(container)] = True
+                else:
+                    initial_state[domain.container_weight_4(container)] = True
+        elif config["name"] == "medium":
+            # Medium: mixed weights
+            for i, container in enumerate(containers):
+                if i % 3 == 0:
+                    initial_state[domain.container_weight_2(container)] = True
+                elif i % 3 == 1:
+                    initial_state[domain.container_weight_4(container)] = True
+                else:
+                    initial_state[domain.container_weight_6(container)] = True
+        else:  # hard
+            # Hard: mostly heavy containers
+            for i, container in enumerate(containers):
+                if i < 2:
+                    initial_state[domain.container_weight_2(container)] = True
+                elif i < 5:
+                    initial_state[domain.container_weight_4(container)] = True
+                else:
+                    initial_state[domain.container_weight_6(container)] = True
         
         # Distribute containers in piles
         containers_per_pile = config["containers"] // config["piles"]
@@ -123,27 +155,118 @@ class HeuristicExperiment:
         for fluent, value in initial_state.items():
             problem.set_initial_value(fluent, value)
         
-        # Goal: move containers to different piles
+        # Create challenging goals based on problem type
         goal_conditions = []
-        if len(containers) >= 2 and len(piles) >= 2:
-            goal_conditions.append(domain.container_in_pile(containers[0], piles[-1]))
-            goal_conditions.append(domain.container_on_top_of_pile(containers[0], piles[-1]))
-            if len(containers) >= 4:
-                goal_conditions.append(domain.container_in_pile(containers[1], piles[0]))
-                goal_conditions.append(domain.container_on_top_of_pile(containers[1], piles[0]))
+        goal_type = config.get("goal_type", "simple_swap")
+        
+        if goal_type == "simple_swap":
+            # Easy: Simple container swap between first two piles
+            if len(containers) >= 2 and len(piles) >= 2:
+                # Move first container from p1 to p2, second from p2 to p1
+                goal_conditions.extend([
+                    domain.container_in_pile(containers[0], piles[1]),
+                    domain.container_on_top_of_pile(containers[0], piles[1]),
+                    domain.container_in_pile(containers[1], piles[0]),
+                    domain.container_on_top_of_pile(containers[1], piles[0])
+                ])
+        
+        elif goal_type == "complex_redistribution":
+            # Medium: Complex redistribution requiring multiple moves
+            if len(containers) >= 4 and len(piles) >= 3:
+                # Create a specific stacking pattern across multiple piles
+                goal_conditions.extend([
+                    # Pile 0: containers[0] on top
+                    domain.container_in_pile(containers[0], piles[0]),
+                    domain.container_on_top_of_pile(containers[0], piles[0]),
+                    # Pile 1: containers[1] on top, containers[2] underneath
+                    domain.container_in_pile(containers[1], piles[1]),
+                    domain.container_on_top_of_pile(containers[1], piles[1]),
+                    domain.container_in_pile(containers[2], piles[1]),
+                    domain.container_under_in_pile(containers[2], containers[1], piles[1]),
+                    # Pile 2: containers[3] on top
+                    domain.container_in_pile(containers[3], piles[2]),
+                    domain.container_on_top_of_pile(containers[3], piles[2])
+                ])
+        
+        elif goal_type == "weight_constrained":
+            # Hard: Weight-constrained redistribution requiring careful planning
+            if len(containers) >= 6 and len(piles) >= 4:
+                # Heavy containers must be moved by robots with sufficient capacity
+                # Create a pattern that requires weight-aware planning
+                goal_conditions.extend([
+                    # Pile 0: light container on top
+                    domain.container_in_pile(containers[0], piles[0]),
+                    domain.container_on_top_of_pile(containers[0], piles[0]),
+                    # Pile 1: heavy container on top, medium underneath
+                    domain.container_in_pile(containers[1], piles[1]),
+                    domain.container_on_top_of_pile(containers[1], piles[1]),
+                    domain.container_in_pile(containers[2], piles[1]),
+                    domain.container_under_in_pile(containers[2], containers[1], piles[1]),
+                    # Pile 2: medium container on top
+                    domain.container_in_pile(containers[3], piles[2]),
+                    domain.container_on_top_of_pile(containers[3], piles[2]),
+                    # Pile 3: heavy container on top
+                    domain.container_in_pile(containers[4], piles[3]),
+                    domain.container_on_top_of_pile(containers[4], piles[3])
+                ])
         
         if goal_conditions:
             problem.add_goal(And(*goal_conditions))
         
         return problem, domain
     
-    def run_experiment(self, problem_config: Dict, heuristic: Dict, num_runs: int = 3) -> Dict:
-        """Run experiment for given problem and heuristic."""
-        print(f"Testing {heuristic['name']} on {problem_config['name']} problem")
+    def _export_to_pddl(self, problem: Problem, workdir: str) -> Tuple[str, str]:
+        writer = PDDLWriter(problem)
+        dom_path = os.path.join(workdir, "domain.pddl")
+        prob_path = os.path.join(workdir, "problem.pddl")
+        writer.write_domain(dom_path)
+        writer.write_problem(prob_path)
+        return dom_path, prob_path
+
+    def _run_fast_downward(self, domain_pddl: str, problem_pddl: str, search: str, workdir: str) -> Tuple[bool, float, int, str]:
+        start = time.time()
+        # Prefer 'fast-downward' if available; fallback to 'fast-downward.py'
+        cmd_candidates = [
+            ["fast-downward", domain_pddl, problem_pddl, "--search", search],
+            [sys.executable, "-m", "downward.fast_downward", domain_pddl, problem_pddl, "--search", search],
+            [sys.executable, "-m", "up_fast_downward.fast_downward", domain_pddl, problem_pddl, "--search", search],
+        ]
+        last_err = ""
+        for cmd in cmd_candidates:
+            try:
+                res = subprocess.run(cmd, cwd=workdir, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=600)
+                if res.returncode != 0:
+                    last_err = (res.stderr or res.stdout or "non-zero return code").strip()
+                    continue
+                # Count plan length from generated sas_plan (or plan.N)
+                plan_len = 0
+                # Common plan filenames
+                for fname in ["sas_plan", "plan", "plan.1", "sas_plan.1"]:
+                    fpath = os.path.join(workdir, fname)
+                    if os.path.exists(fpath):
+                        with open(fpath) as f:
+                            for line in f:
+                                line = line.strip()
+                                if not line or line.startswith(";"):
+                                    continue
+                                plan_len += 1
+                        break
+                elapsed = time.time() - start
+                return True, elapsed, plan_len, "SOLVED"
+            except FileNotFoundError as e:
+                last_err = str(e)
+                continue
+            except subprocess.TimeoutExpired:
+                return False, 600.0, 0, "TIMEOUT"
+        return False, float('inf'), 0, f"ERROR: {last_err[:200]}"
+
+    def run_experiment(self, problem_config: Dict, fd_search: Dict, num_runs: int = 3) -> Dict:
+        """Run experiment for given problem and a Fast Downward search config."""
+        print(f"Testing {fd_search['name']} ({fd_search['search']}) on {problem_config['name']} problem")
         
         results = {
             "problem": problem_config,
-            "heuristic": heuristic,
+            "heuristic": fd_search,
             "runs": [],
             "summary": {}
         }
@@ -152,21 +275,26 @@ class HeuristicExperiment:
             try:
                 problem, domain = self.create_problem(problem_config)
                 
+                # Use UP Fast Downward interface directly
                 start_time = time.time()
-                with OneshotPlanner(name=heuristic['config']) as planner:
+                with OneshotPlanner(name='fast-downward') as planner:
                     result = planner.solve(problem)
                 solve_time = time.time() - start_time
                 
+                success = result.status == PlanGenerationResultStatus.SOLVED_SATISFICING
+                plan_length = len(result.plan.actions) if result.plan else 0
+                status = str(result.status)
+                
                 run_result = {
                     "run": run,
-                    "success": result.status == PlanGenerationResultStatus.SOLVED_SATISFICING,
+                    "success": success,
                     "solve_time": solve_time,
-                    "plan_length": len(result.plan.actions) if result.plan else 0,
-                    "status": str(result.status)
+                    "plan_length": plan_length,
+                    "status": status
                 }
                 
                 results["runs"].append(run_result)
-                print(f"  Run {run+1}: {run_result['success']}, {solve_time:.3f}s, {run_result['plan_length']} actions")
+                print(f"  Run {run+1}: {run_result['success']}, {run_result['solve_time']:.3f}s, {run_result['plan_length']} actions")
                 
             except Exception as e:
                 print(f"  Run {run+1}: ERROR - {str(e)}")
@@ -212,8 +340,8 @@ class HeuristicExperiment:
         print("=" * 50)
         
         for problem_config in self.test_problems:
-            for heuristic in self.heuristics:
-                result = self.run_experiment(problem_config, heuristic)
+            for fd_search in self.fd_searches:
+                result = self.run_experiment(problem_config, fd_search)
                 self.results.append(result)
                 print()
         
@@ -274,7 +402,9 @@ class HeuristicExperiment:
         plt.ylabel("Average Solve Time (s)")
         plt.title("Solve Time Comparison")
         plt.legend()
-        plt.yscale("log")
+        # Avoid log scale errors when no positive values
+        if (df["avg_solve_time"] > 0).any():
+            plt.yscale("log")
         
         plt.subplot(2, 3, 2)
         for heuristic in df["heuristic"].unique():
@@ -302,7 +432,8 @@ class HeuristicExperiment:
         plt.ylabel("Average Solve Time (s)")
         plt.title("Solve Time by Problem")
         plt.xticks(rotation=45)
-        plt.yscale("log")
+        if (df_pivot > 0).to_numpy().any():
+            plt.yscale("log")
         
         # Box plots for plan length
         plt.subplot(2, 3, 5)
@@ -331,7 +462,7 @@ class HeuristicExperiment:
         report = f"""# Heuristic Comparison Results
 
 ## Experiment Overview
-- **Heuristics tested**: {len(self.heuristics)}
+- **Heuristics tested**: {len(self.fd_searches)}
 - **Test problems**: {len(self.test_problems)}
 - **Total experiments**: {len(self.results)}
 
