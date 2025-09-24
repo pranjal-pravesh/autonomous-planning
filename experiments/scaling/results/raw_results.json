@@ -1,0 +1,497 @@
+[
+  {
+    "config": {
+      "robots": 1,
+      "docks": 2,
+      "containers": 3,
+      "piles": 2,
+      "name": "small_1"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.20352983474731445,
+        "plan_length": 3,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.1808788776397705,
+        "plan_length": 3,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.17862796783447266,
+        "plan_length": 3,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.17958688735961914,
+        "plan_length": 3,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 0.1809539794921875,
+        "plan_length": 3,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.18471550941467285,
+      "std_solve_time": 0.01056182530544167,
+      "avg_plan_length": 3,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.17862796783447266,
+      "max_solve_time": 0.20352983474731445
+    }
+  },
+  {
+    "config": {
+      "robots": 1,
+      "docks": 3,
+      "containers": 4,
+      "piles": 3,
+      "name": "small_2"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.20814800262451172,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.21425199508666992,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.206345796585083,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.20661306381225586,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 0.20878982543945312,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.20882973670959473,
+      "std_solve_time": 0.0031996420681056808,
+      "avg_plan_length": 4,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.206345796585083,
+      "max_solve_time": 0.21425199508666992
+    }
+  },
+  {
+    "config": {
+      "robots": 2,
+      "docks": 3,
+      "containers": 5,
+      "piles": 3,
+      "name": "small_3"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.29087281227111816,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.3041229248046875,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.3310248851776123,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.2861776351928711,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 0.2825300693511963,
+        "plan_length": 4,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.29894566535949707,
+      "std_solve_time": 0.01970752206095385,
+      "avg_plan_length": 4,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.2825300693511963,
+      "max_solve_time": 0.3310248851776123
+    }
+  },
+  {
+    "config": {
+      "robots": 2,
+      "docks": 4,
+      "containers": 6,
+      "piles": 4,
+      "name": "medium_1"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.3653690814971924,
+        "plan_length": 5,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.3686840534210205,
+        "plan_length": 5,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.3663599491119385,
+        "plan_length": 5,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.3629298210144043,
+        "plan_length": 5,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 0.37267613410949707,
+        "plan_length": 5,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.3672038078308105,
+      "std_solve_time": 0.0036906220163829403,
+      "avg_plan_length": 5,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.3629298210144043,
+      "max_solve_time": 0.37267613410949707
+    }
+  },
+  {
+    "config": {
+      "robots": 3,
+      "docks": 4,
+      "containers": 8,
+      "piles": 4,
+      "name": "medium_2"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 0.6519260406494141,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 0.6806211471557617,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 0.6181042194366455,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 0.6246218681335449,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 0.6108407974243164,
+        "plan_length": 6,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 0.6372228145599366,
+      "std_solve_time": 0.028809353897690192,
+      "avg_plan_length": 6,
+      "std_plan_length": 0.0,
+      "min_solve_time": 0.6108407974243164,
+      "max_solve_time": 0.6806211471557617
+    }
+  },
+  {
+    "config": {
+      "robots": 3,
+      "docks": 5,
+      "containers": 10,
+      "piles": 5,
+      "name": "medium_3"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.075322151184082,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.0032849311828613,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.0271077156066895,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.0045390129089355,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 1.025343894958496,
+        "plan_length": 7,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.0271195411682128,
+      "std_solve_time": 0.02917453324935036,
+      "avg_plan_length": 7,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.0032849311828613,
+      "max_solve_time": 1.075322151184082
+    }
+  },
+  {
+    "config": {
+      "robots": 3,
+      "docks": 6,
+      "containers": 12,
+      "piles": 6,
+      "name": "large_1"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 1.6136829853057861,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 1.6134188175201416,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 1.6121251583099365,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 1.6164071559906006,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 1.6462759971618652,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 1.620382022857666,
+      "std_solve_time": 0.01455881705986961,
+      "avg_plan_length": 8,
+      "std_plan_length": 0.0,
+      "min_solve_time": 1.6121251583099365,
+      "max_solve_time": 1.6462759971618652
+    }
+  },
+  {
+    "config": {
+      "robots": 4,
+      "docks": 6,
+      "containers": 15,
+      "piles": 6,
+      "name": "large_2"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 3.020020008087158,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 3.0446999073028564,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 3.075345039367676,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 3.0395071506500244,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 3.0204548835754395,
+        "plan_length": 8,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 3.040005397796631,
+      "std_solve_time": 0.022654002649893756,
+      "avg_plan_length": 8,
+      "std_plan_length": 0.0,
+      "min_solve_time": 3.020020008087158,
+      "max_solve_time": 3.075345039367676
+    }
+  },
+  {
+    "config": {
+      "robots": 4,
+      "docks": 8,
+      "containers": 18,
+      "piles": 8,
+      "name": "large_3"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "success": true,
+        "solve_time": 5.948338985443115,
+        "plan_length": 10,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 1,
+        "success": true,
+        "solve_time": 5.8553361892700195,
+        "plan_length": 10,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 2,
+        "success": true,
+        "solve_time": 5.832037925720215,
+        "plan_length": 10,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 3,
+        "success": true,
+        "solve_time": 5.861787796020508,
+        "plan_length": 10,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      },
+      {
+        "run": 4,
+        "success": true,
+        "solve_time": 5.835546970367432,
+        "plan_length": 10,
+        "status": "PlanGenerationResultStatus.SOLVED_SATISFICING"
+      }
+    ],
+    "summary": {
+      "success_rate": 1.0,
+      "avg_solve_time": 5.866609573364258,
+      "std_solve_time": 0.047408120744780916,
+      "avg_plan_length": 10,
+      "std_plan_length": 0.0,
+      "min_solve_time": 5.832037925720215,
+      "max_solve_time": 5.948338985443115
+    }
+  }
+]

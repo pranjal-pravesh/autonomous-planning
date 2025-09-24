@@ -3,3 +3,5 @@ up-pyperplan
 up-fast-downward
 rich
 typer
+matplotlib
+pandas

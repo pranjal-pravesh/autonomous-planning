@@ -1,0 +1,7 @@
+problem,heuristic,robots,docks,containers,piles,success_rate,avg_solve_time,std_solve_time,avg_plan_length,std_plan_length
+easy,fast-downward,1,2,3,2,1.0,0.18822002410888672,0.02014043156723386,3,0.0
+easy,pyperplan,1,2,3,2,0,inf,0,0,0
+medium,fast-downward,2,3,5,3,1.0,0.2679121494293213,0.004484009854990914,9,0.0
+medium,pyperplan,2,3,5,3,0,inf,0,0,0
+hard,fast-downward,2,4,8,4,1.0,0.46035035451253253,0.022957074219058494,8,0.0
+hard,pyperplan,2,4,8,4,0,inf,0,0,0
