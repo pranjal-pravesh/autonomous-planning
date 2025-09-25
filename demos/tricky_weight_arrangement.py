@@ -187,7 +187,105 @@ def solve_refactored():
 
     problem, domain, domain_objects = build_problem_refactored()
 
+    # Display domain information
     LogisticsDisplay.display_domain_info(domain_objects)
+
+    # Display weight challenge specific distribution
+    initial_distribution = {
+        "dock_distributions": [
+            {
+                "dock": "d1",
+                "pile": "p1", 
+                "containers": "c1(2t) → c2(4t)",
+                "count": 2,
+                "total_weight": "6t",
+                "robot": "r1"
+            },
+            {
+                "dock": "d2",
+                "pile": "p2",
+                "containers": "c3(4t) → c4(4t) → c5(4t)",
+                "count": 3,
+                "total_weight": "12t",
+                "robot": "-"
+            },
+            {
+                "dock": "d3", 
+                "pile": "p3",
+                "containers": "Empty",
+                "count": 0,
+                "total_weight": "0t",
+                "robot": "-"
+            }
+        ],
+        "robot_capacities": [
+            {
+                "robot": "r1",
+                "capacity": "6t",
+                "slots": "2",
+                "current_load": "0t",
+                "available": "6t (2 slots)"
+            }
+        ],
+        "summary_metrics": [
+            {
+                "name": "Total Containers",
+                "initial": 5,
+                "target": 5,
+                "change": "0"
+            },
+            {
+                "name": "Total Weight",
+                "initial": "18t",
+                "target": "18t", 
+                "change": "0"
+            },
+            {
+                "name": "Robot Capacity",
+                "initial": "6t (2 slots)",
+                "target": "6t (2 slots)", 
+                "change": "No change"
+            }
+        ]
+    }
+
+    target_distribution = {
+        "dock_distributions": [
+            {
+                "dock": "d1",
+                "pile": "p1",
+                "containers": "Empty",
+                "count": 0,
+                "total_weight": "0t",
+                "change": "-2",
+                "weight_constraint": "Cleared for reorganization"
+            },
+            {
+                "dock": "d2",
+                "pile": "p2", 
+                "containers": "c3(4t)",
+                "count": 1,
+                "total_weight": "4t",
+                "change": "-2",
+                "weight_constraint": "Keep c3, move others"
+            },
+            {
+                "dock": "d3",
+                "pile": "p3",
+                "containers": "c4(4t) → c5(4t) → c1(2t) → c2(4t)",
+                "count": 4,
+                "total_weight": "14t",
+                "change": "+4",
+                "weight_constraint": "Target: c4→c5→c1→c2 stack"
+            }
+        ]
+    }
+    
+    # Use the weight-specific display
+    LogisticsDisplay.display_weight_challenge_distribution(initial_distribution, target_distribution)
+    
+    # Display distribution summary
+    LogisticsDisplay.display_distribution_summary(initial_distribution, target_distribution)
 
     console.print(f"\n[bold blue]🤖 Solving refactored tricky weight challenge...[/bold blue]")
 
@@ -200,15 +298,11 @@ def solve_refactored():
         console.print(f"[bold green]✅ SUCCESS! Completed in {elapsed:.3f}s[/bold green]")
 
         if result.plan:
-            table = Table(show_header=True, header_style="bold cyan")
-            table.add_column("Step", style="dim", width=6, justify="center")
-            table.add_column("Action", style="cyan", width=12)
-            table.add_column("Params", style="white")
-
-            for i, action in enumerate(result.plan.actions, 1):
-                table.add_row(str(i), action.action.name, ", ".join(str(p) for p in action.actual_parameters))
-
-            console.print(table)
+            # Use the detailed plan execution display with weight information
+            LogisticsDisplay.display_plan_execution_detailed(result, "Tricky Weight Challenge Plan")
+            
+            # Display plan summary
+            LogisticsDisplay.display_plan_summary(result, elapsed, "Planning Results")
 
             if len(result.plan.actions) == 19:
                 console.print("[bold green]🎯 Plan length matches expected 19 steps[/bold green]")

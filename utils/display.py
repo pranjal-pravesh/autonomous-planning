@@ -274,3 +274,110 @@ class LogisticsDisplay:
             )
         
         console.print(goal_table)
+    
+    @staticmethod
+    def display_weight_challenge_distribution(initial_state: Dict[str, Any], target_state: Dict[str, Any]):
+        """Display weight challenge specific distribution with weight information."""
+        
+        # Initial state with weight details
+        initial_table = Table(title="⚖️ Initial Weight Distribution (Bottom → Top)", show_header=True, header_style="bold cyan")
+        initial_table.add_column("Dock", style="cyan")
+        initial_table.add_column("Pile", style="white")
+        initial_table.add_column("Stack Order", style="yellow")
+        initial_table.add_column("Total Weight", style="red")
+        initial_table.add_column("Robot", style="green")
+        
+        for dist in initial_state.get("dock_distributions", []):
+            initial_table.add_row(
+                dist["dock"],
+                dist["pile"],
+                dist["containers"],
+                dist.get("total_weight", "N/A"),
+                dist.get("robot", "-")
+            )
+        
+        console.print(initial_table)
+        
+        # Weight capacity analysis
+        capacity_table = Table(title="🤖 Robot Capacity Analysis", show_header=True, header_style="bold magenta")
+        capacity_table.add_column("Robot", style="cyan")
+        capacity_table.add_column("Capacity", style="white")
+        capacity_table.add_column("Slots", style="green")
+        capacity_table.add_column("Current Load", style="yellow")
+        capacity_table.add_column("Available", style="red")
+        
+        for robot_info in initial_state.get("robot_capacities", []):
+            capacity_table.add_row(
+                robot_info["robot"],
+                robot_info["capacity"],
+                robot_info["slots"],
+                robot_info["current_load"],
+                robot_info["available"]
+            )
+        
+        console.print(capacity_table)
+        
+        # Target state with weight constraints
+        target_table = Table(title="🎯 Target Weight Distribution (Bottom → Top)", show_header=True, header_style="bold green")
+        target_table.add_column("Dock", style="cyan")
+        target_table.add_column("Target Pile", style="white")
+        target_table.add_column("Target Stack", style="yellow")
+        target_table.add_column("Total Weight", style="red")
+        target_table.add_column("Change", style="white")
+        target_table.add_column("Weight Constraint", style="blue")
+        
+        for dist in target_state.get("dock_distributions", []):
+            target_table.add_row(
+                dist["dock"],
+                dist["pile"],
+                dist["containers"],
+                dist.get("total_weight", "N/A"),
+                dist["change"],
+                dist.get("weight_constraint", "Within limits")
+            )
+        
+        console.print(target_table)
+    
+    @staticmethod
+    def display_plan_execution_detailed(plan_result, title: str = "Detailed Plan Execution"):
+        """Display plan execution with detailed action analysis."""
+        if not plan_result or not plan_result.plan:
+            console.print(f"[red]❌ {title}: No plan found[/red]")
+            return
+        
+        plan_table = Table(title=f"📋 {title}", show_header=True, header_style="bold green")
+        plan_table.add_column("Step", style="cyan", justify="center", width=4)
+        plan_table.add_column("Action", style="white", width=10)
+        plan_table.add_column("Robot", style="yellow", width=4)
+        plan_table.add_column("Details", style="green", width=30)
+        plan_table.add_column("Purpose", style="blue", width=25)
+        plan_table.add_column("Weight", style="red", width=8)
+        
+        for i, action in enumerate(plan_result.plan.actions, 1):
+            action_name = action.action.name
+            params = [str(p) for p in action.actual_parameters]
+            
+            if action_name == "move":
+                robot_param, from_dock, to_dock = params
+                details = f"{robot_param}: {from_dock} → {to_dock}"
+                purpose = "Navigate to target location"
+                weight = "N/A"
+            elif action_name == "pickup":
+                robot_param, container, pile, dock = params
+                details = f"{robot_param} picks {container} from {pile} at {dock}"
+                purpose = f"Collect {container} for redistribution"
+                # Extract weight from container name (assuming c1=2t, c2-c5=4t)
+                weight = "2t" if "c1" in container else "4t"
+            elif action_name == "putdown":
+                robot_param, container, pile, dock = params
+                details = f"{robot_param} puts {container} on {pile} at {dock}"
+                purpose = f"Deliver {container} to target pile"
+                weight = "2t" if "c1" in container else "4t"
+            else:
+                details = ", ".join(params)
+                purpose = "Execute action"
+                weight = "N/A"
+            
+            plan_table.add_row(str(i), action_name, params[0] if params else "?", details, purpose, weight)
+        
+        console.print(plan_table)

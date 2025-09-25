@@ -195,26 +195,30 @@ def build_tricky_swapping_problem():
 def solve_tricky_swapping_refactored():
     """Solve the tricky swapping scenario with refactored domain."""
     
-    console.print(Panel("🔄 Tricky Container Swapping (Refactored)\nDomain is independent; demo builds world and state locally", 
+    # Suppress engine credits in output
+    from unified_planning import shortcuts as up_shortcuts
+    up_shortcuts.get_environment().credits_stream = None
+
+    console.print(Panel("Tricky Container Swapping (Refactored)\nDomain is independent; demo builds world and state locally", 
                         title="Refactored Tricky Swapping", 
                         title_align="left", 
                         border_style="blue"))
     
-    console.print("\n[bold cyan]📋 Test Features:[/bold cyan]")
-    console.print("• 2 robots: r1, r2 (both 6t capacity, 2 slots)")
-    console.print("• 2 docks connected directly")
-    console.print("• 4 containers: c1, c2, c3, c4 (all 2t weight)")
-    console.print("• 2 piles: p1 (d1), p2 (d2)")
-    console.print("• Initial: p1=c1→c2, p2=c3→c4")
-    console.print("• Goal: p1=c3→c4, p2=c2→c1 (REVERSED)")
-    console.print("• Challenge: Test LIFO behavior with weight constraints")
-    console.print("• Architecture: Uses clean, independent domain structure")
+    console.print("\n[bold cyan]Test Features:[/bold cyan]")
+    console.print("- 2 robots: r1, r2 (both 6t capacity, 2 slots)")
+    console.print("- 2 docks connected directly")
+    console.print("- 4 containers: c1, c2, c3, c4 (all 2t weight)")
+    console.print("- 2 piles: p1 (d1), p2 (d2)")
+    console.print("- Initial: p1=c1→c2, p2=c3→c4")
+    console.print("- Goal: p1=c3→c4, p2=c2→c1 (REVERSED)")
+    console.print("- Challenge: Test LIFO behavior with weight constraints")
+    console.print("- Architecture: Uses clean, independent domain structure")
     
     problem, domain, domain_objects = build_tricky_swapping_problem()
     
     LogisticsDisplay.display_domain_info(domain_objects)
     
-    console.print(f"\n[bold blue]🤖 Solving tricky swapping with refactored domain...[/bold blue]")
+    console.print(f"\n[bold blue]Solving tricky swapping with refactored domain...[/bold blue]")
     
     try:
         with OneshotPlanner(name='fast-downward') as planner:
@@ -223,11 +227,11 @@ def solve_tricky_swapping_refactored():
             solve_time = time.time() - start_time
             
             if result.status == PlanGenerationResultStatus.SOLVED_SATISFICING:
-                console.print(f"[bold green]✅ SUCCESS! Tricky swapping completed in {solve_time:.3f}s[/bold green]")
+                console.print(f"[bold green]SUCCESS! Tricky swapping completed in {solve_time:.3f}s[/bold green]")
                 
                 # Display execution plan
                 if result.plan:
-                    console.print("\n[bold cyan]📋 Tricky Swapping Execution Plan[/bold cyan]")
+                    console.print("\n[bold cyan]Tricky Swapping Execution Plan[/bold cyan]")
                     
                     table = Table(show_header=True, header_style="bold cyan")
                     table.add_column("Step", style="dim", width=6, justify="center")
@@ -261,7 +265,7 @@ def solve_tricky_swapping_refactored():
                     console.print(table)
                     
                     # Summary
-                    summary_table = Table(show_header=True, header_style="bold cyan", title="📊 Tricky Swapping Summary")
+                    summary_table = Table(show_header=True, header_style="bold cyan", title="Tricky Swapping Summary")
                     summary_table.add_column("Metric", style="cyan")
                     summary_table.add_column("Value", style="white")
                     
@@ -272,16 +276,15 @@ def solve_tricky_swapping_refactored():
                     
                     console.print(summary_table)
                     
-                    console.print("\n[bold green]🎉 Tricky swapping completed with refactored domain![/bold green]")
-                    console.print(f"[green]📊 Executed {len(result.plan.actions)} actions demonstrating LIFO behavior[/green]")
-                    console.print("[green]✨ Features demonstrated:[/green]")
-                    console.print("[green]  • Multi-capacity robot coordination (6t capacity, 2 slots)[/green]")
-                    console.print("[green]  • Weight-aware planning (all containers 2t)[/green]")
-                    console.print("[green]  • LIFO order preservation vs reversal[/green]")
-                    console.print("[green]  • Intelligent stacking strategy[/green]")
-                    console.print("[green]  • Complex container redistribution[/green]")
-                    console.print("[green]  • Clean, independent domain architecture[/green]")
-                    console.print("\n[bold green]🚀 Refactored LIFO system working intelligently![/bold green]")
+                    console.print("\n[bold green]Tricky swapping completed with refactored domain![/bold green]")
+                    console.print(f"[green]Executed {len(result.plan.actions)} actions demonstrating LIFO behavior[/green]")
+                    console.print("[green]Features demonstrated:[/green]")
+                    console.print("[green]  - Multi-capacity robot coordination (6t capacity, 2 slots)[/green]")
+                    console.print("[green]  - Weight-aware planning (all containers 2t)[/green]")
+                    console.print("[green]  - LIFO order preservation vs reversal[/green]")
+                    console.print("[green]  - Intelligent stacking strategy[/green]")
+                    console.print("[green]  - Complex container redistribution[/green]")
+                    console.print("[green]  - Clean, independent domain architecture[/green]")
                     
                     return True, len(result.plan.actions)
                     
